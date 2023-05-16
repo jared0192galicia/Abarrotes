@@ -4,8 +4,10 @@
  */
 package edu.unsis.view;
 
+import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,19 +15,19 @@ import javax.swing.ImageIcon;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    private int posX;
+    private int posY;
+    
     public Login() {
         initComponents();
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
-        
+
         wallpaper.setIcon(icon);
     }
 
@@ -42,8 +44,8 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         buttonMin = new javax.swing.JButton();
         buttonClose = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
+        txtUser = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,6 +53,16 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,18 +70,25 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonMin.setBackground(new java.awt.Color(0, 102, 102));
+        buttonMin.setBackground(new java.awt.Color(0, 51, 153));
         buttonMin.setForeground(new java.awt.Color(204, 0, 0));
         buttonMin.setText("-");
         buttonMin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonMin.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMinActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 40, 40));
 
-        buttonClose.setBackground(new java.awt.Color(0, 102, 102));
+        buttonClose.setBackground(new java.awt.Color(0, 51, 153));
         buttonClose.setForeground(new java.awt.Color(204, 0, 0));
         buttonClose.setText("X");
         buttonClose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         buttonClose.addActionListener(new java.awt.event.ActionListener() {
@@ -79,30 +98,34 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(buttonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 40, 40));
 
-        jPasswordField1.setBackground(new java.awt.Color(102, 153, 255));
-        jPasswordField1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("jPasswordField1");
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 30));
-        jPasswordField1.getAccessibleContext().setAccessibleName("");
+        txtPass.setBackground(new java.awt.Color(102, 153, 255));
+        txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        txtPass.setForeground(new java.awt.Color(255, 255, 255));
+        txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 30));
+        txtPass.getAccessibleContext().setAccessibleName("");
 
-        jTextField1.setBackground(new java.awt.Color(102, 153, 255));
-        jTextField1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("jTextField1");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 30));
-        jTextField1.getAccessibleContext().setAccessibleName("");
+        txtUser.setBackground(new java.awt.Color(102, 153, 255));
+        txtUser.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUser.setText("User");
+        jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 30));
+        txtUser.getAccessibleContext().setAccessibleName("");
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Acceder");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 110, 30));
 
-        jLabel1.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Olvido su contraseña?");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +160,37 @@ public class Login extends javax.swing.JFrame {
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
         this.setCursor(NORMAL);
     }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String user = txtUser.getText().trim();
+        String pass = txtPass.getText().trim();
+
+        if (!user.equals("User") && !pass.equals("")) {
+            if (user.equals("juan") && pass.equals("1234")) {
+                JOptionPane.showMessageDialog(null, "Ingreso");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Datos erroneos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        posX = evt.getX();
+        posY = evt.getY();
+
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        this.setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
+        this.setExtendedState(Frame.ICONIFIED);
+    }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,8 +235,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtUser;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }
