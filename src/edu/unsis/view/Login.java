@@ -4,6 +4,9 @@
  */
 package edu.unsis.view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author elietzer
@@ -18,6 +21,12 @@ public class Login extends javax.swing.JFrame {
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
+                wallpaper.getHeight(), Image.SCALE_DEFAULT));
+        
+        wallpaper.setIcon(icon);
     }
 
     /**
@@ -38,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -48,12 +58,16 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        buttonMin.setBackground(new java.awt.Color(0, 102, 102));
+        buttonMin.setForeground(new java.awt.Color(204, 0, 0));
         buttonMin.setText("-");
         buttonMin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonMin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonMin.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 40, 40));
 
+        buttonClose.setBackground(new java.awt.Color(0, 102, 102));
+        buttonClose.setForeground(new java.awt.Color(204, 0, 0));
         buttonClose.setText("X");
         buttonClose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -82,7 +96,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1.getAccessibleContext().setAccessibleName("");
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Acceder");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -102,8 +116,10 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 260, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Login");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
+        jPanel2.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, 325, 430));
 
@@ -167,5 +183,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }
