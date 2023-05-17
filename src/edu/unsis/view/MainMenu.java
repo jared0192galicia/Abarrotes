@@ -9,7 +9,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public MainMenu() {
         initComponents();
-        this.setSize(850, 530);
+        this.setSize(850, 550);
         this.setLocationRelativeTo(this);
         this.setResizable(false);
         
@@ -30,6 +30,18 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonUsers.getHeight(), Image.SCALE_DEFAULT));
 
         buttonInvent.setIcon(icon); 
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/invoice.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonSale.getWidth(),
+                buttonSale.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonSale.setIcon(icon); 
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/print.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
+                buttonPrint.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonPrint.setIcon(icon); 
     }
 
     @SuppressWarnings("unchecked")
@@ -42,8 +54,8 @@ public class MainMenu extends javax.swing.JFrame {
         buttonUsers = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
-        button4 = new javax.swing.JButton();
-        button5 = new javax.swing.JButton();
+        buttonPrint = new javax.swing.JButton();
+        buttonSale = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,21 +110,21 @@ public class MainMenu extends javax.swing.JFrame {
         button3.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 170, 160));
 
-        button4.setBorder(null);
-        button4.setBorderPainted(false);
-        button4.setContentAreaFilled(false);
-        button4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        button4.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(button4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 170, 160));
+        buttonPrint.setBorder(null);
+        buttonPrint.setBorderPainted(false);
+        buttonPrint.setContentAreaFilled(false);
+        buttonPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonPrint.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 170, 160));
 
-        button5.setBorder(null);
-        button5.setBorderPainted(false);
-        button5.setContentAreaFilled(false);
-        button5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        button5.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(button5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 170, 160));
+        buttonSale.setBorder(null);
+        buttonSale.setBorderPainted(false);
+        buttonSale.setContentAreaFilled(false);
+        buttonSale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonSale.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonSale.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jPanel1.add(buttonSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 140, 160));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
@@ -139,9 +151,9 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button2;
     private javax.swing.JButton button3;
-    private javax.swing.JButton button4;
-    private javax.swing.JButton button5;
     private javax.swing.JButton buttonInvent;
+    private javax.swing.JButton buttonPrint;
+    private javax.swing.JButton buttonSale;
     private javax.swing.JButton buttonUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

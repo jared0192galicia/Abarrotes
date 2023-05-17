@@ -41,6 +41,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        wallpaper = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buttonMin = new javax.swing.JButton();
         buttonClose = new javax.swing.JButton();
@@ -49,7 +50,6 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -66,8 +66,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 430));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonMin.setBackground(new java.awt.Color(0, 51, 153));
@@ -142,7 +145,6 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Login");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
-        jPanel2.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, 325, 430));
 
