@@ -19,6 +19,9 @@ public class Login extends javax.swing.JFrame {
     private int posX;
     private int posY;
     
+    private ImageIcon iconClose;
+    private ImageIcon iconMin;
+    
     public Login() {
         initComponents();
         this.setSize(650, 430);
@@ -30,6 +33,32 @@ public class Login extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/mainLogo.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(logoStore.getWidth(),
+                logoStore.getHeight(), Image.SCALE_DEFAULT));
+
+        logoStore.setIcon(icon);
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/minimizeUno.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
+                buttonMin.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonMin.setIcon(icon);
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
+                buttonClose.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonClose.setIcon(icon);
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
+        iconClose = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
+                buttonClose.getHeight(), Image.SCALE_DEFAULT));
+        
+        image = new ImageIcon("./src/edu/unsis/view/images/minimizeDos.png");
+        iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
+                buttonClose.getHeight(), Image.SCALE_DEFAULT));
     }
 
     /**
@@ -42,6 +71,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        logoStore = new javax.swing.JLabel();
         wallpaper = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buttonMin = new javax.swing.JButton();
@@ -67,17 +97,18 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(logoStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 230, 220));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 430));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonMin.setBackground(new java.awt.Color(0, 51, 153));
+        buttonMin.setBackground(new java.awt.Color(153, 153, 255));
         buttonMin.setForeground(new java.awt.Color(204, 0, 0));
-        buttonMin.setText("-");
-        buttonMin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonMin.setBorder(null);
+        buttonMin.setBorderPainted(false);
         buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonMin.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -88,10 +119,10 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 40, 40));
 
-        buttonClose.setBackground(new java.awt.Color(0, 51, 153));
+        buttonClose.setBackground(new java.awt.Color(153, 153, 255));
         buttonClose.setForeground(new java.awt.Color(204, 0, 0));
-        buttonClose.setText("X");
-        buttonClose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonClose.setBorder(null);
+        buttonClose.setBorderPainted(false);
         buttonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -245,6 +276,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logoStore;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     private javax.swing.JLabel wallpaper;
