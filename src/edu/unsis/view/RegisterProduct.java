@@ -25,6 +25,23 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         wallpaper.setIcon(icon);
     }
+    
+    public RegisterProduct(String title, Product product) {
+        initComponents();
+        this.setSize(878, 626);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        this.labelTitle.setText(title);
+        
+        createModelProduct(product);
+        
+        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
+                wallpaper.getHeight(), Image.SCALE_DEFAULT));
+
+        wallpaper.setIcon(icon);        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,7 +61,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         comboType = new javax.swing.JComboBox<>();
         checkCode = new javax.swing.JCheckBox();
         txtExist = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
@@ -138,10 +155,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtExist.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(txtExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 210, 30));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("REGISTRAR PRODUCTO");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        labelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setText("REGISTRAR PRODUCTO");
+        jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel7.setText("Precio");
@@ -218,17 +235,22 @@ public class RegisterProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void createModelProduct(Product p) {
+        
+    }
+    
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
 
         if (index == 0) {
-            this.txtCadDay.setEditable(true);
+            this.txtCadDay.setEnabled(true);
             this.txtCadYear.setEnabled(true);
-            this.txtCadMonth.setEditable(true);
+            this.txtCadMonth.setEnabled(true);
         } else {
-            this.txtCadDay.setEditable(false);
+            this.txtCadDay.setEnabled(false);
             this.txtCadYear.setEnabled(false);
-            this.txtCadMonth.setEditable(false);
+            this.txtCadMonth.setEnabled(false);
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
 
@@ -339,10 +361,16 @@ public class RegisterProduct extends javax.swing.JFrame {
         if (band && (indexType == 0)) {
             Product p = new Expired(day, year, month, name, code, Double.parseDouble(price), description);
             products.add(p);
+            for (Product product : products) {
+                System.out.println(product);
+            }
         } else if(band) { 
             Product p = new NotExpired(name, code, 
                     Integer.parseInt(price), description);
             products.add(p);
+            for (Product product : products) {
+                System.out.println(product);
+            }
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -382,12 +410,12 @@ public class RegisterProduct extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JTextField txtCadDay;
     private javax.swing.JTextField txtCadMonth;
     private javax.swing.JTextField txtCadYear;

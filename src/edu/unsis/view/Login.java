@@ -19,8 +19,8 @@ public class Login extends javax.swing.JFrame {
     private int posX;
     private int posY;
     
-    private ImageIcon iconClose;
-    private ImageIcon iconMin;
+    private ImageIcon iconClose, iconCloseN;
+    private ImageIcon iconMin, iconMinN;
     
     public Login() {
         initComponents();
@@ -44,12 +44,14 @@ public class Login extends javax.swing.JFrame {
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
                 buttonMin.getHeight(), Image.SCALE_DEFAULT));
 
+        iconMinN = icon;
         buttonMin.setIcon(icon);
         
         image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
 
+        iconCloseN = icon;
         buttonClose.setIcon(icon);
         
         image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
@@ -112,6 +114,14 @@ public class Login extends javax.swing.JFrame {
         buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonMin.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonMinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonMinMouseExited(evt);
+            }
+        });
         buttonMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMinActionPerformed(evt);
@@ -126,6 +136,14 @@ public class Login extends javax.swing.JFrame {
         buttonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonCloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonCloseMouseExited(evt);
+            }
+        });
         buttonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCloseActionPerformed(evt);
@@ -232,6 +250,22 @@ public class Login extends javax.swing.JFrame {
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
+
+    private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
+        this.buttonMin.setIcon(iconMin);
+    }//GEN-LAST:event_buttonMinMouseEntered
+
+    private void buttonCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseEntered
+        this.buttonClose.setIcon(iconClose);
+    }//GEN-LAST:event_buttonCloseMouseEntered
+
+    private void buttonCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseExited
+        this.buttonClose.setIcon(iconCloseN);
+    }//GEN-LAST:event_buttonCloseMouseExited
+
+    private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
+        this.buttonMin.setIcon(iconMinN);
+    }//GEN-LAST:event_buttonMinMouseExited
 
     /**
      * @param args the command line arguments
