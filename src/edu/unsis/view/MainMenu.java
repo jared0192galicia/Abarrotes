@@ -53,7 +53,7 @@ public class MainMenu extends javax.swing.JFrame {
         buttonInvent = new javax.swing.JButton();
         buttonUsers = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
-        button3 = new javax.swing.JButton();
+        buttonRegisterProduct = new javax.swing.JButton();
         buttonPrint = new javax.swing.JButton();
         buttonSale = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
@@ -102,13 +102,18 @@ public class MainMenu extends javax.swing.JFrame {
         button2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 170, 160));
 
-        button3.setBorder(null);
-        button3.setBorderPainted(false);
-        button3.setContentAreaFilled(false);
-        button3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        button3.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 170, 160));
+        buttonRegisterProduct.setBorder(null);
+        buttonRegisterProduct.setBorderPainted(false);
+        buttonRegisterProduct.setContentAreaFilled(false);
+        buttonRegisterProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonRegisterProduct.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonRegisterProduct.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonRegisterProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegisterProductActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonRegisterProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 170, 160));
 
         buttonPrint.setBorder(null);
         buttonPrint.setBorderPainted(false);
@@ -140,6 +145,11 @@ public class MainMenu extends javax.swing.JFrame {
         this.buttonInvent.setBackground(new Color(10, true));
     }//GEN-LAST:event_buttonInventMouseEntered
 
+    private void buttonRegisterProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterProductActionPerformed
+       new RegisterProduct().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_buttonRegisterProductActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -150,9 +160,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button2;
-    private javax.swing.JButton button3;
     private javax.swing.JButton buttonInvent;
     private javax.swing.JButton buttonPrint;
+    private javax.swing.JButton buttonRegisterProduct;
     private javax.swing.JButton buttonSale;
     private javax.swing.JButton buttonUsers;
     private javax.swing.JLabel jLabel1;

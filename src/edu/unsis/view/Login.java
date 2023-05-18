@@ -4,6 +4,7 @@
  */
 package edu.unsis.view;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -70,7 +71,7 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonMin.setBackground(new java.awt.Color(0, 51, 153));
@@ -166,17 +167,24 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String user = txtUser.getText().trim();
         String pass = txtPass.getText().trim();
-
-        if (!user.equals("User") && !pass.equals("")) {
-            if (user.equals("juan") && pass.equals("1234")) {
-                JOptionPane.showMessageDialog(null, "Ingreso");
-
-            } else {
-
-                JOptionPane.showMessageDialog(null, "Datos erroneos");
-            }
+        boolean band = true;
+        if (user.equals("")) {
+            band = false;
+            txtUser.setBackground(Color.red);
         } else {
-            JOptionPane.showMessageDialog(null, "Debe llenar los campos");
+            txtUser.setBackground(new Color(102,153,255));
+        }
+        
+        if (pass.equals("")) {
+            band = false;
+            txtPass.setBackground(Color.red);
+        } else {
+            txtPass.setBackground(new Color(102,153,255));
+        }
+        
+        if (band) {
+            new MainMenu().setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
