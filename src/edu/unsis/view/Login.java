@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
                 buttonMinActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 40, 40));
+        jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 40, 40));
 
         buttonClose.setBackground(new java.awt.Color(0, 51, 153));
         buttonClose.setForeground(new java.awt.Color(204, 0, 0));
@@ -100,7 +100,7 @@ public class Login extends javax.swing.JFrame {
                 buttonCloseActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 40, 40));
+        jPanel2.add(buttonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 0, 40, 40));
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N

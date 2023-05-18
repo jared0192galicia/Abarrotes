@@ -12,9 +12,9 @@ public class NotExpired extends Product {
      * @param price
      * @param description 
      */
-    public NotExpired(String name, String type, String code, int price,
+    public NotExpired(String name, String code, double price,
             String description) {
-        super(name, type, code, price, description);
+        super(name, code, price, description);
     }
     
 }

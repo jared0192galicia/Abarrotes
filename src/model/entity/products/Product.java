@@ -1,11 +1,10 @@
 package model.entity.products;
 
-public class Product {
+public abstract class Product {
     
     private String name;
-    private String type;
     private String code;
-    private int price;
+    private double price;
     private String description;
     public static int existencia;
 
@@ -18,9 +17,8 @@ public class Product {
      * @param price
      * @param description 
      */
-    public Product(String name, String type, String code, int price, String description) {
+    public Product(String name, String code, double price, String description) {
         this.name = name;
-        this.type = type;
         this.code = code;
         this.price = price;
         this.description = description;
@@ -34,14 +32,6 @@ public class Product {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getCode() {
         return code;
     }
@@ -50,11 +40,11 @@ public class Product {
         this.code = code;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -76,7 +66,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Poduct{" + "name=" + name + ", type=" + type + ", code=" + code + ", price=" + price + ", description=" + description + '}';
+        return "Poduct{" + "name=" + name + ", code=" + code + ", price=" + price + ", description=" + description + '}';
     }
     
 }

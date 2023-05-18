@@ -19,8 +19,8 @@ public class Expired extends Product {
      * @param description 
      */
     public Expired(String day, String year, String month, String name, 
-            String type, String code, int price, String description) {
-        super(name, type, code, price, description);
+            String code, double price, String description) {
+        super(name, code, price, description);
         this.day = day;
         this.year = year;
         this.month = month;
@@ -32,9 +32,9 @@ public class Expired extends Product {
      * @param price
      * @param description 
      */
-    public Expired(String name, String type, String code, int price, String 
+    public Expired(String name, String code, double price, String 
             description) {
-        super(name, type, code, price, description);
+        super(name, code, price, description);
     }
 
     public void setDay(String day) {
