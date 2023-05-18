@@ -1,7 +1,9 @@
 package edu.unsis.view;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import model.entity.products.Expired;
 import model.entity.products.NotExpired;
 import model.entity.products.Product;
@@ -15,6 +17,13 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.setSize(878, 626);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        
+        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
+                wallpaper.getHeight(), Image.SCALE_DEFAULT));
+
+        wallpaper.setIcon(icon);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +57,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +124,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         checkCode.setSelected(true);
         checkCode.setText("Codigo automatico");
+        checkCode.setContentAreaFilled(false);
         checkCode.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 checkCodeItemStateChanged(evt);
@@ -191,6 +202,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
+        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,7 +212,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -386,5 +398,6 @@ public class RegisterProduct extends javax.swing.JFrame {
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }
