@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 import model.entity.products.Expired;
 import model.entity.products.NotExpired;
 import model.entity.products.Product;
@@ -11,13 +13,14 @@ import model.entity.products.Product;
 public class RegisterProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = new ArrayList<>();
+    static DefaultTableModel modelProduct;
 
     public RegisterProduct() {
         initComponents();
-        this.setSize(878, 626);
+        this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+        this.buttonSearch.setVisible(false);
         
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -26,15 +29,17 @@ public class RegisterProduct extends javax.swing.JFrame {
         wallpaper.setIcon(icon);
     }
     
-    public RegisterProduct(String title, Product product) {
+    public RegisterProduct(String title) {
         initComponents();
-        this.setSize(878, 626);
+        this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
         this.labelTitle.setText(title);
-        
-        createModelProduct(product);
+        this.buttonAcept.setVisible(false);
+        this.buttonAcept.setEnabled(false);
+        this.buttonSearch.setVisible(true);
+        this.buttonSearch.setEnabled(true);
         
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -65,7 +70,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        buttonAcept = new javax.swing.JButton();
         txtCadDay = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -74,6 +79,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        buttonSearch = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -170,13 +176,13 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
 
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAcept.setText("Registrar");
+        buttonAcept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAceptActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 220, 45));
+        jPanel1.add(buttonAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 220, 45));
 
         txtCadDay.setBackground(new java.awt.Color(102, 153, 255));
         txtCadDay.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -219,6 +225,15 @@ public class RegisterProduct extends javax.swing.JFrame {
         jButton3.setContentAreaFilled(false);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
+
+        buttonSearch.setText("Buscar");
+        buttonSearch.setEnabled(false);
+        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSearchActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 220, 40));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,7 +269,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptActionPerformed
 
         int indexType = this.comboType.getSelectedIndex();
         boolean indexCode = this.checkCode.isSelected();
@@ -373,11 +388,15 @@ public class RegisterProduct extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAceptActionPerformed
 
     private void checkCodeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkCodeItemStateChanged
         txtCode.setEditable(!checkCode.isSelected());
     }//GEN-LAST:event_checkCodeItemStateChanged
+
+    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSearchActionPerformed
 
     private boolean dataValidate() {
         boolean band = true;
@@ -400,9 +419,10 @@ public class RegisterProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Modelo;
+    private javax.swing.JButton buttonAcept;
+    private javax.swing.JButton buttonSearch;
     private javax.swing.JCheckBox checkCode;
     private javax.swing.JComboBox<String> comboType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
