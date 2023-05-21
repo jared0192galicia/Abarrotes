@@ -4,9 +4,11 @@ public abstract class Product {
     
     private String name;
     private String code;
+    private String Marca;
+    private String Modelo;
     private double price;
     private String description;
-    public static int existencia;
+    public int existencia;
 
     public Product() {}
     
@@ -56,17 +58,38 @@ public abstract class Product {
         this.description = description;
     }
 
-    public static int getExistencia() {
+    public int getExistencia() {
         return existencia;
     }
 
-    public static void setExistencia(int existencia) {
-        Product.existencia = existencia;
+    public void setExistencia(int existencia) {
+        this.existencia = existencia;
+    }
+
+    public String getMarca() {
+        return Marca;
+    }
+
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
+    }
+
+    public String getModelo() {
+        return Modelo;
+    }
+
+    public void setModelo(String Modelo) {
+        this.Modelo = Modelo;
     }
 
     @Override
     public String toString() {
-        return "Poduct{" + "name=" + name + ", code=" + code + ", price=" + price + ", description=" + description + '}';
+        return "Product{" + "name=" + name + ", code=" + code + ", Marca=" +
+                Marca + ", Modelo=" + Modelo + ", price=" + price + 
+                ", description=" + description + ", existencia=" + 
+                existencia + '}';
     }
+
+    
     
 }

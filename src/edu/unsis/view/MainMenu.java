@@ -1,12 +1,17 @@
 package edu.unsis.view;
 
+import edu.unsis.model.Data;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import model.entity.products.Product;
 
 
 public class MainMenu extends javax.swing.JFrame {
 
+    public static ArrayList<Product> products;
+    
     public MainMenu() {
         initComponents();
         this.setSize(850, 550);
@@ -42,6 +47,8 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonPrint.getHeight(), Image.SCALE_DEFAULT));
 
         buttonPrint.setIcon(icon); 
+        
+        loadData();
     }
 
     @SuppressWarnings("unchecked")
@@ -137,6 +144,10 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void loadData() {
+        products = Data.load();
+    }
+    
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonUsersActionPerformed

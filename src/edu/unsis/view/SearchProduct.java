@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.entity.products.Product;
 
 
 public class SearchProduct extends javax.swing.JFrame {
 
-    ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products = MainMenu.products;
+    private DefaultTableModel model;
     
     public SearchProduct() {
         initComponents();
@@ -33,7 +36,8 @@ public class SearchProduct extends javax.swing.JFrame {
         System.out.println("aqui 3");
         wallpaper.setIcon(icon);
         
-        loadData();
+        model = new DefaultTableModel();
+        createDefaultModel();
     }
     
     @SuppressWarnings("unchecked")
@@ -301,11 +305,47 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtCadMonth.setEnabled(false);
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
-    private void loadData() {
+    private void createDefaultModel() {
+        model.addColumn("Nombre");
+        model.addColumn("Codigo");
+        model.addColumn("Modelo");
+        model.addColumn("Existencia");
+        model.addColumn("Precio");
+        
+        String row[];
+        String aux;
+        
+        for (Product product : products) {
+            row = new String[5];
+            
+            row[1] = product.getName();
+            row[2] = product.getCode();
+            row[3] = product.getModelo();
+            row[4] = String.valueOf(product.getExistencia());
+            row[5] = String.valueOf(product.getPrice());
+            
+            model.addRow(row);
+        }
         
     }
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        // TODO add your handling code here:
+        String code = this.txtCode.getText().trim();
+        
+        if (code.equals("")) {
+            // Set color red
+            
+        } else {
+            // Set color default
+            
+            for (Product product : products) {
+                if (code.equals(product.getCode())) {
+                    /* fill txtField with data */
+                } else {
+                    JOptionPane.showMessageDialog(null, "El "
+                            + "codifo ingresado no existe");
+                }
+            }
+        }
     }//GEN-LAST:event_buttonSearchActionPerformed
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
