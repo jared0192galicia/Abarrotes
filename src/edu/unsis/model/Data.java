@@ -7,6 +7,7 @@
 
 package edu.unsis.model;
 
+import service.implementation.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -132,7 +133,14 @@ public class Data {
     public void createUser(User user) {
         Connection cn = Conexion.getConnction();
         PreparedStatement pst;
-
+        System.out.println("in method");
+        
+        String aux = "0";
+        if (user.isStatus()) {
+            aux = "1";
+        }
+        
+        
         try {
             pst = cn.prepareStatement(
                     "INSERT INTO users VALUES"
@@ -143,10 +151,12 @@ public class Data {
             pst.setString(2, user.getPassword());
             pst.setString(3, user.getEmail());
             pst.setString(4, user.getName());
-            pst.setString(5, String.valueOf(user.isStatus()));
+            pst.setString(5, aux);
             pst.setString(6, String.valueOf(user.getEdad()));
             pst.setString(7, String.valueOf(user.getSexo()));
             pst.setString(8, String.valueOf(user.getLevel()));
+            
+            pst.executeUpdate();
             
         } catch (SQLException e) {
             System.err.println("Error in register user" + e.getMessage());

@@ -164,7 +164,7 @@ public class UserRegister extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Usuario");
         panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
-        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 470));
+        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,6 +260,21 @@ public class UserRegister extends javax.swing.JFrame {
                     Integer.parseInt(edad), sexo.charAt(0));
             
             data.createUser(u);
+            
+            txtEdad.setBackground(Color.GREEN);
+            txtEmail.setBackground(Color.GREEN);
+            txtName.setBackground(Color.GREEN);
+            txtPass.setBackground(Color.GREEN);
+            txtUserName.setBackground(Color.GREEN);
+            comboEdo.setBackground(Color.GREEN);
+            comboLevel.setBackground(Color.GREEN);
+            comboSex.setBackground(Color.GREEN);
+            
+            JOptionPane.showMessageDialog(null, 
+                    "Usuario registrado con exito");
+            
+            this.dispose();
+            
         } else {
             JOptionPane.showMessageDialog(null, 
                     "Verifique los campos resaltados");

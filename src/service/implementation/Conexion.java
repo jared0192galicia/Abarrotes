@@ -1,13 +1,17 @@
-package edu.unsis.model;
+package service.implementation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import service.interfaces.MySqlConnection;
 
-public class Conexion {
+public class Conexion implements MySqlConnection {
 
     private static Connection cn = null;
 
+    /**
+     * @return connection to mysql
+     */
     public static Connection getConnction() {
 
         if (cn == null) {
