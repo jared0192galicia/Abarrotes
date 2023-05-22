@@ -25,6 +25,9 @@ public class RegisterProduct extends javax.swing.JFrame {
     static DefaultTableModel modelProduct;
     private Data data;
 
+    /**
+     * 
+     */
     public RegisterProduct() {
         initComponents();
         this.setSize(878, 630);
@@ -105,6 +108,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nombre");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
@@ -116,6 +120,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Existencia");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
@@ -126,6 +131,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Marca");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
@@ -136,6 +142,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 210, 30));
 
         Modelo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        Modelo.setForeground(new java.awt.Color(255, 255, 255));
         Modelo.setText("Modelo");
         jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
@@ -146,6 +153,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, 30));
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
 
@@ -157,6 +165,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         });
         jPanel1.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 210, -1));
 
+        checkCode.setForeground(new java.awt.Color(255, 255, 255));
         checkCode.setSelected(true);
         checkCode.setText("Codigo automatico");
         checkCode.setContentAreaFilled(false);
@@ -179,6 +188,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Precio");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
@@ -203,10 +213,12 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtCadDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 210, 30));
 
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Dia");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Mes");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
@@ -223,6 +235,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         jPanel1.add(txtCadYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 210, 30));
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Año");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
 

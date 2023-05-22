@@ -7,6 +7,10 @@
 package edu.unsis.view;
 
 import edu.unsis.model.Data;
+import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.entity.User;
 
 /**
@@ -15,10 +19,20 @@ import model.entity.User;
  */
 public class UserRegister extends javax.swing.JFrame {
 
-    private Data data = MainMenu.data;
+    private Data data;// = MainMenu.data;
 
     public UserRegister() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
+                wallpaper.getHeight(), Image.SCALE_DEFAULT));
+        
+        wallpaper.setIcon(icon);
+        data = new Data();
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +55,7 @@ public class UserRegister extends javax.swing.JFrame {
         buttonRegister = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +65,7 @@ public class UserRegister extends javax.swing.JFrame {
         txtUserName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUserName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
@@ -68,6 +84,7 @@ public class UserRegister extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -80,6 +97,7 @@ public class UserRegister extends javax.swing.JFrame {
         txtEdad.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtEdad.setForeground(new java.awt.Color(255, 255, 255));
         txtEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEdad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 210, 30));
 
         jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -98,20 +116,24 @@ public class UserRegister extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 210, 30));
 
+        comboSex.setBackground(new java.awt.Color(102, 153, 255));
         comboSex.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboSex.setForeground(new java.awt.Color(255, 255, 255));
         comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     Sexo", "      M", "      F" }));
         comboSex.setToolTipText("Nivel de permisos");
         panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 150, -1));
 
+        comboEdo.setBackground(new java.awt.Color(102, 153, 255));
         comboEdo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboEdo.setForeground(new java.awt.Color(255, 255, 255));
         comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "      Estado", "      Activo", "     Inactivo" }));
         comboEdo.setToolTipText("Nivel de permisos");
         panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 180, -1));
 
+        comboLevel.setBackground(new java.awt.Color(102, 153, 255));
         comboLevel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboLevel.setForeground(new java.awt.Color(255, 255, 255));
         comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Nivel", "     1", "     2", "     3" }));
@@ -134,6 +156,7 @@ public class UserRegister extends javax.swing.JFrame {
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         txtPass.setForeground(new java.awt.Color(255, 255, 255));
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 210, -1));
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -141,18 +164,17 @@ public class UserRegister extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Usuario");
         panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -166,15 +188,82 @@ public class UserRegister extends javax.swing.JFrame {
         String mail = txtEmail.getText().trim();
         String edad = txtEdad.getText().trim();
 
-        String level = comboLevel.getSelectedItem().toString();
-        String sexo = comboSex.getSelectedItem().toString();
-        String status = comboEdo.getSelectedItem().toString();
+        String level = comboLevel.getSelectedItem().toString().trim();
+        String sexo = comboSex.getSelectedItem().toString().trim();
+        String status = comboEdo.getSelectedItem().toString().trim();
+        System.out.println(sexo);
+        boolean band = true;
 
-        User u = new User(user, pass, mail,
-                Integer.parseInt(level), true, name,
-                Integer.parseInt(edad), sexo.charAt(0));
-
-        data.createUser(u);
+        /**
+         * Valid camps nulls
+         */
+        if (name.equals("")) {
+            txtName.setBackground(Color.red);
+            band = false;
+        } else {
+            txtName.setBackground(new Color(102,153,255));
+        }
+        
+        if (user.equals("")) {
+            txtUserName.setBackground(Color.red);
+            band = false;
+        } else {
+            txtUserName.setBackground(new Color(102,153,255));
+        }
+        
+        if (pass.equals("")) {
+            txtPass.setBackground(Color.red);
+            band = false;
+        } else {
+            txtPass.setBackground(new Color(102,153,255));
+        }
+        
+        if (mail.equals("")) {
+            txtEmail.setBackground(Color.red);
+            band = false;
+        } else {
+            txtEmail.setBackground(new Color(102,153,255));
+        }
+        
+        if (edad.equals("")) {
+            txtEdad.setBackground(Color.red);
+            band = false;
+        } else {
+            txtEdad.setBackground(new Color(102,153,255));
+        }
+        
+        if (level.equals("Nivel")) {
+            comboLevel.setBackground(Color.red);
+            band = false;
+        } else {
+            comboLevel.setBackground(new Color(102,153,255));
+        }
+        
+        if (sexo.equalsIgnoreCase("Sexo")) {
+            comboSex.setBackground(Color.red);
+            System.out.println("No mod");
+            band = false;
+        } else {
+            comboSex.setBackground(new Color(102,153,255));
+        }
+        
+        if (status.equals("Estado")) {
+            comboEdo.setBackground(Color.red);
+            band = false;
+        } else {
+            comboEdo.setBackground(new Color(102,153,255));
+        }
+        
+        if (band) {
+            User u = new User(user, pass, mail,
+                    Integer.parseInt(level), true, name,
+                    Integer.parseInt(edad), sexo.charAt(0));
+            
+            data.createUser(u);
+        } else {
+            JOptionPane.showMessageDialog(null, 
+                    "Verifique los campos resaltados");
+        }
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
     /**
@@ -206,5 +295,6 @@ public class UserRegister extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }

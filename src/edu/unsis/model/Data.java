@@ -19,6 +19,9 @@ import model.entity.products.Product;
 
 public class Data {
 
+    /**
+     * @return ArrayList with the products getter of mysql
+     */
     public static ArrayList<Product> load() {
         ArrayList<Product> products = new ArrayList<>();
 
@@ -32,6 +35,10 @@ public class Data {
 
             Product p;
             String aux;
+            
+            /**
+             * Save data from object ResultSet
+             */
             while (rs.next()) {
                 aux = rs.getString("dateExpiry");
 
@@ -67,6 +74,7 @@ public class Data {
     }
 
     /**
+     * Create new row in sql with data of the object Product
      * @param p object row
      * @param type
      *  @value true {NotExpired}
@@ -118,7 +126,8 @@ public class Data {
     }
 
     /**
-     * @param user to register in table user of mysql
+     * @param user to register in table user of mysql with information
+     * the object user
      */
     public void createUser(User user) {
         Connection cn = Conexion.getConnction();
@@ -140,6 +149,7 @@ public class Data {
             pst.setString(8, String.valueOf(user.getLevel()));
             
         } catch (SQLException e) {
+            System.err.println("Error in register user" + e.getMessage());
         }
     }
 }
