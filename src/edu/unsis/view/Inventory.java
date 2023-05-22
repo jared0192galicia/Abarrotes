@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 22/may/2023
+ * Descripcion: Muestra el inventario de productos
+ */
 package edu.unsis.view;
 
 import model.entity.products.Product;

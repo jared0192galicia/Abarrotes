@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 22/may/2023
+ * Descripcion: Registra productos
+ */
 package edu.unsis.view;
 
 import edu.unsis.model.Data;
@@ -304,12 +310,14 @@ public class RegisterProduct extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
 
+    // Compiler data and send to data for register
     private void buttonAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptActionPerformed
 
         int indexType = this.comboType.getSelectedIndex();
         boolean indexCode = this.checkCode.isSelected();
         boolean band = true;
         boolean ex = true;
+        
         String name = this.txtName.getText().trim();
         String price = this.txtPrice.getText().trim();
         String existence = this.txtExist.getText().trim();
@@ -322,6 +330,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         String month = "";
         String code = "";
 
+        // Valid values null in the register        
         if (name.equals("")) {
             this.txtName.setBackground(Color.red);
             band = false;

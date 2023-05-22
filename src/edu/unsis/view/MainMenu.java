@@ -1,3 +1,10 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 22/may/2023
+ * Descripcion: Menu principal de opciones
+ */
+
 package edu.unsis.view;
 
 import edu.unsis.model.Data;
@@ -11,6 +18,7 @@ import model.entity.products.Product;
 public class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
+    public static Data data;
     
     public MainMenu() {
         initComponents();
@@ -47,7 +55,7 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonPrint.getHeight(), Image.SCALE_DEFAULT));
 
         buttonPrint.setIcon(icon); 
-        
+        data = new Data();
         loadData();
     }
 

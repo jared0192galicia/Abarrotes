@@ -1,6 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 22/may/2023
+ * Descripcion: Login principal
  */
 package edu.unsis.view;
 

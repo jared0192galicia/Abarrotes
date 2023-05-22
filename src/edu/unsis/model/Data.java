@@ -1,3 +1,10 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 22/may/2023
+ * Descripcion: Metodos de conexion con mysql
+ */
+
 package edu.unsis.model;
 
 import java.sql.Connection;
@@ -5,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.entity.User;
 import model.entity.products.Expired;
 import model.entity.products.NotExpired;
 import model.entity.products.Product;
@@ -106,6 +114,32 @@ public class Data {
         } catch (SQLException e) {
             System.err.println("Error in register\n\n" + e.getMessage());
 
+        }
+    }
+
+    /**
+     * @param user to register in table user of mysql
+     */
+    public void createUser(User user) {
+        Connection cn = Conexion.getConnction();
+        PreparedStatement pst;
+
+        try {
+            pst = cn.prepareStatement(
+                    "INSERT INTO users VALUES"
+                    + "(?, ?, ?, ?, ?, ?, ?, ?)");
+
+            // Set data to query
+            pst.setString(1, user.getUserName());
+            pst.setString(2, user.getPassword());
+            pst.setString(3, user.getEmail());
+            pst.setString(4, user.getName());
+            pst.setString(5, String.valueOf(user.isStatus()));
+            pst.setString(6, String.valueOf(user.getEdad()));
+            pst.setString(7, String.valueOf(user.getSexo()));
+            pst.setString(8, String.valueOf(user.getLevel()));
+            
+        } catch (SQLException e) {
         }
     }
 }
