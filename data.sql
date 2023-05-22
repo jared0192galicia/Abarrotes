@@ -19,6 +19,10 @@ INSERT INTO products (codes, namep, price, existence, descrip,
 	registerFor) VALUES ("LIMP202305AFF03", "Escoba", 27.5, 10, 
     "Escoba normal", "juanlopez");
     
+INSERT INTO products (codes, namep, marca, price, existence, descrip, 
+	dateExpiry, registerFor) VALUES ("ALIM202305AFF05", "Arroz", "Italriso", 20, 10, 
+    "Arroz blanco", "2023/12/15" , "juanlopez");
+    
     
     
     

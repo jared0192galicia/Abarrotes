@@ -1,5 +1,7 @@
 package model.entity.products;
 
+import model.entity.User;
+
 public abstract class Product {
     
     private String name;
@@ -8,7 +10,9 @@ public abstract class Product {
     private String Modelo;
     private double price;
     private String description;
-    public int existencia;
+    private int existencia;
+    private User registerFor;
+    private User updateFor;
 
     public Product() {}
     
@@ -82,6 +86,29 @@ public abstract class Product {
         this.Modelo = Modelo;
     }
 
+    public User getRegisterFor() {
+        return registerFor;
+    }
+    public String getNameRegisterFor() {
+        return registerFor.getUserName();
+    }
+
+    public void setRegisterFor(User registerFor) {
+        this.registerFor = registerFor;
+    }
+
+    public User getUpdateFor() {
+        return updateFor;
+    }
+
+    public String getNameUpdateFor() {
+        return updateFor.getUserName();
+    }
+
+    public void setUpdateFor(User updateFor) {
+        this.updateFor = updateFor;
+    }
+    
     @Override
     public String toString() {
         return "Product{" + "name=" + name + ", code=" + code + ", Marca=" +

@@ -5,8 +5,11 @@ public class Expired extends Product {
     private String day;
     private String year;
     private String month;
+    private String date;
 
-    public Expired() {}
+    public Expired(String date) {
+        this.setDate(date);
+    }
 
     /**
      * @param day
@@ -37,6 +40,14 @@ public class Expired extends Product {
         super(name, code, price, description);
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
     public void setDay(String day) {
         this.day = day;
     }
@@ -59,6 +70,11 @@ public class Expired extends Product {
 
     @Override
     public String toString() {
-        return "Expired{" + "day=" + day + ", year=" + year + ", month=" + month + '}';
+        return "Expired{" + "date=" + date + '}' + super.toString();
     }
+
+    
+    
+
+    
 }

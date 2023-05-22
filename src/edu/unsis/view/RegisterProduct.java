@@ -1,10 +1,12 @@
 package edu.unsis.view;
 
+import edu.unsis.model.Data;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.entity.products.Expired;
 import model.entity.products.NotExpired;
@@ -14,38 +16,39 @@ public class RegisterProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = new ArrayList<>();
     static DefaultTableModel modelProduct;
-
+    private Data data;
     public RegisterProduct() {
         initComponents();
         this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.buttonSearch.setVisible(false);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
+        data = new Data();
     }
-    
+
     public RegisterProduct(String title) {
         initComponents();
         this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         this.labelTitle.setText(title);
         this.buttonAcept.setVisible(false);
         this.buttonAcept.setEnabled(false);
         this.buttonSearch.setVisible(true);
         this.buttonSearch.setEnabled(true);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
-        wallpaper.setIcon(icon);        
+        wallpaper.setIcon(icon);
     }
 
     @SuppressWarnings("unchecked")
@@ -77,12 +80,13 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCadMonth = new javax.swing.JTextField();
         txtCadYear = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonMin = new javax.swing.JButton();
+        buttonExit = new javax.swing.JButton();
         buttonSearch = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -214,17 +218,47 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel10.setText("Año");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
 
-        jButton2.setText("-");
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 40, 40));
+        buttonMin.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        buttonMin.setForeground(new java.awt.Color(255, 255, 255));
+        buttonMin.setText("-");
+        buttonMin.setBorder(null);
+        buttonMin.setContentAreaFilled(false);
+        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonMinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonMinMouseExited(evt);
+            }
+        });
+        buttonMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMinActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 40, 40));
 
-        jButton3.setText("x");
-        jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
+        buttonExit.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        buttonExit.setForeground(new java.awt.Color(255, 255, 255));
+        buttonExit.setText("x");
+        buttonExit.setBorder(null);
+        buttonExit.setContentAreaFilled(false);
+        buttonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonExitMouseExited(evt);
+            }
+        });
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
 
         buttonSearch.setText("Buscar");
         buttonSearch.setEnabled(false);
@@ -250,11 +284,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     public void createModelProduct(Product p) {
-        
+
     }
-    
+
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
 
@@ -274,7 +307,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         int indexType = this.comboType.getSelectedIndex();
         boolean indexCode = this.checkCode.isSelected();
         boolean band = true;
-
+        boolean ex = true;
         String name = this.txtName.getText().trim();
         String price = this.txtPrice.getText().trim();
         String existence = this.txtExist.getText().trim();
@@ -331,7 +364,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         // Components of the Objects Expired
         if (indexType == 0) {
-
+            ex = false;
             day = this.txtCadDay.getText().trim();
             month = this.txtCadMonth.getText().trim();
             year = this.txtCadYear.getText().trim();
@@ -374,18 +407,22 @@ public class RegisterProduct extends javax.swing.JFrame {
         }
 
         if (band && (indexType == 0)) {
-            Product p = new Expired(day, year, month, name, code, Double.parseDouble(price), description);
+            Product p = new Expired(day, year, month, name, code, 
+                    Double.parseDouble(price), description);
             products.add(p);
             for (Product product : products) {
                 System.out.println(product);
             }
-        } else if(band) { 
-            Product p = new NotExpired(name, code, 
+            
+        } else if (band) {
+            Product p = new NotExpired(name, code,
                     Integer.parseInt(price), description);
             products.add(p);
             for (Product product : products) {
                 System.out.println(product);
             }
+            data.create(p, ex);
+            JOptionPane.showMessageDialog(null, "Registrado");
         }
 
     }//GEN-LAST:event_buttonAceptActionPerformed
@@ -397,6 +434,30 @@ public class RegisterProduct extends javax.swing.JFrame {
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSearchActionPerformed
+
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buttonExitActionPerformed
+
+    private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
+        this.buttonMin.setForeground(Color.red);
+    }//GEN-LAST:event_buttonMinMouseEntered
+
+    private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
+        this.buttonExit.setForeground(Color.red);
+    }//GEN-LAST:event_buttonExitMouseEntered
+
+    private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
+        this.buttonExit.setForeground(Color.white);
+    }//GEN-LAST:event_buttonExitMouseExited
+
+    private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
+        this.buttonMin.setForeground(Color.white);
+    }//GEN-LAST:event_buttonMinMouseExited
+
+    private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
+        this.setExtendedState(Frame.ICONIFIED);
+    }//GEN-LAST:event_buttonMinActionPerformed
 
     private boolean dataValidate() {
         boolean band = true;
@@ -420,11 +481,11 @@ public class RegisterProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Modelo;
     private javax.swing.JButton buttonAcept;
+    private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonSearch;
     private javax.swing.JCheckBox checkCode;
     private javax.swing.JComboBox<String> comboType;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
