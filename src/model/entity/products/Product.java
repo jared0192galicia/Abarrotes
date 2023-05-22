@@ -30,6 +30,31 @@ public abstract class Product {
         this.description = description;
     }
 
+    /**
+     * @param name
+     * @param code
+     * @param Marca
+     * @param Modelo
+     * @param price
+     * @param description
+     * @param existencia
+     * @param registerFor 
+     */
+    public Product(String name, String code, String Marca, String Modelo, 
+            double price, String description, int existencia, User registerFor) {
+        this.name = name;
+        this.code = code;
+        this.Marca = Marca;
+        this.Modelo = Modelo;
+        this.price = price;
+        this.description = description;
+        this.existencia = existencia;
+        this.registerFor = registerFor;
+    }
+
+    
+    
+
     public String getName() {
         return name;
     }

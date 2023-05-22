@@ -19,11 +19,41 @@ INSERT INTO products (codes, namep, price, existence, descrip,
 	registerFor) VALUES ("LIMP202305AFF03", "Escoba", 27.5, 10, 
     "Escoba normal", "juanlopez");
     
+INSERT INTO products (codes, namep, model, marca, price, existence, descrip, 
+	dateExpiry, registerFor) VALUES ("ALIM202305AFF05", "Arroz", "Italriso", 20, 10, 
+    "Arroz blanco", "2023/12/15" , "juanlopez");
+    
 INSERT INTO products (codes, namep, marca, price, existence, descrip, 
 	dateExpiry, registerFor) VALUES ("ALIM202305AFF05", "Arroz", "Italriso", 20, 10, 
     "Arroz blanco", "2023/12/15" , "juanlopez");
     
     
-    
+CREATE TABLE users (
+	userName VARCHAR(20) UNIQUE NOT NULL PRIMARY KEY,
+    pass VARCHAR (100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    nameU VARCHAR(100) NOT NULL,
+    statusU BOOLEAN NOT NULL DEFAULT TRUE,
+    levelU INTEGER NOT NULL DEFAULT 1
+);
+
+CREATE TABLE sale(
+	codeS VARCHAR(15) NOT NULL PRIMARY KEY,
+    dateS DATE NOT NULL,
+    income DOUBLE NOT NULL DEFAULT 0,
+    userName VARCHAR(20) NOT NULL,
+    codesPr VARCHAR(500)
+);
+
+
+
+
+
+
+
+
+
+
+
     
     

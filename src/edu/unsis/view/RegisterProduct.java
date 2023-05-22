@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.entity.User;
 import model.entity.products.Expired;
 import model.entity.products.NotExpired;
 import model.entity.products.Product;
@@ -17,6 +18,7 @@ public class RegisterProduct extends javax.swing.JFrame {
     private ArrayList<Product> products = new ArrayList<>();
     static DefaultTableModel modelProduct;
     private Data data;
+
     public RegisterProduct() {
         initComponents();
         this.setSize(878, 630);
@@ -405,24 +407,44 @@ public class RegisterProduct extends javax.swing.JFrame {
         } else {
             this.txtCode.setBackground(new Color(102, 153, 255));
         }
-
+        // Register product of type Expired
         if (band && (indexType == 0)) {
-            Product p = new Expired(day, year, month, name, code, 
-                    Double.parseDouble(price), description);
+
+            Product p = new Expired(year + "-" + month + "-" + day, name, code,
+                    marca, model, Double.parseDouble(price),
+                    description, Integer.parseInt(existence),
+                    new User(name, code, day, WIDTH, 
+                            band, name, WIDTH, 'M'));
+
             products.add(p);
-            for (Product product : products) {
-                System.out.println(product);
+
+            try {
+                data.create(p, ex);
+                JOptionPane.showMessageDialog(null, "Registrado");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Error en base de datos\nConsulte al desarrollador");
             }
-            
+
+            // Register product of type NotExpired
         } else if (band) {
-            Product p = new NotExpired(name, code,
-                    Integer.parseInt(price), description);
+
+            Product p = new NotExpired(name, code, marca, model,
+                    Double.parseDouble(price), description, 0, 
+                    new User(name, code, day, WIDTH, 
+                            band, name, WIDTH, 'M'));
+
             products.add(p);
-            for (Product product : products) {
-                System.out.println(product);
+
+            
+            try {
+                data.create(p, ex);
+                JOptionPane.showMessageDialog(null, "Registrado");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Error en base de datos\nConsulte al desarrollador");
             }
-            data.create(p, ex);
-            JOptionPane.showMessageDialog(null, "Registrado");
+
         }
 
     }//GEN-LAST:event_buttonAceptActionPerformed

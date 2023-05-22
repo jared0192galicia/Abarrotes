@@ -66,10 +66,10 @@ public class Data {
      */
     public void create(Product p, boolean type) {
 
+        System.out.println("1");
         // Get connection with mysql
         Connection cn = Conexion.getConnction();
         PreparedStatement pst;
-        System.out.println("1");
         try {
             // true: type not expired
             if (type) {
@@ -77,6 +77,8 @@ public class Data {
                         "INSERT INTO products (codes, namep, model, marca, price, "
                         + "existence, descrip, registerFor) VALUES "
                         + "(?, ? ,?, ?, ? ,?, ?, ?);");
+
+                pst.setString(8, p.getNameRegisterFor());
             } else {
 
                 Expired pr = (Expired) p;
@@ -85,26 +87,25 @@ public class Data {
                         "INSERT INTO products (codes, namep, model, marca, price, "
                         + "existence, descrip, dateExpiry, registerFor) VALUES "
                         + "(?, ? ,?, ?, ? ,?, ?, ?, ?);");
-                
-                pst.setString(7, pr.getDate());
+
+                pst.setString(8, pr.getDate());
+                pst.setString(9, p.getNameRegisterFor());
             }
 
-        System.out.println("2");
-            pst.setString(0, p.getCode());
-            pst.setString(1, p.getName());
-            pst.setString(2, p.getModelo());
-            pst.setString(3, p.getMarca());
-            pst.setString(4, String.valueOf(p.getPrice()));
-            pst.setString(5, String.valueOf(p.getExistencia()));
-            pst.setString(6, p.getDescription());
-            pst.setString(7, p.getNameRegisterFor());
-            
-            
-        System.out.println("3");
+            System.out.println("2");
+            pst.setString(1, p.getCode());
+            pst.setString(2, p.getName());
+            pst.setString(3, p.getModelo());
+            pst.setString(4, p.getMarca());
+            pst.setString(5, String.valueOf(p.getPrice()));
+            pst.setString(6, String.valueOf(p.getExistencia()));
+            pst.setString(7, p.getDescription());
+
+            System.out.println("3");
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Error in register\n\n" + e.getMessage());
-            
+
         }
     }
 }

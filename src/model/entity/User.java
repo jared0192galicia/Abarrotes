@@ -1,24 +1,52 @@
 package model.entity;
 
-public class User {
+public class User extends People {
     
     private String userName;
     private String password;
     private String email;
-    private String name;
     private int level;
     private boolean status;
 
     public User() {}
 
-    public User(String userName, String password, String email, String name, int level, boolean status) {
+    /**
+     * @param userName
+     * @param password
+     * @param email
+     * @param level
+     * @param status 
+     */
+    public User(String userName, String password, String email, int level, boolean status) {
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.name = name;
         this.level = level;
         this.status = status;
     }
+
+    /**
+     * Usa este
+     * @param userName
+     * @param password
+     * @param email
+     * @param level
+     * @param status
+     * @param name
+     * @param edad
+     * @param sexo 
+     */
+    public User(String userName, String password, String email, int level,
+            boolean status, String name, int edad, char sexo) {
+        super(name, edad, sexo);
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.level = level;
+        this.status = status;
+    }
+    
+    
 
     public String getUserName() {
         return userName;
@@ -44,14 +72,6 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getLevel() {
         return level;
     }
@@ -70,6 +90,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "userName=" + userName + ", password=" + password + ", email=" + email + ", name=" + name + ", level=" + level + ", status=" + status + '}';
+        return "User{" + "userName=" + userName + ", password=" + password + 
+        ", email=" + email + ", level=" + level + ", status=" + status + '}';
     }
+
+    
+    
 }

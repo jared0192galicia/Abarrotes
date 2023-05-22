@@ -1,5 +1,7 @@
 package model.entity.products;
 
+import model.entity.User;
+
 public class Expired extends Product {
 
     private String day;
@@ -12,22 +14,47 @@ public class Expired extends Product {
     }
 
     /**
-     * @param day
-     * @param year
-     * @param month
+     * @param date
      * @param name
-     * @param type
+     * @param code
+     * @param Marca
+     * @param Modelo
+     * @param price
+     * @param description
+     * @param existencia
+     * @param registerFor 
+     */
+    public Expired(String date, String name, String code, String Marca,
+            String Modelo, double price, String description, int existencia,
+            User registerFor) {
+        
+        super(name, code, Marca, Modelo, price, description, existencia, registerFor);
+        this.day = day;
+        this.year = year;
+        this.month = month;
+        this.date = date;
+    }
+
+    
+
+    
+
+    /**
+     * @param date
+     * @param name
      * @param code
      * @param price
      * @param description 
      */
-    public Expired(String day, String year, String month, String name, 
-            String code, double price, String description) {
+    public Expired(String date, String name, String code, double price, 
+            String description) {
         super(name, code, price, description);
         this.day = day;
         this.year = year;
         this.month = month;
+        this.date = date;
     }
+    
     /**
      * @param name
      * @param type

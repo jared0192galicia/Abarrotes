@@ -26,17 +26,95 @@ public class UserRegister extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel1 = new javax.swing.JPanel();
+        txtName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtName1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtName2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtName3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtName4 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtName5 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtName.setBackground(new java.awt.Color(102, 153, 255));
+        txtName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 210, 30));
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel1.setText("Nombre");
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
+
+        txtName1.setBackground(new java.awt.Color(102, 153, 255));
+        txtName1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName1.setForeground(new java.awt.Color(255, 255, 255));
+        txtName1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 210, 30));
+
+        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel2.setText("Nombre");
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
+
+        txtName2.setBackground(new java.awt.Color(102, 153, 255));
+        txtName2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName2.setForeground(new java.awt.Color(255, 255, 255));
+        txtName2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 210, 30));
+
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel3.setText("Nombre");
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        txtName3.setBackground(new java.awt.Color(102, 153, 255));
+        txtName3.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName3.setForeground(new java.awt.Color(255, 255, 255));
+        txtName3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 210, 30));
+
+        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel4.setText("Nombre");
+        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
+
+        txtName4.setBackground(new java.awt.Color(102, 153, 255));
+        txtName4.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName4.setForeground(new java.awt.Color(255, 255, 255));
+        txtName4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 210, 30));
+
+        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel5.setText("Nombre");
+        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
+
+        txtName5.setBackground(new java.awt.Color(102, 153, 255));
+        txtName5.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtName5.setForeground(new java.awt.Color(255, 255, 255));
+        txtName5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        panel1.add(txtName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
+
+        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel6.setText("Nombre");
+        panel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +156,18 @@ public class UserRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtName1;
+    private javax.swing.JTextField txtName2;
+    private javax.swing.JTextField txtName3;
+    private javax.swing.JTextField txtName4;
+    private javax.swing.JTextField txtName5;
     // End of variables declaration//GEN-END:variables
 }
