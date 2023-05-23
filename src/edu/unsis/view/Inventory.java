@@ -6,15 +6,32 @@
  */
 package edu.unsis.view;
 
+import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 import model.entity.products.Product;
 
 public class Inventory extends javax.swing.JFrame {
 
-    
+    private ArrayList<Product> products = MainMenu.products;
+    private DefaultTableModel model;
+
     public Inventory() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setSize(870, 665);
+        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/"
+                + "wallpaperPrincipal.jpg");
+        ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(
+                wallpaper.getWidth(),
+                wallpaper.getHeight(), Image.SCALE_DEFAULT));
+
+        wallpaper.setIcon(icon);
+        
+        model = new DefaultTableModel();
+        createDefaultModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -27,8 +44,8 @@ public class Inventory extends javax.swing.JFrame {
         button = new javax.swing.JButton();
         button1 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        wallpaper = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +64,7 @@ public class Inventory extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 510, 310));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 850, 300));
 
         button.setBackground(new java.awt.Color(102, 153, 255));
         button.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -59,7 +76,7 @@ public class Inventory extends javax.swing.JFrame {
                 buttonActionPerformed(evt);
             }
         });
-        jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 100, 30));
+        jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 100, 30));
 
         button1.setBackground(new java.awt.Color(102, 153, 255));
         button1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -71,7 +88,7 @@ public class Inventory extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 100, 30));
+        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 100, 30));
 
         button3.setBackground(new java.awt.Color(102, 153, 255));
         button3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -83,13 +100,14 @@ public class Inventory extends javax.swing.JFrame {
                 button3ActionPerformed(evt);
             }
         });
-        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 100, 30));
+        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 30));
+        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 240, 310));
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("INVENTARIO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,11 +117,48 @@ public class Inventory extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createDefaultModel() {
+        model.addColumn("Nombre");
+        model.addColumn("Codigo");
+        model.addColumn("Marca");
+        model.addColumn("Modelo");
+        model.addColumn("Existencia");
+        model.addColumn("Precio");
+        model.addColumn("Caducidad");
+        
+        String row[];
+        String aux;
+
+        for (Product product : products) {
+            row = new String[7];
+
+            row[0] = product.getName();
+            row[1] = product.getCode();
+            row[2] = product.getMarca();
+            row[3] = product.getModelo();
+            row[4] = String.valueOf(product.getExistencia());
+            row[5] = String.valueOf(product.getPrice());
+
+            try {
+                row[6] = product.getExpired();
+            } catch (Exception e) {
+                row[6] = "No expirable";
+            }
+
+            model.addRow(row);
+        }
+
+        this.table.setModel(model);
+
+    }
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
         // TODO add your handling code here:
@@ -158,10 +213,10 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JButton button;
     private javax.swing.JButton button1;
     private javax.swing.JButton button3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable table;
+    private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }

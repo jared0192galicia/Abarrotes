@@ -4,7 +4,6 @@
  * modificado 22/may/2023
  * Descripcion: Menu principal de opciones
  */
-
 package edu.unsis.view;
 
 import service.implementation.Data;
@@ -14,49 +13,52 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import model.entity.products.Product;
 
-
 public class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
     public static Data data;
-    
+
     public MainMenu() {
         initComponents();
         this.setSize(850, 550);
         this.setLocationRelativeTo(this);
         this.setResizable(false);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
-        wallpaper.setIcon(icon); 
-        
+        wallpaper.setIcon(icon);
+
         image = new ImageIcon("./src/edu/unsis/view/images/user-button.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonUsers.getWidth(),
                 buttonUsers.getHeight(), Image.SCALE_DEFAULT));
 
-        buttonUsers.setIcon(icon); 
-        
+        buttonUsers.setIcon(icon);
+
         image = new ImageIcon("./src/edu/unsis/view/images/inventario.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonUsers.getWidth(),
                 buttonUsers.getHeight(), Image.SCALE_DEFAULT));
 
-        buttonInvent.setIcon(icon); 
-        
+        buttonInvent.setIcon(icon);
+
         image = new ImageIcon("./src/edu/unsis/view/images/invoice.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonSale.getWidth(),
                 buttonSale.getHeight(), Image.SCALE_DEFAULT));
 
-        buttonSale.setIcon(icon); 
-        
+        buttonSale.setIcon(icon);
+
         image = new ImageIcon("./src/edu/unsis/view/images/print.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
                 buttonPrint.getHeight(), Image.SCALE_DEFAULT));
 
-        buttonPrint.setIcon(icon); 
-        data = new Data();
-        loadData();
+        buttonPrint.setIcon(icon);
+
+        if (products == null) {
+
+            data = new Data();
+            loadData();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -160,9 +162,9 @@ public class MainMenu extends javax.swing.JFrame {
     public void loadData() {
         products = Data.load();
     }
-    
+
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonUsersActionPerformed
 
     private void buttonInventMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonInventMouseEntered
@@ -170,8 +172,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonInventMouseEntered
 
     private void buttonRegisterProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterProductActionPerformed
-       new RegisterProduct().setVisible(true);
-       this.dispose();
+        new RegisterProduct().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_buttonRegisterProductActionPerformed
 
     private void buttonInventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInventActionPerformed

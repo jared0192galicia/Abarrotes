@@ -39,7 +39,6 @@ public class SearchProduct extends javax.swing.JFrame {
                 wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
-        System.out.println("aqui 3");
         wallpaper.setIcon(icon);
 
         model = new DefaultTableModel();
