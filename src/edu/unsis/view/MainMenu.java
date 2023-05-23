@@ -7,7 +7,7 @@
 
 package edu.unsis.view;
 
-import edu.unsis.model.Data;
+import service.implementation.Data;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;

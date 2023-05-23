@@ -5,7 +5,7 @@
  * Descripcion: Metodos de conexion con mysql
  */
 
-package edu.unsis.model;
+package service.implementation;
 
 import service.implementation.Conexion;
 import java.sql.Connection;
