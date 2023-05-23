@@ -13,6 +13,8 @@ public class Inventory extends javax.swing.JFrame {
     
     public Inventory() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -81,7 +83,7 @@ public class Inventory extends javax.swing.JFrame {
                 button3ActionPerformed(evt);
             }
         });
-        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 35, 100, 30));
+        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 100, 30));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -113,7 +115,7 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_button3ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        new RegisterProduct("Buscar y modificar").setVisible(true);
+        new SearchProduct().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
 

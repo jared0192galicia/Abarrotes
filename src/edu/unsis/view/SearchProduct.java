@@ -4,7 +4,6 @@
  * modificado 22/may/2023
  * Descripcion: Busca y modifica productos
  */
-
 package edu.unsis.view;
 
 import java.awt.Color;
@@ -13,40 +12,40 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.entity.products.Expired;
 import model.entity.products.Product;
-
 
 public class SearchProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = MainMenu.products;
     private DefaultTableModel model;
-    
+
     public SearchProduct() {
         initComponents();
-        
-        System.out.println("aqui");
-        
+
         this.setResizable(false);
         this.setTitle("Modificar");
         this.setLocationRelativeTo(null);
         this.setSize(878, 640);
         this.setVisible(true);
-        
-        System.out.println("aqui 2");
+
+        for (Product product : products) {
+            System.out.println(product.toString());
+        }
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/"
                 + "wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(
                 wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
-        
         System.out.println("aqui 3");
         wallpaper.setIcon(icon);
-        
+
         model = new DefaultTableModel();
         createDefaultModel();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,7 +78,9 @@ public class SearchProduct extends javax.swing.JFrame {
         txtCode = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
+        buttonUpdate = new javax.swing.JButton();
+        buttonEliminar = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,7 +139,7 @@ public class SearchProduct extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Descripcion");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              Caducable", "              No caducable" }));
         comboType.setEnabled(false);
@@ -170,7 +171,7 @@ public class SearchProduct extends javax.swing.JFrame {
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 270, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 270, 140));
 
         txtCadDay.setEditable(false);
         txtCadDay.setBackground(new java.awt.Color(102, 153, 255));
@@ -256,7 +257,7 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonSearchActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 220, 40));
+        jPanel1.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 220, 40));
 
         txtCode.setBackground(new java.awt.Color(102, 153, 255));
         txtCode.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -269,7 +270,7 @@ public class SearchProduct extends javax.swing.JFrame {
         jLabel11.setText("Codigo");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -280,10 +281,31 @@ public class SearchProduct extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, 290));
-        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 640));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 250));
+
+        buttonUpdate.setText("Actualizar");
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, 220, 40));
+
+        buttonEliminar.setText("Eliminar");
+        buttonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 220, 40));
+        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,40 +340,35 @@ public class SearchProduct extends javax.swing.JFrame {
         model.addColumn("Modelo");
         model.addColumn("Existencia");
         model.addColumn("Precio");
-        
+
         String row[];
         String aux;
-        
+
         for (Product product : products) {
             row = new String[5];
-            
-            row[1] = product.getName();
-            row[2] = product.getCode();
-            row[3] = product.getModelo();
-            row[4] = String.valueOf(product.getExistencia());
-            row[5] = String.valueOf(product.getPrice());
-            
+
+            row[0] = product.getName();
+            row[1] = product.getCode();
+            row[2] = product.getModelo();
+            row[3] = String.valueOf(product.getExistencia());
+            row[4] = String.valueOf(product.getPrice());
+
             model.addRow(row);
         }
-        
+
+        this.table.setModel(model);
+
     }
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
         String code = this.txtCode.getText().trim();
-        
+
         if (code.equals("")) {
             // Set color red
-            
+
         } else {
             // Set color default
-            
-            for (Product product : products) {
-                if (code.equals(product.getCode())) {
-                    /* fill txtField with data */
-                } else {
-                    JOptionPane.showMessageDialog(null, "El "
-                            + "codifo ingresado no existe");
-                }
-            }
+
+            searchCode(code);
         }
     }//GEN-LAST:event_buttonSearchActionPerformed
 
@@ -379,9 +396,86 @@ public class SearchProduct extends javax.swing.JFrame {
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
-    
+    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateActionPerformed
+
+    private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
+        String valid = txtExist.getText().trim();
+
+        if (valid.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Primero debe seleccionar o buscar un producto");
+        } else {
+            int band = JOptionPane.showConfirmDialog(null,
+                    "¿Seguro que decea eliminar este producto?");
+
+            System.out.println(band);
+
+            if (band == 0) {
+                JOptionPane.showMessageDialog(null, "Eliminado");
+
+            }
+
+        }
+    }//GEN-LAST:event_buttonEliminarActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        int row = table.getSelectedRow();
+        String code = table.getValueAt(row, 1).toString();
+
+        searchCode(code);
+    }//GEN-LAST:event_tableMouseClicked
+
+    /**
+     * Search product in ArrayList products Show in JTextField the data
+     * associates with code
+     *
+     * @param code for searh product
+     */
+    private void searchCode(String code) {
+        int count = 1;
+
+        for (Product product : products) {
+            if (code.equals(product.getCode())) {
+
+                count = 0;
+
+                this.txtDescription.setText(product.getDescription());
+                this.txtPrice.setText(String.valueOf(product.getPrice()));
+                this.txtName.setText(product.getName());
+                this.txtModelo.setText(product.getModelo());
+                this.txtMarca.setText(product.getMarca());
+                this.txtExist.setText(String.valueOf(product.getExistencia()));
+
+                try {
+                    String date = product.getExpired();
+
+                    if (!date.equals("")) {
+                        this.txtCadDay.setText(date.substring(0, 4));
+                        this.txtCadMonth.setText(date.substring(5, 7));
+                        this.txtCadYear.setText(date.substring(8, 10));
+
+                        this.comboType.setSelectedIndex(0);
+                    }
+                } catch (Exception e) {
+                    this.txtCadDay.setText("");
+                    this.txtCadMonth.setText("");
+                    this.txtCadYear.setText("");
+                    this.comboType.setSelectedIndex(1);
+                }
+
+            }
+        }
+
+        if (count != 0) {
+            JOptionPane.showMessageDialog(null, "El "
+                    + "codigo ingresado no existe");
+        }
+    }
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SearchProduct().setVisible(true);
@@ -391,9 +485,11 @@ public class SearchProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Modelo;
+    private javax.swing.JButton buttonEliminar;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonSearch;
+    private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -407,8 +503,8 @@ public class SearchProduct extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelTitle;
+    private javax.swing.JTable table;
     private javax.swing.JTextField txtCadDay;
     private javax.swing.JTextField txtCadMonth;
     private javax.swing.JTextField txtCadYear;

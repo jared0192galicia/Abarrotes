@@ -66,10 +66,7 @@ public class Data {
         } catch (NumberFormatException | SQLException e) {
             System.err.println("Error in register\n\n" + e.getMessage());
         }
-
-        for (Product product : products) {
-            System.out.println(product.toString());
-        }
+        
         System.out.println("End load data");
         return products;
     }

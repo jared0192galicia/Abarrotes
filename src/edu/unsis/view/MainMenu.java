@@ -94,6 +94,11 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonInventMouseEntered(evt);
             }
         });
+        buttonInvent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInventActionPerformed(evt);
+            }
+        });
         jPanel1.add(buttonInvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 170, 160));
 
         buttonUsers.setBorder(null);
@@ -168,6 +173,11 @@ public class MainMenu extends javax.swing.JFrame {
        new RegisterProduct().setVisible(true);
        this.dispose();
     }//GEN-LAST:event_buttonRegisterProductActionPerformed
+
+    private void buttonInventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInventActionPerformed
+        new Inventory().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonInventActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

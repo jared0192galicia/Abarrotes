@@ -33,6 +33,11 @@ public class NotExpired extends Product {
             double price, String description, int existencia, User registerFor) {
         super(name, code, Marca, Modelo, price, description, existencia, registerFor);
     }
+
+    @Override
+    public String getExpired() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     

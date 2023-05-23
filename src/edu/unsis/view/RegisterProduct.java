@@ -26,14 +26,13 @@ public class RegisterProduct extends javax.swing.JFrame {
     private Data data;
 
     /**
-     * 
+     *
      */
     public RegisterProduct() {
         initComponents();
         this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.buttonSearch.setVisible(false);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -52,8 +51,6 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.labelTitle.setText(title);
         this.buttonAcept.setVisible(false);
         this.buttonAcept.setEnabled(false);
-        this.buttonSearch.setVisible(true);
-        this.buttonSearch.setEnabled(true);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -93,7 +90,6 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         buttonMin = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
-        buttonSearch = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +101,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -117,6 +114,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCode.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCode.setForeground(new java.awt.Color(255, 255, 255));
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCode.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -128,6 +126,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtMarca.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(255, 255, 255));
         txtMarca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -139,6 +138,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtModelo.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(255, 255, 255));
         txtModelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtModelo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 210, 30));
 
         Modelo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -150,6 +150,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtPrice.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtPrice.setForeground(new java.awt.Color(255, 255, 255));
         txtPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, 30));
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -180,6 +181,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtExist.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtExist.setForeground(new java.awt.Color(255, 255, 255));
         txtExist.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtExist.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 210, 30));
 
         labelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -192,8 +194,13 @@ public class RegisterProduct extends javax.swing.JFrame {
         jLabel7.setText("Precio");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
+        txtDescription.setBackground(new java.awt.Color(102, 153, 255));
         txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        txtDescription.setForeground(new java.awt.Color(255, 255, 255));
         txtDescription.setRows(5);
+        txtDescription.setAutoscrolls(false);
+        txtDescription.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(txtDescription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
@@ -210,6 +217,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCadDay.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadDay.setForeground(new java.awt.Color(255, 255, 255));
         txtCadDay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCadDay.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCadDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 210, 30));
 
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -226,12 +234,14 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCadMonth.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadMonth.setForeground(new java.awt.Color(255, 255, 255));
         txtCadMonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCadMonth.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCadMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 210, 30));
 
         txtCadYear.setBackground(new java.awt.Color(102, 153, 255));
         txtCadYear.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadYear.setForeground(new java.awt.Color(255, 255, 255));
         txtCadYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCadYear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCadYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 210, 30));
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -244,7 +254,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         buttonMin.setText("-");
         buttonMin.setBorder(null);
         buttonMin.setContentAreaFilled(false);
-        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonMin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonMinMouseEntered(evt);
@@ -265,7 +275,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         buttonExit.setText("x");
         buttonExit.setBorder(null);
         buttonExit.setContentAreaFilled(false);
-        buttonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonExitMouseEntered(evt);
@@ -280,15 +290,6 @@ public class RegisterProduct extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
-
-        buttonSearch.setText("Buscar");
-        buttonSearch.setEnabled(false);
-        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSearchActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 220, 40));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -330,7 +331,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         boolean indexCode = this.checkCode.isSelected();
         boolean band = true;
         boolean ex = true;
-        
+
         String name = this.txtName.getText().trim();
         String price = this.txtPrice.getText().trim();
         String existence = this.txtExist.getText().trim();
@@ -435,13 +436,14 @@ public class RegisterProduct extends javax.swing.JFrame {
             Product p = new Expired(year + "-" + month + "-" + day, name, code,
                     marca, model, Double.parseDouble(price),
                     description, Integer.parseInt(existence),
-                    new User(name, code, day, WIDTH, 
+                    new User(name, code, day, WIDTH,
                             band, name, WIDTH, 'M'));
 
             products.add(p);
 
             try {
                 data.create(p, ex);
+                setBackgroundToTxt(true);
                 JOptionPane.showMessageDialog(null, "Registrado");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
@@ -452,15 +454,15 @@ public class RegisterProduct extends javax.swing.JFrame {
         } else if (band) {
 
             Product p = new NotExpired(name, code, marca, model,
-                    Double.parseDouble(price), description, 0, 
-                    new User(name, code, day, WIDTH, 
+                    Double.parseDouble(price), description, 0,
+                    new User(name, code, day, WIDTH,
                             band, name, WIDTH, 'M'));
 
             products.add(p);
 
-            
             try {
                 data.create(p, ex);
+                setBackgroundToTxt(false);
                 JOptionPane.showMessageDialog(null, "Registrado");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
@@ -471,16 +473,42 @@ public class RegisterProduct extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonAceptActionPerformed
 
+    private void setBackgroundToTxt(boolean type) {
+        if (type) {
+            this.txtCadDay.setBackground(Color.GREEN);
+            this.txtCadMonth.setBackground(Color.GREEN);
+            this.txtCadYear.setBackground(Color.GREEN);
+            
+            this.txtCadDay.setForeground(Color.BLACK);
+            this.txtCadMonth.setForeground(Color.BLACK);
+            this.txtCadYear.setForeground(Color.BLACK);
+        }
+        this.txtCode.setBackground(Color.GREEN);
+        this.txtDescription.setBackground(Color.GREEN);
+        this.txtExist.setBackground(Color.GREEN);
+        this.txtMarca.setBackground(Color.GREEN);
+        this.txtModelo.setBackground(Color.GREEN);
+        this.txtName.setBackground(Color.GREEN);
+        this.txtPrice.setBackground(Color.GREEN);
+        this.comboType.setBackground(Color.GREEN);
+        
+        this.txtCode.setForeground(Color.BLACK);
+        this.txtDescription.setForeground(Color.BLACK);
+        this.txtExist.setForeground(Color.BLACK);
+        this.txtMarca.setForeground(Color.BLACK);
+        this.txtModelo.setForeground(Color.BLACK);
+        this.txtName.setForeground(Color.BLACK);
+        this.txtPrice.setForeground(Color.BLACK);
+        this.comboType.setForeground(Color.BLACK);
+    }
+
     private void checkCodeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkCodeItemStateChanged
         txtCode.setEditable(!checkCode.isSelected());
     }//GEN-LAST:event_checkCodeItemStateChanged
 
-    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonSearchActionPerformed
-
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        System.exit(0);
+        this.dispose();
+        new MainMenu().setVisible(true);
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
@@ -527,7 +555,6 @@ public class RegisterProduct extends javax.swing.JFrame {
     private javax.swing.JButton buttonAcept;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JButton buttonSearch;
     private javax.swing.JCheckBox checkCode;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JLabel jLabel1;

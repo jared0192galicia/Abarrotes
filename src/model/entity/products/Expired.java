@@ -35,10 +35,6 @@ public class Expired extends Product {
         this.date = date;
     }
 
-    
-
-    
-
     /**
      * @param date
      * @param name
@@ -78,6 +74,10 @@ public class Expired extends Product {
     public void setDay(String day) {
         this.day = day;
     }
+    
+    public String getDay() {
+        return day;
+    }
 
     public String getYear() {
         return year;
@@ -100,8 +100,10 @@ public class Expired extends Product {
         return "Expired{" + "date=" + date + '}' + super.toString();
     }
 
-    
-    
+    @Override
+    public String getExpired() {
+        return date;
+    }
 
     
 }

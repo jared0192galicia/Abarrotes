@@ -134,6 +134,8 @@ public abstract class Product {
         this.updateFor = updateFor;
     }
     
+    public abstract String getExpired();
+    
     @Override
     public String toString() {
         return "Product{" + "name=" + name + ", code=" + code + ", Marca=" +

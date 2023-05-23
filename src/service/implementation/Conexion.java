@@ -9,9 +9,7 @@ public class Conexion implements MySqlConnection {
 
     private static Connection cn = null;
 
-    /**
-     * @return connection to mysql
-     */
+    
     public static Connection getConnction() {
 
         if (cn == null) {
