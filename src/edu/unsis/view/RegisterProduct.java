@@ -6,6 +6,7 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.CodesProducts;
 import service.implementation.Data;
 import java.awt.Color;
 import java.awt.Frame;
@@ -324,7 +325,11 @@ public class RegisterProduct extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
 
-    // Compiler data and send to data for register
+    /**
+     * <h1>Compiler data and send to data for register</h1>
+     *
+     * @param evt
+     */
     private void buttonAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptActionPerformed
 
         int indexType = this.comboType.getSelectedIndex();
@@ -428,7 +433,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
             }
         } else {
-            this.txtCode.setBackground(new Color(102, 153, 255));
+            code = CodesProducts.generate(indexCode);
         }
         // Register product of type Expired
         if (band && (indexType == 0)) {
@@ -461,9 +466,11 @@ public class RegisterProduct extends javax.swing.JFrame {
             products.add(p);
 
             try {
-                data.create(p, ex);
-                setBackgroundToTxt(false);
-                JOptionPane.showMessageDialog(null, "Registrado");
+
+                if (data.create(p, ex)) {
+                    setBackgroundToTxt(false);
+                    JOptionPane.showMessageDialog(null, "Registrado");
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,
                         "Error en base de datos\nConsulte al desarrollador");
@@ -473,12 +480,17 @@ public class RegisterProduct extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonAceptActionPerformed
 
+    /**
+     * Set background green to jTextField
+     *
+     * @param type
+     */
     private void setBackgroundToTxt(boolean type) {
         if (type) {
             this.txtCadDay.setBackground(Color.GREEN);
             this.txtCadMonth.setBackground(Color.GREEN);
             this.txtCadYear.setBackground(Color.GREEN);
-            
+
             this.txtCadDay.setForeground(Color.BLACK);
             this.txtCadMonth.setForeground(Color.BLACK);
             this.txtCadYear.setForeground(Color.BLACK);
@@ -491,7 +503,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.txtName.setBackground(Color.GREEN);
         this.txtPrice.setBackground(Color.GREEN);
         this.comboType.setBackground(Color.GREEN);
-        
+
         this.txtCode.setForeground(Color.BLACK);
         this.txtDescription.setForeground(Color.BLACK);
         this.txtExist.setForeground(Color.BLACK);
@@ -530,17 +542,6 @@ public class RegisterProduct extends javax.swing.JFrame {
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
-
-    private boolean dataValidate() {
-        boolean band = true;
-
-        // Compare all components with with ""
-        if (true) {
-
-        }
-
-        return band;
-    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

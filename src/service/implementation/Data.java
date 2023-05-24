@@ -77,9 +77,10 @@ public class Data {
      * @param type
      *  @value true {NotExpired}
      *  @value False {Expired}
+     * @return boolean for catch error in register
      */
-    public void create(Product p, boolean type) {
-
+    public boolean create(Product p, boolean type) {
+        
         System.out.println("1");
         // Get connection with mysql
         Connection cn = Conexion.getConnction();
@@ -119,8 +120,11 @@ public class Data {
             pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Error in register\n\n" + e.getMessage());
+            return false;
 
         }
+        
+        return true;
     }
 
     /**

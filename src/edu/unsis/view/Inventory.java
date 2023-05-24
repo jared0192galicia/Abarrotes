@@ -9,6 +9,7 @@ package edu.unsis.view;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.entity.products.Product;
 
@@ -44,8 +45,9 @@ public class Inventory extends javax.swing.JFrame {
         button = new javax.swing.JButton();
         button1 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
-        wallpaper = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +78,7 @@ public class Inventory extends javax.swing.JFrame {
                 buttonActionPerformed(evt);
             }
         });
-        jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 100, 30));
+        jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 100, 30));
 
         button1.setBackground(new java.awt.Color(102, 153, 255));
         button1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -88,7 +90,7 @@ public class Inventory extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 100, 30));
+        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
 
         button3.setBackground(new java.awt.Color(102, 153, 255));
         button3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -101,13 +103,17 @@ public class Inventory extends javax.swing.JFrame {
             }
         });
         jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 30));
-        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INVENTARIO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 60));
+
+        jComboBox1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    Filtros", "    Todos", "  Abecedario", "  Existencia", "  Caducidad" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,7 +167,7 @@ public class Inventory extends javax.swing.JFrame {
     }
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonActionPerformed
 
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
@@ -213,6 +219,7 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JButton button;
     private javax.swing.JButton button1;
     private javax.swing.JButton button3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

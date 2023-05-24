@@ -20,6 +20,10 @@ public class SearchProduct extends javax.swing.JFrame {
     private ArrayList<Product> products = MainMenu.products;
     private DefaultTableModel model;
 
+    /**
+     * <h1> Constructor for class SearchProduct </h1>
+     * Set properties needed for Frame
+     */
     public SearchProduct() {
         initComponents();
 
@@ -166,7 +170,10 @@ public class SearchProduct extends javax.swing.JFrame {
         jLabel7.setText("Precio");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
+        txtDescription.setBackground(new java.awt.Color(102, 153, 255));
         txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        txtDescription.setForeground(new java.awt.Color(255, 255, 255));
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
@@ -320,6 +327,10 @@ public class SearchProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Event for component ComboBox, enable o dislable camps of data
+     * @param evt 
+     */
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
 
@@ -333,6 +344,10 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtCadMonth.setEnabled(false);
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
+    
+    /**
+     * Create one model for table with data more relevant
+     */
     private void createDefaultModel() {
         model.addColumn("Nombre");
         model.addColumn("Codigo");
@@ -358,11 +373,16 @@ public class SearchProduct extends javax.swing.JFrame {
         this.table.setModel(model);
 
     }
+    
+    /**
+     * Search product for code input
+     * @param evt 
+     */
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
         String code = this.txtCode.getText().trim();
 
         if (code.equals("")) {
-            // Set color red
+            this.txtCode.setBackground(Color.red);
 
         } else {
             // Set color default
@@ -399,6 +419,10 @@ public class SearchProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
+    /**
+     * Delete register in mysql and system
+     * @param evt 
+     */
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
         String valid = txtExist.getText().trim();
 
