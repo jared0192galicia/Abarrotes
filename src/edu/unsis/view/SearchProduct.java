@@ -6,6 +6,7 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.CodesProducts;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -13,12 +14,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.entity.products.Expired;
+import model.entity.products.NotExpired;
 import model.entity.products.Product;
+import service.implementation.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = MainMenu.products;
     private DefaultTableModel model;
+    private Product productSelected;
 
     /**
      * <h1> Constructor for class SearchProduct </h1>
@@ -149,6 +153,11 @@ public class SearchProduct extends javax.swing.JFrame {
         comboType.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboTypeItemStateChanged(evt);
+            }
+        });
+        comboType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTypeActionPerformed(evt);
             }
         });
         jPanel1.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 210, -1));
@@ -329,7 +338,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
     /**
      * Event for component ComboBox, enable o dislable camps of data
-     * @param evt 
+     *
+     * @param evt
      */
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
@@ -344,11 +354,12 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtCadMonth.setEnabled(false);
         }
     }//GEN-LAST:event_comboTypeItemStateChanged
-    
+
     /**
      * Create one model for table with data more relevant
      */
     private void createDefaultModel() {
+        model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Codigo");
         model.addColumn("Modelo");
@@ -356,7 +367,6 @@ public class SearchProduct extends javax.swing.JFrame {
         model.addColumn("Precio");
 
         String row[];
-        String aux;
 
         for (Product product : products) {
             row = new String[5];
@@ -373,10 +383,11 @@ public class SearchProduct extends javax.swing.JFrame {
         this.table.setModel(model);
 
     }
-    
+
     /**
      * Search product for code input
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
         String code = this.txtCode.getText().trim();
@@ -416,12 +427,168 @@ public class SearchProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitMouseExited
 
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
-        // TODO add your handling code here:
+        String type = comboType.getSelectedItem().toString();
+        Product p = new NotExpired();
+        Expired pEx;
+
+        String name = this.txtName.getText().trim();
+        String price = this.txtPrice.getText().trim();
+        String existence = this.txtExist.getText().trim();
+        String description = this.txtDescription.getText().trim();
+        String marca = this.txtMarca.getText().trim();
+        String model = this.txtModelo.getText().trim();
+        boolean band = true;
+        boolean ex = true;
+
+        String year = "";
+        String day = "";
+        String month = "";
+        String code = this.txtCode.getText().trim();
+
+        // Valid values null in the register        
+        if (name.equals("")) {
+            this.txtName.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtName.setBackground(new Color(102, 153, 255));
+        }
+
+        if (price.equals("")) {
+            this.txtPrice.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtPrice.setBackground(new Color(102, 153, 255));
+        }
+
+        if (existence.equals("")) {
+            this.txtExist.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtExist.setBackground(new Color(102, 153, 255));
+        }
+
+        if (description.equals("")) {
+            this.txtDescription.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtDescription.setBackground(new Color(102, 153, 255));
+        }
+
+        if (marca.equals("")) {
+            this.txtMarca.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtMarca.setBackground(new Color(102, 153, 255));
+        }
+
+        if (model.equals("")) {
+            this.txtModelo.setBackground(Color.red);
+            band = false;
+        } else {
+            this.txtModelo.setBackground(new Color(102, 153, 255));
+        }
+
+        // Components of the Objects Expired
+        ex = false;
+
+        if (code.equals("")) {
+            this.txtCode.setBackground(Color.red);
+            band = false;
+
+        } else {
+            this.txtCode.setBackground(new Color(102, 153, 255));
+
+        }
+
+        System.out.println(type);
+
+        if (type.equals("Caducable")) {
+
+            day = this.txtCadDay.getText().trim();
+            month = this.txtCadMonth.getText().trim();
+            year = this.txtCadYear.getText().trim();
+
+            if (day.equals("")) {
+                this.txtCadDay.setBackground(Color.red);
+                band = false;
+            } else {
+                this.txtCadDay.setBackground(new Color(102, 153, 255));
+            }
+
+            if (month.equals("")) {
+                this.txtCadMonth.setBackground(Color.red);
+                band = false;
+            } else {
+                this.txtCadMonth.setBackground(new Color(102, 153, 255));
+            }
+
+            if (year.equals("")) {
+                this.txtCadYear.setBackground(Color.red);
+                band = false;
+            } else {
+                this.txtCadYear.setBackground(new Color(102, 153, 255));
+            }
+
+        }
+
+        if (band) {
+
+            if (day.equals("")) {
+                pEx = new Expired(day + "-" + month + "-" + year);
+                pEx.setCode(code);
+                pEx.setDescription(description);
+                pEx.setExistencia(Integer.parseInt(existence));
+                pEx.setMarca(marca);
+                pEx.setModelo(model);
+                pEx.setName(name);
+                pEx.setPrice(Double.parseDouble(price));
+                pEx.setRegisterFor(productSelected.getRegisterFor());
+
+                p = (Expired) pEx;
+
+                if (productSelected.compareTo(pEx)) {
+
+                    if (Data.updateProduct(pEx, true)) {
+                        JOptionPane.showMessageDialog(null,
+                                "Producto modificado");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No se ah modificado ningun campo");
+                }
+            } else {
+
+                p.setCode(code);
+                p.setDescription(description);
+                p.setExistencia(Integer.parseInt(existence));
+                p.setMarca(marca);
+                p.setModelo(model);
+                p.setName(name);
+                p.setPrice(Double.parseDouble(price));
+                p.setRegisterFor(productSelected.getRegisterFor());
+
+                if (productSelected.compareTo(p)) {
+
+                    if (Data.updateProduct(p, false)) {
+                        JOptionPane.showMessageDialog(null,
+                                "Producto modificado");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "El producto no se modifico");
+                }
+
+            }
+        }
+
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     /**
      * Delete register in mysql and system
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
         String valid = txtExist.getText().trim();
@@ -436,19 +603,64 @@ public class SearchProduct extends javax.swing.JFrame {
             System.out.println(band);
 
             if (band == 0) {
-                JOptionPane.showMessageDialog(null, "Eliminado");
+
+                if (Data.deleteProduct(productSelected)) {
+
+                    Data.products.remove(productSelected);
+                    this.products.remove(productSelected);
+                    createDefaultModel();
+
+                    JOptionPane.showMessageDialog(null,
+                            "Registro eliminado");
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No se pudo eliminar el registro");
+
+                }
 
             }
 
         }
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
+    /**
+     *
+     * @param evt
+     */
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         int row = table.getSelectedRow();
         String code = table.getValueAt(row, 1).toString();
 
         searchCode(code);
     }//GEN-LAST:event_tableMouseClicked
+
+    private void comboTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTypeActionPerformed
+
+    /**
+     * Enable o dislable the jTextField 
+     * @param status editable
+     * @param date if active textField for date
+     */
+    private void toggleTextField(boolean status, boolean date) {
+        this.txtCode.setEditable(status);
+        this.txtDescription.setEditable(status);
+        this.txtExist.setEditable(status);
+        this.txtMarca.setEditable(status);
+        this.txtModelo.setEditable(status);
+        this.txtName.setEditable(status);
+        this.txtPrice.setEditable(status);
+
+        if (date) {
+            this.txtCadDay.setEditable(status);
+            this.txtCadMonth.setEditable(status);
+            this.txtCadYear.setEditable(status);
+
+        }
+
+    }
 
     /**
      * Search product in ArrayList products Show in JTextField the data
@@ -464,6 +676,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 count = 0;
 
+                this.txtCode.setText(code);
                 this.txtDescription.setText(product.getDescription());
                 this.txtPrice.setText(String.valueOf(product.getPrice()));
                 this.txtName.setText(product.getName());
@@ -480,12 +693,18 @@ public class SearchProduct extends javax.swing.JFrame {
                         this.txtCadYear.setText(date.substring(8, 10));
 
                         this.comboType.setSelectedIndex(0);
+                        this.productSelected = product;
+                        
+                        toggleTextField(true, true);
                     }
                 } catch (Exception e) {
                     this.txtCadDay.setText("");
                     this.txtCadMonth.setText("");
                     this.txtCadYear.setText("");
                     this.comboType.setSelectedIndex(1);
+                    this.productSelected = product;
+                    
+                        toggleTextField(true, false);
                 }
 
             }

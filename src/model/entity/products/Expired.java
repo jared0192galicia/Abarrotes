@@ -9,6 +9,9 @@ public class Expired extends Product {
     private String month;
     private String date;
 
+    public Expired() {}
+    
+    
     public Expired(String date) {
         this.setDate(date);
     }
@@ -103,6 +106,41 @@ public class Expired extends Product {
     @Override
     public String getExpired() {
         return date;
+    }
+
+    @Override
+    public boolean compareTo(Product p) {
+        
+        if (!p.getCode().equals(this.getCode())) {
+            return false;
+        }
+        if (!p.getDescription().equals(this.getDescription())) {
+            return false;
+        }
+        if (p.getExistencia() != this.getExistencia()) {
+            return false;
+        }
+        if (!p.getExpired().equals(this.getExpired())) {
+            return false;
+        }
+        if (!p.getMarca().equals(this.getMarca())) {
+            return false;
+        }
+        if (!p.getModelo().equals(this.getModelo())) {
+            return false;
+        }
+        if (!p.getName().equals(this.getName())) {
+            return false;
+        }
+        
+        if (!p.getNameRegisterFor().equals(this.getNameRegisterFor())) {
+            return false;
+        }
+        if (p.getPrice() != this.getPrice()) {
+            return false;
+        }
+        
+        return true;
     }
 
     

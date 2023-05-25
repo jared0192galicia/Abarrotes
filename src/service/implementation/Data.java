@@ -19,12 +19,14 @@ import model.entity.products.NotExpired;
 import model.entity.products.Product;
 
 public class Data {
+    
+    public static ArrayList<Product> products;
 
     /**
      * @return ArrayList with the products getter of mysql
      */
     public static ArrayList<Product> load() {
-        ArrayList<Product> products = new ArrayList<>();
+        products = new ArrayList<>();
 
         Connection cn = Conexion.getConnction();
 
@@ -162,5 +164,42 @@ public class Data {
         } catch (SQLException e) {
             System.err.println("Error in register user" + e.getMessage());
         }
+    }
+    
+    /**
+     * <h1> Delete product fron db </h1>
+     * @param product to delete
+     * @return true if delete else false error
+     */
+    public static boolean deleteProduct(Product product) {
+        
+        Connection cn = Conexion.getConnction();
+        PreparedStatement pst;
+        
+        try {
+            pst = cn.prepareStatement(
+                    "DELETE FROM products WHERE codes='"
+                            + product.getCode() + "'");
+            
+            pst.executeUpdate();
+            return true;
+                    
+        } catch (SQLException e) {
+            
+            System.err.println("Error to delete\n" + e.getMessage());
+            
+            return false;
+        }
+    }
+    
+    /**
+     * Update product en data base
+     * @param product
+     * @param type trur for Expirable and false for NotExpirable
+     * @return 
+     */
+    public static boolean updateProduct(Product product, boolean type) {
+        
+        return true;
     }
 }

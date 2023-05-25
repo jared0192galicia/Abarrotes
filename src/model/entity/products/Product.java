@@ -144,6 +144,8 @@ public abstract class Product {
                 existencia + '}';
     }
 
+    public abstract boolean compareTo(Product p);
+
     
     
 }
