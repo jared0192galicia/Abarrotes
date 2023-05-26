@@ -39,6 +39,12 @@ CREATE TABLE users (
     levelU INTEGER NOT NULL DEFAULT 1
 );
 
+INSERT INTO user VALUES ("pepetoro", aes_encrypt("ceti", "root"),
+ "jared0192galici@gmail.com", "Juan lopez", 1, 37, 'M', 1);
+    SELECT user.alias , convert(aes_decrypt(pass, "root") 
+    using UTF8) as passs from user;
+    SELECT user.pass from user;
+
 CREATE TABLE sale(
 	codeS VARCHAR(15) NOT NULL PRIMARY KEY,
     dateS DATE NOT NULL,

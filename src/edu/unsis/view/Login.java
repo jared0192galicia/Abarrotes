@@ -6,11 +6,14 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.model.Credentials;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.entity.User;
+import service.implementation.Data;
 
 /**
  *
@@ -20,10 +23,10 @@ public class Login extends javax.swing.JFrame {
 
     private int posX;
     private int posY;
-    
+
     private ImageIcon iconClose, iconCloseN;
     private ImageIcon iconMin, iconMinN;
-    
+
     public Login() {
         initComponents();
         this.setSize(650, 430);
@@ -35,31 +38,31 @@ public class Login extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/mainLogo.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(logoStore.getWidth(),
                 logoStore.getHeight(), Image.SCALE_DEFAULT));
 
         logoStore.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
                 buttonMin.getHeight(), Image.SCALE_DEFAULT));
 
         iconMinN = icon;
         buttonMin.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
 
         iconCloseN = icon;
         buttonClose.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
         iconClose = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeDos.png");
         iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
@@ -216,26 +219,32 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String user = txtUser.getText().trim();
+        String userTxt = txtUser.getText().trim();
         String pass = txtPass.getText().trim();
         boolean band = true;
-        if (user.equals("")) {
+        if (userTxt.equals("")) {
             band = false;
             txtUser.setBackground(Color.red);
         } else {
-            txtUser.setBackground(new Color(102,153,255));
+            txtUser.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (pass.equals("")) {
             band = false;
             txtPass.setBackground(Color.red);
         } else {
-            txtPass.setBackground(new Color(102,153,255));
+            txtPass.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (band) {
-            new MainMenu().setVisible(true);
-            this.dispose();
+            User user = new User();
+            if (Data.ifAcces(new Credentials(pass, userTxt), user)) {
+
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Nombre de usuario o contraseña incorrectos");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
