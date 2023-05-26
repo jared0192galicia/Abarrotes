@@ -20,7 +20,7 @@ import service.implementation.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 
-    private ArrayList<Product> products = MainMenu.products;
+    private ArrayList<Product> products = Data.products;
     private DefaultTableModel model;
     private Product productSelected;
 
@@ -403,7 +403,8 @@ public class SearchProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSearchActionPerformed
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        System.exit(0);
+        new MainMenu().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
@@ -551,6 +552,9 @@ public class SearchProduct extends javax.swing.JFrame {
                     if (Data.updateProduct(pEx, true)) {
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "El producto no pudo ser modificado");
                     }
 
                 } else {
@@ -640,7 +644,8 @@ public class SearchProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_comboTypeActionPerformed
 
     /**
-     * Enable o dislable the jTextField 
+     * Enable o dislable the jTextField
+     *
      * @param status editable
      * @param date if active textField for date
      */
@@ -694,7 +699,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
                         this.comboType.setSelectedIndex(0);
                         this.productSelected = product;
-                        
+
                         toggleTextField(true, true);
                     }
                 } catch (Exception e) {
@@ -703,8 +708,8 @@ public class SearchProduct extends javax.swing.JFrame {
                     this.txtCadYear.setText("");
                     this.comboType.setSelectedIndex(1);
                     this.productSelected = product;
-                    
-                        toggleTextField(true, false);
+
+                    toggleTextField(true, false);
                 }
 
             }

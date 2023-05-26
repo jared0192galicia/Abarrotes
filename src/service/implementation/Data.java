@@ -134,7 +134,7 @@ public class Data {
      * @param user to register in table user of mysql with information the
      * object user
      */
-    public void createUser(User user) {
+    public boolean createUser(User user) {
         Connection cn = Conexion.getConnction();
         PreparedStatement pst;
         System.out.println("in method");
@@ -160,9 +160,11 @@ public class Data {
             pst.setString(8, String.valueOf(user.getLevel()));
 
             pst.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
             System.err.println("Error in register user" + e.getMessage());
+            return false;
         }
     }
 
@@ -201,14 +203,22 @@ public class Data {
      * @return
      */
     public static boolean updateProduct(Product product, boolean type) {
+        Connection cn = Conexion.getConnction();
+        PreparedStatement pst;
 
+        try {
+            pst = cn.prepareStatement(
+                    "UPDATE product SET "
+                    + "WHERE codes = " + product.getCode());
+        } catch (SQLException e) {
+        }
         return true;
     }
 
     /**
-     * 
+     *
      * @param datas
-     * @return 
+     * @return
      */
     public static boolean ifAcces(Credentials datas, User user) {
         Connection cn = Conexion.getConnction();
@@ -221,8 +231,8 @@ public class Data {
                     + " FROM users WHERE userName = '" + datas.getUser() + "'");
 
             ResultSet rs = pst.executeQuery();
-            
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 user.setEdad(rs.getInt("age"));
                 user.setLevel(rs.getInt("levelU"));
                 user.setName(rs.getString("nameU"));

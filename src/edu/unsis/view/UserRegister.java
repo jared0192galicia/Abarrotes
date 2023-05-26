@@ -23,14 +23,14 @@ public class UserRegister extends javax.swing.JFrame {
 
     public UserRegister() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
-        
+
         wallpaper.setIcon(icon);
         data = new Data();
     }
@@ -55,6 +55,8 @@ public class UserRegister extends javax.swing.JFrame {
         buttonRegister = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        buttonExit = new javax.swing.JButton();
+        buttonMin = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,6 +166,48 @@ public class UserRegister extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Usuario");
         panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+
+        buttonExit.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        buttonExit.setForeground(new java.awt.Color(255, 255, 255));
+        buttonExit.setText("x");
+        buttonExit.setBorder(null);
+        buttonExit.setContentAreaFilled(false);
+        buttonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonExitMouseExited(evt);
+            }
+        });
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExitActionPerformed(evt);
+            }
+        });
+        panel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 40));
+
+        buttonMin.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        buttonMin.setForeground(new java.awt.Color(255, 255, 255));
+        buttonMin.setText("-");
+        buttonMin.setBorder(null);
+        buttonMin.setContentAreaFilled(false);
+        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonMinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonMinMouseExited(evt);
+            }
+        });
+        buttonMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMinActionPerformed(evt);
+            }
+        });
+        panel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
         panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,85 +245,113 @@ public class UserRegister extends javax.swing.JFrame {
             txtName.setBackground(Color.red);
             band = false;
         } else {
-            txtName.setBackground(new Color(102,153,255));
+            txtName.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (user.equals("")) {
             txtUserName.setBackground(Color.red);
             band = false;
         } else {
-            txtUserName.setBackground(new Color(102,153,255));
+            txtUserName.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (pass.equals("")) {
             txtPass.setBackground(Color.red);
             band = false;
         } else {
-            txtPass.setBackground(new Color(102,153,255));
+            txtPass.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (mail.equals("")) {
             txtEmail.setBackground(Color.red);
             band = false;
         } else {
-            txtEmail.setBackground(new Color(102,153,255));
+            txtEmail.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (edad.equals("")) {
             txtEdad.setBackground(Color.red);
             band = false;
         } else {
-            txtEdad.setBackground(new Color(102,153,255));
+            txtEdad.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (level.equals("Nivel")) {
             comboLevel.setBackground(Color.red);
             band = false;
         } else {
-            comboLevel.setBackground(new Color(102,153,255));
+            comboLevel.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (sexo.equalsIgnoreCase("Sexo")) {
             comboSex.setBackground(Color.red);
             System.out.println("No mod");
             band = false;
         } else {
-            comboSex.setBackground(new Color(102,153,255));
+            comboSex.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (status.equals("Estado")) {
             comboEdo.setBackground(Color.red);
             band = false;
         } else {
-            comboEdo.setBackground(new Color(102,153,255));
+            comboEdo.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (band) {
             User u = new User(user, pass, mail,
                     Integer.parseInt(level), true, name,
                     Integer.parseInt(edad), sexo.charAt(0));
-            
-            data.createUser(u);
-            
-            txtEdad.setBackground(Color.GREEN);
-            txtEmail.setBackground(Color.GREEN);
-            txtName.setBackground(Color.GREEN);
-            txtPass.setBackground(Color.GREEN);
-            txtUserName.setBackground(Color.GREEN);
-            comboEdo.setBackground(Color.GREEN);
-            comboLevel.setBackground(Color.GREEN);
-            comboSex.setBackground(Color.GREEN);
-            
-            JOptionPane.showMessageDialog(null, 
-                    "Usuario registrado con exito");
-            
-            this.dispose();
-            
+
+            if (data.createUser(u)) {
+
+                txtEdad.setBackground(Color.GREEN);
+                txtEmail.setBackground(Color.GREEN);
+                txtName.setBackground(Color.GREEN);
+                txtPass.setBackground(Color.GREEN);
+                txtUserName.setBackground(Color.GREEN);
+                comboEdo.setBackground(Color.GREEN);
+                comboLevel.setBackground(Color.GREEN);
+                comboSex.setBackground(Color.GREEN);
+
+                JOptionPane.showMessageDialog(null,
+                        "Usuario registrado con exito");
+
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                        "El usuario no se pudo registrar");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, 
+            JOptionPane.showMessageDialog(null,
                     "Verifique los campos resaltados");
         }
     }//GEN-LAST:event_buttonRegisterActionPerformed
+
+    private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
+        this.buttonExit.setForeground(Color.red);
+    }//GEN-LAST:event_buttonExitMouseEntered
+
+    private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
+        this.buttonExit.setForeground(Color.white);
+    }//GEN-LAST:event_buttonExitMouseExited
+
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        new MainMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonExitActionPerformed
+
+    private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
+        this.buttonMin.setForeground(Color.red);
+    }//GEN-LAST:event_buttonMinMouseEntered
+
+    private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
+        this.buttonMin.setForeground(Color.white);
+    }//GEN-LAST:event_buttonMinMouseExited
+
+    private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +366,8 @@ public class UserRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonRegister;
     private javax.swing.JComboBox<String> comboEdo;
     private javax.swing.JComboBox<String> comboLevel;

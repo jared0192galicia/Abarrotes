@@ -438,19 +438,22 @@ public class RegisterProduct extends javax.swing.JFrame {
         // Register product of type Expired
         if (band && (indexType == 0)) {
 
+            // Create a new product with data input for user
             Product p = new Expired(year + "-" + month + "-" + day, name, code,
                     marca, model, Double.parseDouble(price),
                     description, Integer.parseInt(existence),
                     new User(name, code, day, WIDTH,
                             band, name, WIDTH, 'M'));
 
-            products.add(p);
-
-            try {
-                data.create(p, ex);
+            // Execute query and catch result
+            if (data.create(p, ex)) {
                 setBackgroundToTxt(true);
+                products.add(p);
+                Data.products.add(p);
                 JOptionPane.showMessageDialog(null, "Registrado");
-            } catch (Exception e) {
+
+            } else {
+
                 JOptionPane.showMessageDialog(null,
                         "Error en base de datos\nConsulte al desarrollador");
             }
@@ -463,21 +466,17 @@ public class RegisterProduct extends javax.swing.JFrame {
                     new User(name, code, day, WIDTH,
                             band, name, WIDTH, 'M'));
 
-            products.add(p);
-
-            try {
-
-                if (data.create(p, ex)) {
-                    setBackgroundToTxt(false);
-                    JOptionPane.showMessageDialog(null, "Registrado");
-                }
-            } catch (Exception e) {
+            if (data.create(p, ex)) {
+                setBackgroundToTxt(false);
+                products.add(p);
+                Data.products.add(p);
+                JOptionPane.showMessageDialog(null, "Registrado");
+            
+            } else {
                 JOptionPane.showMessageDialog(null,
                         "Error en base de datos\nConsulte al desarrollador");
             }
-
         }
-
     }//GEN-LAST:event_buttonAceptActionPerformed
 
     /**

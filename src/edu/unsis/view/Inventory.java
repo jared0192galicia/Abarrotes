@@ -6,16 +6,17 @@
  */
 package edu.unsis.view;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.entity.products.Product;
+import service.implementation.Data;
 
 public class Inventory extends javax.swing.JFrame {
 
-    private ArrayList<Product> products = MainMenu.products;
+    private ArrayList<Product> products = Data.products;
     private DefaultTableModel model;
 
     public Inventory() {
@@ -42,14 +43,17 @@ public class Inventory extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        button = new javax.swing.JButton();
-        button1 = new javax.swing.JButton();
-        button3 = new javax.swing.JButton();
+        buttonExport = new javax.swing.JButton();
+        buttonUpdate = new javax.swing.JButton();
+        buttonCreate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        buttonExit = new javax.swing.JButton();
+        buttonMin = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -68,41 +72,41 @@ public class Inventory extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 850, 300));
 
-        button.setBackground(new java.awt.Color(102, 153, 255));
-        button.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        button.setForeground(new java.awt.Color(255, 255, 255));
-        button.setText("Exportar");
-        button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        button.addActionListener(new java.awt.event.ActionListener() {
+        buttonExport.setBackground(new java.awt.Color(102, 153, 255));
+        buttonExport.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonExport.setForeground(new java.awt.Color(255, 255, 255));
+        buttonExport.setText("Exportar");
+        buttonExport.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonActionPerformed(evt);
+                buttonExportActionPerformed(evt);
             }
         });
-        jPanel1.add(button, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 100, 30));
+        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 100, 30));
 
-        button1.setBackground(new java.awt.Color(102, 153, 255));
-        button1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setText("Actualizar");
-        button1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        buttonUpdate.setBackground(new java.awt.Color(102, 153, 255));
+        buttonUpdate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        buttonUpdate.setText("Actualizar");
+        buttonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                buttonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
+        jPanel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
 
-        button3.setBackground(new java.awt.Color(102, 153, 255));
-        button3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        button3.setForeground(new java.awt.Color(255, 255, 255));
-        button3.setText("Crear");
-        button3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        buttonCreate.setBackground(new java.awt.Color(102, 153, 255));
+        buttonCreate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonCreate.setForeground(new java.awt.Color(255, 255, 255));
+        buttonCreate.setText("Crear");
+        buttonCreate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3ActionPerformed(evt);
+                buttonCreateActionPerformed(evt);
             }
         });
-        jPanel1.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 30));
+        jPanel1.add(buttonCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 100, 30));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,6 +117,48 @@ public class Inventory extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    Filtros", "    Todos", "  Abecedario", "  Existencia", "  Caducidad" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
+
+        buttonExit.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        buttonExit.setForeground(new java.awt.Color(255, 255, 255));
+        buttonExit.setText("x");
+        buttonExit.setBorder(null);
+        buttonExit.setContentAreaFilled(false);
+        buttonExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonExitMouseExited(evt);
+            }
+        });
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 40, 40));
+
+        buttonMin.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        buttonMin.setForeground(new java.awt.Color(255, 255, 255));
+        buttonMin.setText("-");
+        buttonMin.setBorder(null);
+        buttonMin.setContentAreaFilled(false);
+        buttonMin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonMinMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonMinMouseExited(evt);
+            }
+        });
+        buttonMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMinActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 40, 40));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,19 +212,44 @@ public class Inventory extends javax.swing.JFrame {
 
     }
 
-    private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
+    private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
         
-    }//GEN-LAST:event_buttonActionPerformed
+    }//GEN-LAST:event_buttonExportActionPerformed
 
-    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+    private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
         new RegisterProduct().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button3ActionPerformed
+    }//GEN-LAST:event_buttonCreateActionPerformed
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
         new SearchProduct().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_buttonUpdateActionPerformed
+
+    private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
+        this.buttonExit.setForeground(Color.red);
+    }//GEN-LAST:event_buttonExitMouseEntered
+
+    private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
+        this.buttonExit.setForeground(Color.white);
+    }//GEN-LAST:event_buttonExitMouseExited
+
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        new MainMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonExitActionPerformed
+
+    private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
+        this.buttonMin.setForeground(Color.red);
+    }//GEN-LAST:event_buttonMinMouseEntered
+
+    private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
+        this.buttonMin.setForeground(Color.white);
+    }//GEN-LAST:event_buttonMinMouseExited
+
+    private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,9 +287,11 @@ public class Inventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button;
-    private javax.swing.JButton button1;
-    private javax.swing.JButton button3;
+    private javax.swing.JButton buttonCreate;
+    private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonExport;
+    private javax.swing.JButton buttonMin;
+    private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
