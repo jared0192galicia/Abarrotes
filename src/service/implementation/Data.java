@@ -216,9 +216,9 @@ public class Data {
 
         try {
             pst = (PreparedStatement) cn.prepareStatement(
-                    "SELECT userName, sex, pass, nameUX, statusU, age, levelU,"
+                    "SELECT email, sex, pass, nameU, statusU, age, levelU,"
                     + " CONVERT(AES_DECRYPT(pass, \"root\") USING UTF8)"
-                    + " FROM users WHERE email = '" + datas.getUser() + "'");
+                    + " FROM users WHERE userName = '" + datas.getUser() + "'");
 
             ResultSet rs = pst.executeQuery();
             
@@ -228,7 +228,9 @@ public class Data {
                 user.setName(rs.getString("nameU"));
                 user.setPassword(rs.getString("pass"));
                 user.setSexo(rs.getString("sex").charAt(0));
-                user.setUserName(rs.getString("userName"));
+                user.setUserName(datas.getUser());
+                user.setEmail(rs.getString("email"));
+                user.setStatus(rs.getBoolean("statusU"));
             }
 
         } catch (SQLException e) {

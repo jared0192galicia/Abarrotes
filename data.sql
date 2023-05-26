@@ -37,10 +37,14 @@ CREATE TABLE users (
     age INTEGER NOT NULL,
     sex CHAR NOT NULL,
     levelU INTEGER NOT NULL DEFAULT 1
-);
+)ENGINE='InnoDB' default charset = latin1;
 
-INSERT INTO user VALUES ("pepetoro", aes_encrypt("ceti", "root"),
+INSERT INTO users VALUES ("pepetoro", aes_encrypt("1234", "root"),
  "jared0192galici@gmail.com", "Juan lopez", 1, 37, 'M', 1);
+ 
+INSERT INTO users VALUES ("root", aes_encrypt("root", "root"),
+ "jared0192galici@gmail", "user root", 0, 50, 'M', 1);
+ 
     SELECT user.alias , convert(aes_decrypt(pass, "root") 
     using UTF8) as passs from user;
     SELECT user.pass from user;

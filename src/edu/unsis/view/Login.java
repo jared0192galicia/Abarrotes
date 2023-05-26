@@ -20,49 +20,49 @@ import service.implementation.Data;
  * @author elietzer
  */
 public class Login extends javax.swing.JFrame {
-
+    
     private int posX;
     private int posY;
-
+    
     private ImageIcon iconClose, iconCloseN;
     private ImageIcon iconMin, iconMinN;
-
+    
     public Login() {
         initComponents();
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
+        
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
-
+        
         wallpaper.setIcon(icon);
-
+        
         image = new ImageIcon("./src/edu/unsis/view/images/mainLogo.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(logoStore.getWidth(),
                 logoStore.getHeight(), Image.SCALE_DEFAULT));
-
+        
         logoStore.setIcon(icon);
-
+        
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
                 buttonMin.getHeight(), Image.SCALE_DEFAULT));
-
+        
         iconMinN = icon;
         buttonMin.setIcon(icon);
-
+        
         image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
-
+        
         iconCloseN = icon;
         buttonClose.setIcon(icon);
-
+        
         image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
         iconClose = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
-
+        
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeDos.png");
         iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
@@ -228,19 +228,28 @@ public class Login extends javax.swing.JFrame {
         } else {
             txtUser.setBackground(new Color(102, 153, 255));
         }
-
+        
         if (pass.equals("")) {
             band = false;
             txtPass.setBackground(Color.red);
         } else {
             txtPass.setBackground(new Color(102, 153, 255));
         }
-
+        
         if (band) {
             User user = new User();
             if (Data.ifAcces(new Credentials(pass, userTxt), user)) {
-
-                this.dispose();
+                
+                System.out.println(user.toString());
+                
+                if (user.isStatus()) {
+                    new MainMenu().setVisible(true);
+                    this.dispose();                    
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Usuario Inactivo");
+                }
+                
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Nombre de usuario o contraseña incorrectos");
