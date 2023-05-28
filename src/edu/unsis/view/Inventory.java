@@ -11,8 +11,8 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-import model.entity.products.Product;
-import service.implementation.Data;
+import edu.unsis.model.entity.Product;
+import edu.unsis.service.Data;
 
 public class Inventory extends javax.swing.JFrame {
 

@@ -1,9 +1,9 @@
-package service.implementation;
+package edu.unsis.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import service.interfaces.MySqlConnection;
+import edu.unsis.service.MySqlConnection;
 
 public class Conexion implements MySqlConnection {
 

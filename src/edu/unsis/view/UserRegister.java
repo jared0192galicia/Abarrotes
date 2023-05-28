@@ -6,12 +6,12 @@
  */
 package edu.unsis.view;
 
-import service.implementation.Data;
+import edu.unsis.service.Data;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import model.entity.User;
+import edu.unsis.model.entity.User;
 
 /**
  *

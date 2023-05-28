@@ -7,7 +7,7 @@
 package edu.unsis.view;
 
 import edu.unsis.controller.CodesProducts;
-import service.implementation.Data;
+import edu.unsis.service.Data;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.entity.User;
-import model.entity.products.Expired;
-import model.entity.products.NotExpired;
-import model.entity.products.Product;
+import edu.unsis.model.entity.User;
+import edu.unsis.model.entity.Expired;
+import edu.unsis.model.entity.NotExpired;
+import edu.unsis.model.entity.Product;
 
 public class RegisterProduct extends javax.swing.JFrame {
 

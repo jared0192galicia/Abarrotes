@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.entity.products.Expired;
-import model.entity.products.NotExpired;
-import model.entity.products.Product;
-import service.implementation.Data;
+import edu.unsis.model.entity.Expired;
+import edu.unsis.model.entity.NotExpired;
+import edu.unsis.model.entity.Product;
+import edu.unsis.service.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 

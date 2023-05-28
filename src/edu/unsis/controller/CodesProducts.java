@@ -7,7 +7,7 @@
 package edu.unsis.controller;
 
 import edu.unsis.view.MainMenu;
-import model.entity.products.Product;
+import edu.unsis.model.entity.Product;
 
 public class CodesProducts {
 

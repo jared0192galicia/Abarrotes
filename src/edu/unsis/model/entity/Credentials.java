@@ -4,7 +4,7 @@
  * modificado 25/may/2023
  * Descripcion: Obj for credentials of the acces
  */
-package edu.unsis.model;
+package edu.unsis.model.entity;
 
 /**
  *

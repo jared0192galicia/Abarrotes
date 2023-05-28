@@ -4,7 +4,7 @@
  * modificado 22/may/2023
  * Descripcion: Objeto usuario
  */
-package model.entity;
+package edu.unsis.model.entity;
 
 public class User extends People {
     

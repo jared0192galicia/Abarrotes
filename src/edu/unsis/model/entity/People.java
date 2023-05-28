@@ -4,7 +4,7 @@
  * modificado 22/may/2023
  * Descripcion: Clase padre para usuarios
  */
-package model.entity;
+package edu.unsis.model.entity;
 
 /**
  *

@@ -4,19 +4,19 @@
  * modificado 22/may/2023
  * Descripcion: Metodos de conexion con mysql
  */
-package service.implementation;
+package edu.unsis.service;
 
-import edu.unsis.model.Credentials;
-import service.implementation.Conexion;
+import edu.unsis.model.entity.Credentials;
+import edu.unsis.service.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.entity.User;
-import model.entity.products.Expired;
-import model.entity.products.NotExpired;
-import model.entity.products.Product;
+import edu.unsis.model.entity.User;
+import edu.unsis.model.entity.Expired;
+import edu.unsis.model.entity.NotExpired;
+import edu.unsis.model.entity.Product;
 
 public class Data {
 

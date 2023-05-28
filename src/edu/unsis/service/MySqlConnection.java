@@ -1,4 +1,4 @@
-package service.interfaces;
+package edu.unsis.service;
 
 import java.sql.Connection;
 

@@ -1,6 +1,6 @@
-package model.entity.products;
+package edu.unsis.model.entity;
 
-import model.entity.User;
+import edu.unsis.model.entity.User;
 
 public class NotExpired extends Product {
 

@@ -6,12 +6,12 @@
  */
 package edu.unsis.view;
 
-import service.implementation.Data;
+import edu.unsis.service.Data;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import model.entity.products.Product;
+import edu.unsis.model.entity.Product;
 
 public class MainMenu extends javax.swing.JFrame {
 
