@@ -34,6 +34,7 @@ public class Login extends javax.swing.JFrame {
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         controller = new LoginControllerImpl();
         
@@ -238,7 +239,8 @@ public class Login extends javax.swing.JFrame {
         
         if (band) {
             User user = new User();
-            if (Data.ifAcces(new Credentials(pass, userTxt), user)) {
+            
+            if (controller.getMatch(new Credentials(pass, userTxt), user)) {
                 
                 System.out.println(user.toString());
                 

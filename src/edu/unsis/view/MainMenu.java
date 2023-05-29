@@ -23,7 +23,8 @@ public class MainMenu extends javax.swing.JFrame {
         this.setSize(850, 550);
         this.setLocationRelativeTo(this);
         this.setResizable(false);
-
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
@@ -227,8 +228,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitMouseExited
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        new MainMenu().setVisible(true);
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
