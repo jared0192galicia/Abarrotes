@@ -15,5 +15,5 @@ public interface ILoginModel {
      * @param user Obj to load the data
      * @return status of the operation
      */
-    public boolean getMatch(Credentials credentials, User user);
+    public boolean search(Credentials credentials, User user);
 }

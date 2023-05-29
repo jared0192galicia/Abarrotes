@@ -44,6 +44,11 @@ INSERT INTO users VALUES ("pepetoro", aes_encrypt("1234", "root"),
  
 INSERT INTO users VALUES ("root", aes_encrypt("root", "root"),
  "jared0192galici@gmail", "user root", 0, 50, 'M', 1);
+
+SELECT email, sex, CONVERT(AES_DECRYPT(pass, "root") USING UTF8),
+ nameU, statusU, age, levelU FROM users WHERE userName = 'root';
+ 
+ UPDATE users SET statusU = "1" where userName = 'root';
  
     SELECT user.alias , convert(aes_decrypt(pass, "root") 
     using UTF8) as passs from user;

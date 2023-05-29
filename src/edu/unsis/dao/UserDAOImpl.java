@@ -22,9 +22,10 @@ public class UserDAOImpl implements IUserDAO {
 
         try {
             pst = (PreparedStatement) cn.prepareStatement(
-                    "SELECT email, sex, pass, nameU, statusU, age, levelU,"
-                    + " CONVERT(AES_DECRYPT(pass, \"root\") USING UTF8)"
-                    + " FROM users WHERE userName = '" + credentials.getUser() + "'");
+                    "SELECT email, sex, CONVERT(AES_DECRYPT(pass, \"root\") "
+                    + "USING UTF8) as pass, nameU, statusU, age, levelU"
+                    + " FROM users WHERE userName = '" + credentials.getUser()
+                    + "'");
 
             ResultSet rs = pst.executeQuery();
 

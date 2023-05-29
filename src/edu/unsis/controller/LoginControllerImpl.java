@@ -11,7 +11,7 @@ public class LoginControllerImpl implements ILoginController {
     
     @Override
     public boolean getMatch(Credentials credentials, User user) {
-        return model.getMatch(credentials, user);
+        return model.search(credentials, user);
     }
     
 }
