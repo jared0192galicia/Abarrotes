@@ -6,6 +6,7 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.ILoginController;
 import edu.unsis.controller.LoginControllerImpl;
 import edu.unsis.model.entity.Credentials;
 import java.awt.Color;
@@ -14,7 +15,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.unsis.model.entity.User;
-import edu.unsis.service.Data;
 
 /**
  *
@@ -27,7 +27,7 @@ public class Login extends javax.swing.JFrame {
     
     private ImageIcon iconClose, iconCloseN;
     private ImageIcon iconMin, iconMinN;
-    private LoginControllerImpl controller;
+    private ILoginController controller;
     
     public Login() {
         initComponents();
@@ -262,7 +262,6 @@ public class Login extends javax.swing.JFrame {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         posX = evt.getX();
         posY = evt.getY();
-
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged

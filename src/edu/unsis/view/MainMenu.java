@@ -6,6 +6,8 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.IMainMenuController;
+import edu.unsis.controller.MainMenuControllerImpl;
 import edu.unsis.service.Data;
 import java.awt.Color;
 import java.awt.Image;
@@ -17,6 +19,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
     public static Data data;
+    public static IMainMenuController controller;
 
     public MainMenu() {
         initComponents();
@@ -57,7 +60,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         if (products == null) {
 
-            data = new Data();
+            controller = new MainMenuControllerImpl();
             loadData();
         }
     }
@@ -205,8 +208,14 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Use controller for load data
+     */
     public void loadData() {
-        products = Data.load();
+        products = controller.getData();
+        for (Product product : products) {
+            System.out.println("product = " + product);
+        }
     }
 
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
