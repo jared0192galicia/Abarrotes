@@ -16,10 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.unsis.model.entity.User;
 
-/**
- *
- * @author elietzer
- */
+
 public class Login extends javax.swing.JFrame {
     
     private int posX;
@@ -336,4 +333,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtUser;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
-}
+
+    }

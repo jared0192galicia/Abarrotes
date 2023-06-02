@@ -18,8 +18,11 @@ public class ProductDAOImpl implements IProductDAO {
 
     ArrayList<Product> products;
     
+    /**
+     * List all products from data base
+     * @return ArrayList with all products
+     */
     @Override
-
     public ArrayList<Product> listAll() {
         products = new ArrayList<>();
 
@@ -68,6 +71,11 @@ public class ProductDAOImpl implements IProductDAO {
         return products;
     }
 
+    /**
+     * Create register in data base with data in obj
+     * @param obj Obj to be register in data base
+     * @return false in case of the error or true otherwise
+     */
     @Override
     public boolean create(Product obj) {
         System.out.println("1");

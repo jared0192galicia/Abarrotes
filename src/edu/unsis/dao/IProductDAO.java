@@ -3,7 +3,6 @@ package edu.unsis.dao;
 
 
 import edu.unsis.model.entity.Product;
-import java.util.ArrayList;
 
 /**
  *

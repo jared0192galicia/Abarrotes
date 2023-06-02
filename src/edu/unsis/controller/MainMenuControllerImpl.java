@@ -13,6 +13,10 @@ public class MainMenuControllerImpl implements IMainMenuController {
 
     IMainMenuModel model = new MainMenuModelImpl();
     
+    /**
+     * Method of connection between view with model
+     * @return ArrayList with products
+     */
     @Override
     public ArrayList<Product> getData() {
         return model.loadProducts();
