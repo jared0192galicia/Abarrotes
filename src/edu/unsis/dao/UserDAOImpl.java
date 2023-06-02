@@ -1,3 +1,9 @@
+/**
+ * Autor: GaliciaCordova Elietzer Jared
+ * Creado el: 27 / May / 2023
+ * modificado: 2 / Jun / 2023
+ * Descipciòn: Clase que implementa a la interfaz IUserDAO
+ */
 package edu.unsis.dao;
 
 import edu.unsis.model.entity.Credentials;

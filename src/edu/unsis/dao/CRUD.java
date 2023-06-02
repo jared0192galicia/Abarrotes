@@ -1,3 +1,9 @@
+/**
+ * Autor: Galicia Cordova Elietzer Jared
+ * Creado el: 27 / May / 2023
+ * modificado: 2 / Jun / 2023
+ * Descipciòn: Interfaz del CRUD basico para una clase generica 
+ */
 package edu.unsis.dao;
 
 
