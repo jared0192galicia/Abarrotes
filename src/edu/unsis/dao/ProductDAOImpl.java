@@ -3,7 +3,7 @@ package edu.unsis.dao;
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
 import edu.unsis.model.entity.Product;
-import edu.unsis.service.Conexion;
+import edu.unsis.utilities.ConexionImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,16 +17,17 @@ import java.util.ArrayList;
 public class ProductDAOImpl implements IProductDAO {
 
     ArrayList<Product> products;
-    
+
     /**
      * List all products from data base
+     *
      * @return ArrayList with all products
      */
     @Override
     public ArrayList<Product> listAll() {
         products = new ArrayList<>();
 
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
 
         try {
             PreparedStatement pst = cn.prepareStatement(
@@ -37,7 +38,7 @@ public class ProductDAOImpl implements IProductDAO {
             Product p;
             String aux;
 
-            /**
+            /*
              * Save data from object ResultSet
              */
             while (rs.next()) {
@@ -73,6 +74,7 @@ public class ProductDAOImpl implements IProductDAO {
 
     /**
      * Create register in data base with data in obj
+     *
      * @param obj Obj to be register in data base
      * @return false in case of the error or true otherwise
      */
@@ -80,30 +82,29 @@ public class ProductDAOImpl implements IProductDAO {
     public boolean create(Product obj) {
         System.out.println("1");
         // Get connection with mysql
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
         boolean type = true;
         try {
             // true: type not expired
-            if (type) {
-                pst = cn.prepareStatement(
-                        "INSERT INTO products (codes, namep, model, marca, price, "
-                        + "existence, descrip, registerFor) VALUES "
-                        + "(?, ? ,?, ?, ? ,?, ?, ?);");
+//            if (type) {
+//            pst = cn.prepareStatement(
+//                    "INSERT INTO products (codes, namep, model, marca, price, "
+//                    + "existence, descrip, registerFor) VALUES "
+//                    + "(?, ? ,?, ?, ? ,?, ?, ?);");
 
-                pst.setString(8, obj.getNameRegisterFor());
-            } else {
+//            } else {
 
-                Expired pr = (Expired) obj;
+            Expired pr = (Expired) obj;
 
-                pst = cn.prepareStatement(
-                        "INSERT INTO products (codes, namep, model, marca, price, "
-                        + "existence, descrip, dateExpiry, registerFor) VALUES "
-                        + "(?, ? ,?, ?, ? ,?, ?, ?, ?);");
+            pst = cn.prepareStatement(
+                    "INSERT INTO products (codes, namep, model, marca, price, "
+                    + "existence, descrip, dateExpiry, registerFor) VALUES "
+                    + "(?, ? ,?, ?, ? ,?, ?, ?, ?);");
 
-                pst.setString(8, pr.getDate());
-                pst.setString(9, obj.getNameRegisterFor());
-            }
+            pst.setString(8, pr.getDate());
+            pst.setString(9, obj.getNameRegisterFor());
+//            }
 
             System.out.println("2");
             pst.setString(1, obj.getCode());
@@ -112,6 +113,8 @@ public class ProductDAOImpl implements IProductDAO {
             pst.setString(4, obj.getMarca());
             pst.setString(5, String.valueOf(obj.getPrice()));
             pst.setString(6, String.valueOf(obj.getExistencia()));
+            pst.setDouble(6, obj.getExistencia());
+            System.out.println("DAO: Existencia: " + obj.getExistencia());
             pst.setString(7, obj.getDescription());
 
             System.out.println("3");
@@ -127,7 +130,7 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public boolean delete(Product obj) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {
@@ -148,7 +151,7 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public boolean update(Product obj) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {

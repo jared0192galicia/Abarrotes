@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.Product;
-import edu.unsis.service.Data;
+import edu.unsis.utilities.Data;
 
 public class Inventory extends javax.swing.JFrame {
 
-    private ArrayList<Product> products = Data.products;
+    private ArrayList<Product> products = MainMenu.products;
     private DefaultTableModel model;
 
     public Inventory() {

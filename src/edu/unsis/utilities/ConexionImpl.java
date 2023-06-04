@@ -1,11 +1,11 @@
-package edu.unsis.service;
+package edu.unsis.utilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import edu.unsis.service.MySqlConnection;
+import edu.unsis.utilities.IConexion;
 
-public class Conexion implements MySqlConnection {
+public class ConexionImpl implements IConexion {
 
     private static Connection cn = null;
 

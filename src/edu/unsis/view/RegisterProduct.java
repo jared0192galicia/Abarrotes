@@ -7,7 +7,8 @@
 package edu.unsis.view;
 
 import edu.unsis.controller.CodesProducts;
-import edu.unsis.service.Data;
+import edu.unsis.controller.ProductController;
+import edu.unsis.utilities.Data;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
@@ -25,6 +26,7 @@ public class RegisterProduct extends javax.swing.JFrame {
     private ArrayList<Product> products = new ArrayList<>();
     static DefaultTableModel modelProduct;
     private Data data;
+    private ProductController controller;
 
     /**
      *
@@ -41,6 +43,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         wallpaper.setIcon(icon);
         data = new Data();
+        controller = new ProductController();
     }
 
     public RegisterProduct(String title) {
@@ -446,10 +449,11 @@ public class RegisterProduct extends javax.swing.JFrame {
                             band, name, WIDTH, 'M'));
 
             // Execute query and catch result
-            if (data.create(p, ex)) {
+//            if (data.create(p, ex)) {
+            if (controller.registerProduct(p)) {
                 setBackgroundToTxt(true);
                 products.add(p);
-                Data.products.add(p);
+                MainMenu.products.add(p);
                 JOptionPane.showMessageDialog(null, "Registrado");
 
             } else {
@@ -462,16 +466,17 @@ public class RegisterProduct extends javax.swing.JFrame {
         } else if (band) {
 
             Product p = new NotExpired(name, code, marca, model,
-                    Double.parseDouble(price), description, 0,
-                    new User(name, code, day, WIDTH,
-                            band, name, WIDTH, 'M'));
+                    Double.parseDouble(price), description,
+                    Integer.parseInt(existence), new User(
+                    name, code, day, WIDTH,
+                    band, name, WIDTH, 'M'));
 
             if (data.create(p, ex)) {
                 setBackgroundToTxt(false);
                 products.add(p);
-                Data.products.add(p);
+                MainMenu.products.add(p);
                 JOptionPane.showMessageDialog(null, "Registrado");
-            
+
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Error en base de datos\nConsulte al desarrollador");

@@ -6,7 +6,7 @@
  */
 package edu.unsis.view;
 
-import edu.unsis.service.Data;
+import edu.unsis.utilities.Data;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;

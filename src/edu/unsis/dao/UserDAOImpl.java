@@ -8,7 +8,7 @@ package edu.unsis.dao;
 
 import edu.unsis.model.entity.Credentials;
 import edu.unsis.model.entity.User;
-import edu.unsis.service.Conexion;
+import edu.unsis.utilities.ConexionImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public boolean acces(Credentials credentials, User user) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {
@@ -61,7 +61,7 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public boolean create(User obj) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
         System.out.println("in method");
 
@@ -96,7 +96,7 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public boolean delete(User obj) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {

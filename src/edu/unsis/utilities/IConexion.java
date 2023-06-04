@@ -1,8 +1,8 @@
-package edu.unsis.service;
+package edu.unsis.utilities;
 
 import java.sql.Connection;
 
-public interface MySqlConnection {
+public interface IConexion {
     
     /**
      * Method for generate code of product.

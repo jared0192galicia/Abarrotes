@@ -4,10 +4,10 @@
  * modificado 22/may/2023
  * Descripcion: Metodos de conexion con mysql
  */
-package edu.unsis.service;
+package edu.unsis.utilities;
 
 import edu.unsis.model.entity.Credentials;
-import edu.unsis.service.Conexion;
+import edu.unsis.utilities.ConexionImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +28,7 @@ public class Data {
     public static ArrayList<Product> load() {
         products = new ArrayList<>();
 
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
 
         try {
             PreparedStatement pst = cn.prepareStatement(
@@ -86,7 +86,7 @@ public class Data {
 
         System.out.println("1");
         // Get connection with mysql
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
         try {
             // true: type not expired
@@ -135,7 +135,7 @@ public class Data {
      * object user
      */
     public boolean createUser(User user) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
         System.out.println("in method");
 
@@ -176,7 +176,7 @@ public class Data {
      */
     public static boolean deleteProduct(Product product) {
 
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {
@@ -203,7 +203,7 @@ public class Data {
      * @return
      */
     public static boolean updateProduct(Product product, boolean type) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {
@@ -221,7 +221,7 @@ public class Data {
      * @return
      */
     public static boolean ifAcces(Credentials datas, User user) {
-        Connection cn = Conexion.getConnction();
+        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
 
         try {

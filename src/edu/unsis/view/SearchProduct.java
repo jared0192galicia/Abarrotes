@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
 import edu.unsis.model.entity.Product;
-import edu.unsis.service.Data;
+import edu.unsis.utilities.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 
