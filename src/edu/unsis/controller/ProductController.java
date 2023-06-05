@@ -11,6 +11,11 @@ import edu.unsis.model.entity.Product;
 public class ProductController {
     IProductModel model = new ProductModelImpl();
     
+    /**
+     * Call method register from cape model
+     * @param product to register
+     * @return false if exist error or true otherwise
+     */ 
     public boolean registerProduct(Product product) {
         return model.register(product);
     }

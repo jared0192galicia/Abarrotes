@@ -2,6 +2,7 @@ package edu.unsis.model;
 
 import edu.unsis.model.entity.Product;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,8 +19,15 @@ public interface IProductModel {
     public ArrayList<Product> listAll();
     
     /**
+     * Proces load data of type T from data base (MySql)
+     * @param model
+     */
+    public void showAll(DefaultTableModel model);
+    
+    /**
      * Call metohod register product in cape DAO
-     * @param product prodct to register
+     * @param obj
+     * @return 
      */
     public boolean register(Product obj);
     

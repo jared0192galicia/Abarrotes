@@ -6,7 +6,7 @@
  */
 package edu.unsis.view;
 
-import edu.unsis.controller.CodesProducts;
+import edu.unsis.controller.SearchProductController;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -20,9 +20,10 @@ import edu.unsis.utilities.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 
-    private ArrayList<Product> products = Data.products;
+    private final ArrayList<Product> products = MainMenu.products;
     private DefaultTableModel model;
     private Product productSelected;
+    private SearchProductController controller;
 
     /**
      * <h1> Constructor for class SearchProduct </h1>
@@ -49,6 +50,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
         wallpaper.setIcon(icon);
 
+        controller = new SearchProductController();
         model = new DefaultTableModel();
         createDefaultModel();
     }
@@ -359,29 +361,9 @@ public class SearchProduct extends javax.swing.JFrame {
      * Create one model for table with data more relevant
      */
     private void createDefaultModel() {
-        model = new DefaultTableModel();
-        model.addColumn("Nombre");
-        model.addColumn("Codigo");
-        model.addColumn("Modelo");
-        model.addColumn("Existencia");
-        model.addColumn("Precio");
-
-        String row[];
-
-        for (Product product : products) {
-            row = new String[5];
-
-            row[0] = product.getName();
-            row[1] = product.getCode();
-            row[2] = product.getModelo();
-            row[3] = String.valueOf(product.getExistencia());
-            row[4] = String.valueOf(product.getPrice());
-
-            model.addRow(row);
-        }
-
+       
+        controller.showProducts(model);
         this.table.setModel(model);
-
     }
 
     /**

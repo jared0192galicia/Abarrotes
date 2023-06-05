@@ -6,7 +6,7 @@
  */
 package edu.unsis.view;
 
-import edu.unsis.controller.CodesProducts;
+import edu.unsis.utilities.CodesProducts;
 import edu.unsis.controller.ProductController;
 import edu.unsis.utilities.Data;
 import java.awt.Color;
@@ -15,7 +15,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.User;
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
@@ -24,7 +23,6 @@ import edu.unsis.model.entity.Product;
 public class RegisterProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = new ArrayList<>();
-    static DefaultTableModel modelProduct;
     private Data data;
     private ProductController controller;
 
@@ -310,9 +308,6 @@ public class RegisterProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void createModelProduct(Product p) {
-
-    }
 
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
@@ -350,7 +345,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         String year = "";
         String day = "";
         String month = "";
-        String code = "";
+        String code;
 
         // Valid values null in the register        
         if (name.equals("")) {

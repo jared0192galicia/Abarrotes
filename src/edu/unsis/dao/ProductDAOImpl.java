@@ -151,15 +151,14 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public boolean update(Product obj) {
-        Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
+        
+        Expired product = (Expired) obj;
 
-        try {
-            pst = cn.prepareStatement(
-                    "UPDATE product SET "
-                    + "WHERE codes = " + obj.getCode());
-        } catch (SQLException e) {
-        }
+        delete(product);
+        
+        create(product);
+        
         return true;
     }
 

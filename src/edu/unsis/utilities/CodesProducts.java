@@ -4,7 +4,7 @@
  * modificado 23/may/2023
  * Descripcion: Genera caracteristicas para los productos
  */
-package edu.unsis.controller;
+package edu.unsis.utilities;
 
 import edu.unsis.view.MainMenu;
 import edu.unsis.model.entity.Product;

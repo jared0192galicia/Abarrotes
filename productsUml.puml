@@ -1,0 +1,15 @@
+@startuml
+abstract class model.entity.products.Product
+annotation java.lang.Override
+class model.entity.User
+class model.entity.products.Expired
+class model.entity.products.NotExpired
+model.entity.products.Product ..> java.lang.Override
+model.entity.products.Product ..> model.entity.User
+model.entity.products.Expired --|> model.entity.products.Product
+model.entity.products.Expired ..> java.lang.Override
+model.entity.products.Expired ..> model.entity.User
+model.entity.products.NotExpired --|> model.entity.products.Product
+model.entity.products.NotExpired ..> java.lang.Override
+model.entity.products.NotExpired ..> model.entity.User
+@enduml
