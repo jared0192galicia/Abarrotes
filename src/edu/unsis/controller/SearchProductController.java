@@ -8,6 +8,7 @@ package edu.unsis.controller;
 
 import edu.unsis.model.IProductModel;
 import edu.unsis.model.ProductModelImpl;
+import edu.unsis.model.entity.Product;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,5 +25,12 @@ public class SearchProductController {
      */
     public void showProducts(DefaultTableModel model) {
         this.model.showAll(model);
+    }
+    /**
+     * Fill model with data from database
+     * @param model 
+     */
+    public boolean update(Product product) {
+        return this.model.update(product);
     }
 }

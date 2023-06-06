@@ -94,7 +94,6 @@ public class ProductDAOImpl implements IProductDAO {
 //                    + "(?, ? ,?, ?, ? ,?, ?, ?);");
 
 //            } else {
-
             Expired pr = (Expired) obj;
 
             pst = cn.prepareStatement(
@@ -152,13 +151,32 @@ public class ProductDAOImpl implements IProductDAO {
     @Override
     public boolean update(Product obj) {
         PreparedStatement pst;
-        
-        Expired product = (Expired) obj;
 
-        delete(product);
-        
-        create(product);
-        
+        Connection cn = ConexionImpl.getConnction();
+
+        try {
+
+            pst = cn.prepareStatement(
+                    "UPDATE products SET nameP = ?, model = ?, marca = ?, "
+                    + "price = ?, existence = ?, descrip = ?, "
+                    + "dateExpiry = ?, updateFor = ? where codes = '"
+                    + obj.getCode() + "'");
+            
+            pst.setString(1, obj.getName());
+            pst.setString(2, obj.getModelo());
+            pst.setString(3, obj.getMarca());
+            pst.setDouble(4, obj.getPrice());
+            pst.setInt(5, obj.getExistencia());
+            pst.setString(6, obj.getDescription());
+            pst.setString(7, obj.getExpired());
+            pst.setString(8, obj.getNameUpdateFor());
+            
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error en update \n" + e.getMessage());
+        }
+
         return true;
     }
 

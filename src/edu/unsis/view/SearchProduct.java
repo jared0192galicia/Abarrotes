@@ -531,7 +531,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 if (productSelected.compareTo(pEx)) {
 
-                    if (Data.updateProduct(pEx, true)) {
+//                    if (Data.updateProduct(pEx, true)) {
+                    if (controller.update(p)) {
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
                     } else {
@@ -556,7 +557,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 if (productSelected.compareTo(p)) {
 
-                    if (Data.updateProduct(p, false)) {
+//                    if (Data.updateProduct(p, false)) {
+                    if (controller.update(p)) {
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
                     }
