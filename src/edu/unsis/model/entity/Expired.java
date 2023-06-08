@@ -1,8 +1,6 @@
 package edu.unsis.model.entity;
 
-import edu.unsis.model.entity.User;
-
-public class Expired extends Product {
+public final class Expired extends Product {
 
     private String day;
     private String year;
@@ -56,7 +54,6 @@ public class Expired extends Product {
     
     /**
      * @param name
-     * @param type
      * @param code
      * @param price
      * @param description 
@@ -109,7 +106,12 @@ public class Expired extends Product {
     }
 
     @Override
-    public boolean compareTo(Product p) {
+    public boolean compareTo(Product pr) {
+        
+        Expired p = (Expired) pr;
+        Expired r = (Expired) this;
+        
+        System.out.println("this = " + r + "\np: " + p.toString());
         
         if (!p.getCode().equals(this.getCode())) {
             return false;

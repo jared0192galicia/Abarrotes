@@ -529,7 +529,6 @@ public class SearchProduct extends javax.swing.JFrame {
                 pEx.setRegisterFor(productSelected.getRegisterFor());
 
                 p = (Expired) pEx;
-
                 if (p.compareTo(productSelected)) {
 
 //                    if (Data.updateProduct(pEx, true)) {
