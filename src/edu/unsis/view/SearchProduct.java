@@ -363,6 +363,7 @@ public class SearchProduct extends javax.swing.JFrame {
     private void createDefaultModel() {
        
         controller.showProducts(model);
+        System.out.println("model = " + model.toString());
         this.table.setModel(model);
     }
 
@@ -529,7 +530,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 p = (Expired) pEx;
 
-                if (productSelected.compareTo(pEx)) {
+                if (p.compareTo(productSelected)) {
 
 //                    if (Data.updateProduct(pEx, true)) {
                     if (controller.update(p)) {

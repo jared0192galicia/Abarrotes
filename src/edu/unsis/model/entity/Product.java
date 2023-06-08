@@ -1,7 +1,5 @@
 package edu.unsis.model.entity;
 
-import edu.unsis.model.entity.User;
-
 public abstract class Product {
     
     private String name;
@@ -51,9 +49,6 @@ public abstract class Product {
         this.existencia = existencia;
         this.registerFor = registerFor;
     }
-
-    
-    
 
     public String getName() {
         return name;

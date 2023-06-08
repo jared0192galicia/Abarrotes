@@ -3,6 +3,7 @@ package edu.unsis.model;
 import edu.unsis.dao.IProductDAO;
 import edu.unsis.dao.ProductDAOImpl;
 import edu.unsis.model.entity.Product;
+import edu.unsis.view.MainMenu;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,7 +60,7 @@ public class ProductModelImpl implements IProductModel {
 
     @Override
     public void showAll(DefaultTableModel model) {
-        model = new DefaultTableModel();
+//        model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Codigo");
         model.addColumn("Modelo");
@@ -68,7 +69,7 @@ public class ProductModelImpl implements IProductModel {
 
         String row[];
 
-        for (Product product : products) {
+        for (Product product : MainMenu.products) {
             row = new String[5];
 
             row[0] = product.getName();
