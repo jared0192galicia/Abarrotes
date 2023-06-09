@@ -1,7 +1,7 @@
 package edu.unsis.model.entity;
 
 public abstract class Product {
-    
+
     private String name;
     private String code;
     private String Marca;
@@ -12,14 +12,15 @@ public abstract class Product {
     private User registerFor;
     private User updateFor;
 
-    public Product() {}
-    
+    public Product() {
+    }
+
     /**
      * @param name
      * @param type
      * @param code
      * @param price
-     * @param description 
+     * @param description
      */
     public Product(String name, String code, double price, String description) {
         this.name = name;
@@ -36,9 +37,9 @@ public abstract class Product {
      * @param price
      * @param description
      * @param existencia
-     * @param registerFor 
+     * @param registerFor
      */
-    public Product(String name, String code, String Marca, String Modelo, 
+    public Product(String name, String code, String Marca, String Modelo,
             double price, String description, int existencia, User registerFor) {
         this.name = name;
         this.code = code;
@@ -109,6 +110,7 @@ public abstract class Product {
     public User getRegisterFor() {
         return registerFor;
     }
+
     public String getNameRegisterFor() {
         return registerFor.getUserName();
     }
@@ -128,19 +130,18 @@ public abstract class Product {
     public void setUpdateFor(User updateFor) {
         this.updateFor = updateFor;
     }
-    
+
     public abstract String getExpired();
-    
-    @Override
-    public String toString() {
-        return "Product{" + "name=" + name + ", code=" + code + ", Marca=" +
-                Marca + ", Modelo=" + Modelo + ", price=" + price + 
-                ", description=" + description + ", existencia=" + 
-                existencia + '}';
-    }
 
     public abstract boolean compareTo(Product p);
 
-    
-    
+    @Override
+    public String toString() {
+        return "Product{" + "name=" + name + ", code=" + code + ", Marca="
+                + Marca + " Modelo=" + Modelo + ", price=" + price
+                + ",\n description=" + description + ", existencia=" + existencia
+                + ", registerFor=" + registerFor + ", updateFor=" + updateFor 
+                + '}';
+    }
+
 }

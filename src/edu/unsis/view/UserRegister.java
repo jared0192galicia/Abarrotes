@@ -60,6 +60,7 @@ public class UserRegister extends javax.swing.JFrame {
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -350,7 +351,6 @@ public class UserRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMinMouseExited
 
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_buttonMinActionPerformed
 
     /**

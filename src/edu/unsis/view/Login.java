@@ -30,6 +30,9 @@ public class Login extends javax.swing.JFrame {
     
     public Login() {
         initComponents();
+        
+        this.buttonAcceder.requestFocus(true);
+        
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -85,7 +88,7 @@ public class Login extends javax.swing.JFrame {
         buttonClose = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         txtUser = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buttonAcceder = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -167,25 +170,28 @@ public class Login extends javax.swing.JFrame {
         txtUser.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         txtUser.setForeground(new java.awt.Color(255, 255, 255));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUser.setText("User");
+        txtUser.setText("root");
         jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 30));
         txtUser.getAccessibleContext().setAccessibleName("");
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Acceder");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAcceder.setBackground(new java.awt.Color(102, 153, 255));
+        buttonAcceder.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonAcceder.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAcceder.setMnemonic('A');
+        buttonAcceder.setText("Acceder");
+        buttonAcceder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonAcceder.setFocusCycleRoot(true);
+        buttonAcceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAccederActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 110, 30));
+        jPanel2.add(buttonAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 110, 30));
 
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Olvido su contraseña?");
+        jLabel1.setToolTipText("Recupera tu contraseña de acceso");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
@@ -218,7 +224,7 @@ public class Login extends javax.swing.JFrame {
         this.setCursor(NORMAL);
     }//GEN-LAST:event_jLabel1MouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAccederActionPerformed
         String userTxt = txtUser.getText().trim();
         String pass = txtPass.getText().trim();
         boolean band = true;
@@ -256,7 +262,7 @@ public class Login extends javax.swing.JFrame {
                         "Nombre de usuario o contraseña incorrectos");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonAccederActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         posX = evt.getX();
@@ -323,9 +329,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAcceder;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

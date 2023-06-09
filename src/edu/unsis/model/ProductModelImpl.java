@@ -62,6 +62,8 @@ public class ProductModelImpl implements IProductModel {
     @Override
     public void showAll(DefaultTableModel model) {
 //        model = new DefaultTableModel();
+        model.setNumRows(0);
+        model.setColumnCount(0);
         model.addColumn("Nombre");
         model.addColumn("Codigo");
         model.addColumn("Modelo");

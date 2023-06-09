@@ -32,6 +32,8 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.setSize(878, 630);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        this.txtName.requestFocus(true);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),

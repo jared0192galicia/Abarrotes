@@ -1,7 +1,5 @@
 package edu.unsis.model.entity;
 
-import edu.unsis.model.entity.User;
-
 public class NotExpired extends Product {
 
     public NotExpired() {
@@ -9,10 +7,9 @@ public class NotExpired extends Product {
 
     /**
      * @param name
-     * @param type
      * @param code
      * @param price
-     * @param description 
+     * @param description
      */
     public NotExpired(String name, String code, double price,
             String description) {
@@ -27,9 +24,9 @@ public class NotExpired extends Product {
      * @param price
      * @param description
      * @param existencia
-     * @param registerFor 
+     * @param registerFor
      */
-    public NotExpired(String name, String code, String Marca, String Modelo, 
+    public NotExpired(String name, String code, String Marca, String Modelo,
             double price, String description, int existencia, User registerFor) {
         super(name, code, Marca, Modelo, price, description, existencia, registerFor);
     }
@@ -41,9 +38,7 @@ public class NotExpired extends Product {
 
     @Override
     public boolean compareTo(Product p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return p.toString().equals(this.toString());
     }
-    
-    
-    
+
 }

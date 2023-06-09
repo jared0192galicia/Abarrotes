@@ -33,4 +33,8 @@ public class SearchProductController {
     public boolean update(Product product) {
         return this.model.update(product);
     }
+    
+    public boolean delete(Product product) {
+        return this.model.delete(product);
+    }
 }

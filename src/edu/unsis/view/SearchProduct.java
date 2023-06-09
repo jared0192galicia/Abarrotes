@@ -16,14 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
 import edu.unsis.model.entity.Product;
-import edu.unsis.utilities.Data;
 
 public class SearchProduct extends javax.swing.JFrame {
 
     private final ArrayList<Product> products = MainMenu.products;
-    private DefaultTableModel model;
+    private final DefaultTableModel model;
     private Product productSelected;
-    private SearchProductController controller;
+    private final SearchProductController controller;
 
     /**
      * <h1> Constructor for class SearchProduct </h1>
@@ -37,10 +36,8 @@ public class SearchProduct extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setSize(878, 640);
         this.setVisible(true);
-
-        for (Product product : products) {
-            System.out.println(product.toString());
-        }
+        
+        this.txtDescription.setColumns(3);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/"
                 + "wallpaperPrincipal.jpg");
@@ -185,6 +182,7 @@ public class SearchProduct extends javax.swing.JFrame {
         txtDescription.setColumns(20);
         txtDescription.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         txtDescription.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescription.setLineWrap(true);
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
@@ -293,13 +291,13 @@ public class SearchProduct extends javax.swing.JFrame {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Còdigo", "Modelo", "Existencia", "Precio"
             }
         ));
         table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -373,9 +371,7 @@ public class SearchProduct extends javax.swing.JFrame {
      * Create one model for table with data more relevant
      */
     private void createDefaultModel() {
-       
         controller.showProducts(model);
-        System.out.println("model = " + model.toString());
         this.table.setModel(model);
     }
 
@@ -432,9 +428,8 @@ public class SearchProduct extends javax.swing.JFrame {
         String existence = this.txtExist.getText().trim();
         String description = this.txtDescription.getText().trim();
         String marca = this.txtMarca.getText().trim();
-        String model = this.txtModelo.getText().trim();
+        String modelProduct = this.txtModelo.getText().trim();
         boolean band = true;
-        boolean ex = true;
 
         String year = "";
         String day = "";
@@ -477,13 +472,12 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtMarca.setBackground(new Color(102, 153, 255));
         }
 
-        if (model.equals("")) {
+        if (modelProduct.equals("")) {
             this.txtModelo.setBackground(Color.red);
             band = false;
         } else {
             this.txtModelo.setBackground(new Color(102, 153, 255));
         }
-
 
         if (code.equals("")) {
             this.txtCode.setBackground(Color.red);
@@ -532,17 +526,17 @@ public class SearchProduct extends javax.swing.JFrame {
                 pEx.setDescription(description);
                 pEx.setExistencia(Integer.parseInt(existence));
                 pEx.setMarca(marca);
-                pEx.setModelo(model);
+                pEx.setModelo(modelProduct);
                 pEx.setName(name);
                 pEx.setPrice(Double.parseDouble(price));
                 pEx.setRegisterFor(productSelected.getRegisterFor());
-                pEx.setDate(day + "-" + month + "-" + year);
-                
-//                p = (Expired) pEx;
+                pEx.setDate(year + "-" + month + "-" + day);
+
                 if (!pEx.compareTo(productSelected)) {
 
-//                    if (Data.updateProduct(pEx, true)) {
                     if (controller.update(pEx)) {
+                        MainMenu.products.remove(productSelected);
+                        MainMenu.products.add(pEx);
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
                     } else {
@@ -554,28 +548,31 @@ public class SearchProduct extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,
                             "No se ah modificado ningun campo");
                 }
+
             } else {
 
                 p.setCode(code);
                 p.setDescription(description);
                 p.setExistencia(Integer.parseInt(existence));
                 p.setMarca(marca);
-                p.setModelo(model);
+                p.setModelo(modelProduct);
                 p.setName(name);
                 p.setPrice(Double.parseDouble(price));
                 p.setRegisterFor(productSelected.getRegisterFor());
 
                 if (productSelected.compareTo(p)) {
+                    JOptionPane.showMessageDialog(null,
+                            "El producto no se modifico");
+                } else {
 
-//                    if (Data.updateProduct(p, false)) {
                     if (controller.update(p)) {
+
+                        MainMenu.products.remove(productSelected);
+                        MainMenu.products.add(p);
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
                     }
 
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "El producto no se modifico");
                 }
 
             }
@@ -597,14 +594,11 @@ public class SearchProduct extends javax.swing.JFrame {
         } else {
             int band = JOptionPane.showConfirmDialog(null,
                     "¿Seguro que decea eliminar este producto?");
-
-            System.out.println(band);
-
             if (band == 0) {
 
-                if (Data.deleteProduct(productSelected)) {
+                if (controller.delete(productSelected)) {
 
-                    Data.products.remove(productSelected);
+                    MainMenu.products.remove(productSelected);
                     this.products.remove(productSelected);
                     createDefaultModel();
 
@@ -616,9 +610,7 @@ public class SearchProduct extends javax.swing.JFrame {
                             "No se pudo eliminar el registro");
 
                 }
-
             }
-
         }
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
@@ -656,9 +648,7 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtCadDay.setEditable(status);
             this.txtCadMonth.setEditable(status);
             this.txtCadYear.setEditable(status);
-
         }
-
     }
 
     /**
@@ -683,8 +673,17 @@ public class SearchProduct extends javax.swing.JFrame {
                 this.txtMarca.setText(product.getMarca());
                 this.txtExist.setText(String.valueOf(product.getExistencia()));
 
-                try {
-                    String date = product.getExpired();
+                String date = product.getExpired();
+
+                if (date.equals("")) {
+                    this.txtCadDay.setText("");
+                    this.txtCadMonth.setText("");
+                    this.txtCadYear.setText("");
+                    this.comboType.setSelectedIndex(1);
+                    this.productSelected = product;
+
+                    toggleTextField(true, false);
+                } else {
 
                     if (!date.equals("")) {
                         this.txtCadDay.setText(date.substring(8, 10));
@@ -696,14 +695,6 @@ public class SearchProduct extends javax.swing.JFrame {
 
                         toggleTextField(true, true);
                     }
-                } catch (Exception e) {
-                    this.txtCadDay.setText("");
-                    this.txtCadMonth.setText("");
-                    this.txtCadYear.setText("");
-                    this.comboType.setSelectedIndex(1);
-                    this.productSelected = product;
-
-                    toggleTextField(true, false);
                 }
 
             }

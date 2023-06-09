@@ -147,7 +147,7 @@ public class Data {
         try {
             pst = cn.prepareStatement(
                     "INSERT INTO users VALUES"
-                    + "(?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "(?, aes_encrypt(?, 'root'), ?, ?, ?, ?, ?, ?)");
 
             // Set data to query
             pst.setString(1, user.getUserName());

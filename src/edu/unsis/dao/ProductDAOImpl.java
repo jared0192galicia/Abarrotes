@@ -84,16 +84,8 @@ public class ProductDAOImpl implements IProductDAO {
         // Get connection with mysql
         Connection cn = ConexionImpl.getConnction();
         PreparedStatement pst;
-        boolean type = true;
         try {
-            // true: type not expired
-//            if (type) {
-//            pst = cn.prepareStatement(
-//                    "INSERT INTO products (codes, namep, model, marca, price, "
-//                    + "existence, descrip, registerFor) VALUES "
-//                    + "(?, ? ,?, ?, ? ,?, ?, ?);");
 
-//            } else {
             Expired pr = new Expired();
             try {
                 pr = (Expired) obj;
@@ -109,7 +101,6 @@ public class ProductDAOImpl implements IProductDAO {
 
             pst.setString(8, pr.getDate());
             pst.setString(9, obj.getNameRegisterFor());
-//            }
 
             System.out.println("2");
             pst.setString(1, obj.getCode());
@@ -165,15 +156,25 @@ public class ProductDAOImpl implements IProductDAO {
             p = (Expired) obj;
 
         } catch (Exception e) {
-            System.out.println("pr = " + p.toString());
+
+            p.setCode(obj.getCode());
+            p.setDescription(obj.getDescription());
+            p.setExistencia(obj.getExistencia());
+            p.setMarca(obj.getMarca());
+            p.setModelo(obj.getModelo());
+            p.setName(obj.getName());
+            p.setPrice(obj.getPrice());
+            p.setRegisterFor(obj.getRegisterFor());
+            p.setUpdateFor(obj.getRegisterFor());
             System.out.println("p = " + p.toString());
+
         }
         try {
 
             pst = cn.prepareStatement(
                     "UPDATE products SET nameP = ?, model = ?, marca = ?, "
                     + "price = ?, existence = ?, descrip = ?, "
-                    + "dateExpiry = ?, updateFor = ? where codes = '"
+                    + "dateExpiry = ? where codes = '"
                     + obj.getCode() + "'");
 
             pst.setString(1, p.getName());
@@ -183,7 +184,6 @@ public class ProductDAOImpl implements IProductDAO {
             pst.setInt(5, p.getExistencia());
             pst.setString(6, p.getDescription());
             pst.setString(7, p.getExpired());
-            pst.setString(8, p.getNameUpdateFor());
 
             pst.executeUpdate();
 
