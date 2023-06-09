@@ -67,6 +67,11 @@ CREATE TABLE sale(
 
 
 
+select  proveedor.nombre 
+from proveedor as p, proveedor 
+
+where p.nombre = "Smith" and p.ciudad=proveedor.ciudad;
+
 
 
 

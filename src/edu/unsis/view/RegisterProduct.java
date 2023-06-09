@@ -8,7 +8,6 @@ package edu.unsis.view;
 
 import edu.unsis.utilities.CodesProducts;
 import edu.unsis.controller.ProductController;
-import edu.unsis.utilities.Data;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
@@ -23,7 +22,6 @@ import edu.unsis.model.entity.Product;
 public class RegisterProduct extends javax.swing.JFrame {
 
     private ArrayList<Product> products = new ArrayList<>();
-    private Data data;
     private ProductController controller;
 
     /**
@@ -40,10 +38,13 @@ public class RegisterProduct extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
-        data = new Data();
         controller = new ProductController();
     }
 
+    /**
+     * 
+     * @param title 
+     */
     public RegisterProduct(String title) {
         initComponents();
         this.setSize(878, 630);
@@ -308,7 +309,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    /**
+     * Detected change of the selection in comboType
+     * @param evt Arg of the method implement
+     */
     private void comboTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboTypeItemStateChanged
         int index = this.comboType.getSelectedIndex();
 
@@ -333,7 +337,6 @@ public class RegisterProduct extends javax.swing.JFrame {
         int indexType = this.comboType.getSelectedIndex();
         boolean indexCode = this.checkCode.isSelected();
         boolean band = true;
-        boolean ex = true;
 
         String name = this.txtName.getText().trim();
         String price = this.txtPrice.getText().trim();
@@ -392,7 +395,6 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         // Components of the Objects Expired
         if (indexType == 0) {
-            ex = false;
             day = this.txtCadDay.getText().trim();
             month = this.txtCadMonth.getText().trim();
             year = this.txtCadYear.getText().trim();
@@ -444,7 +446,6 @@ public class RegisterProduct extends javax.swing.JFrame {
                             band, name, WIDTH, 'M'));
 
             // Execute query and catch result
-//            if (data.create(p, ex)) {
             if (controller.registerProduct(p)) {
                 setBackgroundToTxt(true);
                 products.add(p);
@@ -466,7 +467,7 @@ public class RegisterProduct extends javax.swing.JFrame {
                     name, code, day, WIDTH,
                     band, name, WIDTH, 'M'));
 
-            if (data.create(p, ex)) {
+            if (controller.registerProduct(p)) {
                 setBackgroundToTxt(false);
                 products.add(p);
                 MainMenu.products.add(p);
@@ -543,10 +544,8 @@ public class RegisterProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMinActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegisterProduct().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RegisterProduct().setVisible(true);
         });
     }
 

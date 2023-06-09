@@ -94,7 +94,13 @@ public class ProductDAOImpl implements IProductDAO {
 //                    + "(?, ? ,?, ?, ? ,?, ?, ?);");
 
 //            } else {
-            Expired pr = (Expired) obj;
+            Expired pr = new Expired();
+            try {
+                pr = (Expired) obj;
+
+            } catch (Exception e) {
+                System.out.println("pr = " + pr.toString());
+            }
 
             pst = cn.prepareStatement(
                     "INSERT INTO products (codes, namep, model, marca, price, "
@@ -150,10 +156,18 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public boolean update(Product obj) {
-        PreparedStatement pst;
 
+        PreparedStatement pst;
         Connection cn = ConexionImpl.getConnction();
 
+        Expired p = new Expired();
+        try {
+            p = (Expired) obj;
+
+        } catch (Exception e) {
+            System.out.println("pr = " + p.toString());
+            System.out.println("p = " + p.toString());
+        }
         try {
 
             pst = cn.prepareStatement(
@@ -161,16 +175,16 @@ public class ProductDAOImpl implements IProductDAO {
                     + "price = ?, existence = ?, descrip = ?, "
                     + "dateExpiry = ?, updateFor = ? where codes = '"
                     + obj.getCode() + "'");
-            
-            pst.setString(1, obj.getName());
-            pst.setString(2, obj.getModelo());
-            pst.setString(3, obj.getMarca());
-            pst.setDouble(4, obj.getPrice());
-            pst.setInt(5, obj.getExistencia());
-            pst.setString(6, obj.getDescription());
-            pst.setString(7, obj.getExpired());
-            pst.setString(8, obj.getNameUpdateFor());
-            
+
+            pst.setString(1, p.getName());
+            pst.setString(2, p.getModelo());
+            pst.setString(3, p.getMarca());
+            pst.setDouble(4, p.getPrice());
+            pst.setInt(5, p.getExistencia());
+            pst.setString(6, p.getDescription());
+            pst.setString(7, p.getExpired());
+            pst.setString(8, p.getNameUpdateFor());
+
             pst.executeUpdate();
 
         } catch (SQLException e) {

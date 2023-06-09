@@ -11,13 +11,13 @@ import edu.unsis.model.entity.User;
  */
 public class LoginModelImpl implements ILoginModel {
 
-    private IUserDAO dao = new UserDAOImpl();
-    private User currentUser;
+    private final IUserDAO dao = new UserDAOImpl();
 
     @Override
     public boolean search(Credentials credentials, User user) {
         dao.acces(credentials, user);
-        this.currentUser = user;
+        
+        UserModelImpl.setLoggedUser(user);
 
         System.out.println(user.toString());
         if (user.getName() != null) {
@@ -30,12 +30,5 @@ public class LoginModelImpl implements ILoginModel {
 
     }
 
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
 
 }

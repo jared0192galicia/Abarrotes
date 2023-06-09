@@ -9,9 +9,12 @@ public final class Expired extends Product {
 
     public Expired() {}
     
-    
+    /**
+     * 
+     * @param date 
+     */
     public Expired(String date) {
-        this.setDate(date);
+        this.date = date;
     }
 
     /**
@@ -106,12 +109,7 @@ public final class Expired extends Product {
     }
 
     @Override
-    public boolean compareTo(Product pr) {
-        
-        Expired p = (Expired) pr;
-        Expired r = (Expired) this;
-        
-        System.out.println("this = " + r + "\np: " + p.toString());
+    public boolean compareTo(Product p) {
         
         if (!p.getCode().equals(this.getCode())) {
             return false;
@@ -135,9 +133,6 @@ public final class Expired extends Product {
             return false;
         }
         
-        if (!p.getNameRegisterFor().equals(this.getNameRegisterFor())) {
-            return false;
-        }
         if (p.getPrice() != this.getPrice()) {
             return false;
         }

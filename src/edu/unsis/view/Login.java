@@ -22,9 +22,11 @@ public class Login extends javax.swing.JFrame {
     private int posX;
     private int posY;
     
-    private ImageIcon iconClose, iconCloseN;
-    private ImageIcon iconMin, iconMinN;
-    private ILoginController controller;
+    private final ImageIcon iconClose;
+    private final ImageIcon iconCloseN;
+    private final ImageIcon iconMin;
+    private final ImageIcon iconMinN;
+    private final ILoginController controller;
     
     public Login() {
         initComponents();

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import edu.unsis.model.entity.Product;
 
-public class MainMenu extends javax.swing.JFrame {
+public final class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
     public static Data data;
@@ -24,7 +24,7 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         this.setSize(850, 550);
-        this.setLocationRelativeTo(this);
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
@@ -213,9 +213,6 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public void loadData() {
         products = controller.getData();
-        for (Product product : products) {
-            System.out.println("product = " + product);
-        }
     }
 
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
@@ -262,10 +259,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonInventActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new MainMenu().setVisible(true);
         });
     }
 

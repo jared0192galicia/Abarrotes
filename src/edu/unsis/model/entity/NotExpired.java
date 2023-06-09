@@ -36,7 +36,7 @@ public class NotExpired extends Product {
 
     @Override
     public String getExpired() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     @Override

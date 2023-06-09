@@ -268,7 +268,11 @@ public class SearchProduct extends javax.swing.JFrame {
         });
         jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
 
+        buttonSearch.setBackground(new java.awt.Color(0, 102, 102));
+        buttonSearch.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonSearch.setForeground(new java.awt.Color(255, 255, 255));
         buttonSearch.setText("Buscar");
+        buttonSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSearchActionPerformed(evt);
@@ -307,7 +311,11 @@ public class SearchProduct extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 250));
 
+        buttonUpdate.setBackground(new java.awt.Color(0, 102, 102));
+        buttonUpdate.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         buttonUpdate.setText("Actualizar");
+        buttonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonUpdateActionPerformed(evt);
@@ -315,7 +323,11 @@ public class SearchProduct extends javax.swing.JFrame {
         });
         jPanel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, 220, 40));
 
+        buttonEliminar.setBackground(new java.awt.Color(0, 102, 102));
+        buttonEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonEliminar.setForeground(new java.awt.Color(255, 255, 255));
         buttonEliminar.setText("Eliminar");
+        buttonEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEliminarActionPerformed(evt);
@@ -411,7 +423,7 @@ public class SearchProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitMouseExited
 
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
-        String type = comboType.getSelectedItem().toString();
+        String type = comboType.getSelectedItem().toString().trim();
         Product p = new NotExpired();
         Expired pEx;
 
@@ -472,8 +484,6 @@ public class SearchProduct extends javax.swing.JFrame {
             this.txtModelo.setBackground(new Color(102, 153, 255));
         }
 
-        // Components of the Objects Expired
-        ex = false;
 
         if (code.equals("")) {
             this.txtCode.setBackground(Color.red);
@@ -484,8 +494,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
         }
 
-        System.out.println(type);
-
+        // Fill vars for object of type Expired
         if (type.equals("Caducable")) {
 
             day = this.txtCadDay.getText().trim();
@@ -517,8 +526,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
         if (band) {
 
-            if (day.equals("")) {
-                pEx = new Expired(day + "-" + month + "-" + year);
+            if (!day.equals("")) {
+                pEx = new Expired();
                 pEx.setCode(code);
                 pEx.setDescription(description);
                 pEx.setExistencia(Integer.parseInt(existence));
@@ -527,12 +536,13 @@ public class SearchProduct extends javax.swing.JFrame {
                 pEx.setName(name);
                 pEx.setPrice(Double.parseDouble(price));
                 pEx.setRegisterFor(productSelected.getRegisterFor());
-
-                p = (Expired) pEx;
-                if (p.compareTo(productSelected)) {
+                pEx.setDate(day + "-" + month + "-" + year);
+                
+//                p = (Expired) pEx;
+                if (!pEx.compareTo(productSelected)) {
 
 //                    if (Data.updateProduct(pEx, true)) {
-                    if (controller.update(p)) {
+                    if (controller.update(pEx)) {
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado");
                     } else {
@@ -677,9 +687,9 @@ public class SearchProduct extends javax.swing.JFrame {
                     String date = product.getExpired();
 
                     if (!date.equals("")) {
-                        this.txtCadDay.setText(date.substring(0, 4));
+                        this.txtCadDay.setText(date.substring(8, 10));
                         this.txtCadMonth.setText(date.substring(5, 7));
-                        this.txtCadYear.setText(date.substring(8, 10));
+                        this.txtCadYear.setText(date.substring(0, 4));
 
                         this.comboType.setSelectedIndex(0);
                         this.productSelected = product;

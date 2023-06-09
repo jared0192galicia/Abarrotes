@@ -55,6 +55,7 @@ public class ProductModelImpl implements IProductModel {
      */
     @Override
     public boolean update(Product obj) {
+        obj.setUpdateFor(UserModelImpl.getLoggedUser());
         return dao.update(obj);
     }
 

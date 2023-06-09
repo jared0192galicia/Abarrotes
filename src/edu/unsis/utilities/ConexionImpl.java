@@ -3,13 +3,11 @@ package edu.unsis.utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import edu.unsis.utilities.IConexion;
 
 public class ConexionImpl implements IConexion {
 
     private static Connection cn = null;
 
-    
     public static Connection getConnction() {
 
         if (cn == null) {
@@ -20,7 +18,7 @@ public class ConexionImpl implements IConexion {
 
             try {
                 cn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/abarrotes_db", user, pass);
+                        "jdbc:mysql://" + root + "/abarrotes_db", user, pass);
 
             } catch (SQLException e) {
                 System.err.println("Error in get connection\n\n" + e.getMessage());
