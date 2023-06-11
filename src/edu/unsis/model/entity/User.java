@@ -100,7 +100,7 @@ public class User extends People {
     
     @Override
     public String toString() {
-        return "User{" + "userName=" + userName + ", password=" + password + 
+        return super.toString() + "User{" + "userName=" + userName + ", password=" + password + 
         ", email=" + email + ", level=" + level + ", status=" + status + '}';
     }
 

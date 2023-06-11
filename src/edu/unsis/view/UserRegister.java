@@ -588,6 +588,10 @@ public class UserRegister extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null,
                                 "Usuario actualizado", "Info",
                                 JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null,
+                                "No se pudo actualizar", "Info",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }

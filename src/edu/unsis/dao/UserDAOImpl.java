@@ -157,22 +157,25 @@ public class UserDAOImpl implements IUserDAO {
         try {
 
             pst = cn.prepareStatement(
-                    "UPDATE users SET pass = aes_encrypt(\"root\", \"1234\"),"
+                    "UPDATE users SET userName = ?, pass = AES_ENCRYPT(?, \"root\"),"
                     + "	email = ?, nameU = ?, statusU = ?, age = ?, sex = ?,"
-                    + "levelU = ? where userName = 'root' or email = ");
+                    + "levelU = ? WHERE userName = '" + obj.getUserName()
+                    + "' OR email = '" + obj.getEmail() + "'");
 
-            pst.setString(1, p.getName());
-            pst.setString(2, p.getModelo());
-            pst.setString(3, p.getMarca());
-            pst.setDouble(4, p.getPrice());
-            pst.setInt(5, p.getExistencia());
-            pst.setString(6, p.getDescription());
-            pst.setString(7, p.getExpired());
+            pst.setString(1, obj.getUserName());
+            pst.setString(2, obj.getPassword());
+            pst.setString(3, obj.getEmail());
+            pst.setString(4, obj.getName());
+            pst.setBoolean(5, obj.isStatus());
+            pst.setInt(6, obj.getEdad());
+            pst.setString(7, String.valueOf(obj.getSexo()));
+            pst.setInt(8, obj.getLevel());
 
             pst.executeUpdate();
 
         } catch (SQLException e) {
             System.err.println("Error en update \n" + e.getMessage());
+            return false;
         }
 
         return true;

@@ -51,5 +51,9 @@ public abstract class People {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-    
+
+    @Override
+    public String toString() {
+        return "People{" + "name=" + name + ", edad=" + edad + ", sexo=" + sexo + '}';
+    }
 }
