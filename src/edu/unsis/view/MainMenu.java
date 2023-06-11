@@ -92,6 +92,7 @@ public final class MainMenu extends javax.swing.JFrame {
         jLabel1.setText("MENU PRINCIPAL");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 30, -1, -1));
 
+        buttonUsers.setToolTipText("Gestiona usuarios");
         buttonUsers.setBorder(null);
         buttonUsers.setBorderPainted(false);
         buttonUsers.setContentAreaFilled(false);
@@ -113,6 +114,7 @@ public final class MainMenu extends javax.swing.JFrame {
         button2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 170, 160));
 
+        buttonRegisterProduct.setToolTipText("Registrar producto");
         buttonRegisterProduct.setBorder(null);
         buttonRegisterProduct.setBorderPainted(false);
         buttonRegisterProduct.setContentAreaFilled(false);
@@ -134,6 +136,7 @@ public final class MainMenu extends javax.swing.JFrame {
         buttonPrint.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 170, 160));
 
+        buttonSale.setToolTipText("Ventas");
         buttonSale.setBorder(null);
         buttonSale.setBorderPainted(false);
         buttonSale.setContentAreaFilled(false);
@@ -189,6 +192,7 @@ public final class MainMenu extends javax.swing.JFrame {
         });
         jPanel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 40, 40));
 
+        buttonInvent.setToolTipText("Iventario");
         buttonInvent.setBorder(null);
         buttonInvent.setBorderPainted(false);
         buttonInvent.setContentAreaFilled(false);

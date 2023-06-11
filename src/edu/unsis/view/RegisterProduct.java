@@ -160,7 +160,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Descripcion");
+        jLabel5.setText("Descripción");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              Caducable", "              No caducable" }));
@@ -173,7 +173,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         checkCode.setForeground(new java.awt.Color(255, 255, 255));
         checkCode.setSelected(true);
-        checkCode.setText("Codigo automatico");
+        checkCode.setText("Código automatico");
         checkCode.setContentAreaFilled(false);
         checkCode.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -210,6 +210,8 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
 
+        buttonAcept.setBackground(new java.awt.Color(0, 102, 102));
+        buttonAcept.setForeground(new java.awt.Color(255, 255, 255));
         buttonAcept.setText("Registrar");
         buttonAcept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +229,7 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Dia");
+        jLabel8.setText("Día");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N

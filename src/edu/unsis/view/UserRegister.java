@@ -6,12 +6,14 @@
  */
 package edu.unsis.view;
 
-import edu.unsis.utilities.Data;
+import edu.unsis.controller.UsersController;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.unsis.model.entity.User;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +21,10 @@ import edu.unsis.model.entity.User;
  */
 public class UserRegister extends javax.swing.JFrame {
 
-    private Data data;// = MainMenu.data;
-
+    private final UsersController controller;
+    private final DefaultTableModel modelTable;
+    private final ArrayList<User> users;
+    
     public UserRegister() {
         initComponents();
 
@@ -31,8 +35,15 @@ public class UserRegister extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
-        wallpaper.setIcon(icon);
-        data = new Data();
+        this.wallpaper.setIcon(icon);
+        
+        this.controller = new UsersController();
+        
+        this.users = controller.listAllUsers();
+        
+        modelTable = (DefaultTableModel) tableUsers.getModel();
+        
+        fillTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -42,25 +53,26 @@ public class UserRegister extends javax.swing.JFrame {
         panel1 = new javax.swing.JPanel();
         txtUserName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelPass = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelEdad = new javax.swing.JLabel();
+        labelName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         comboSex = new javax.swing.JComboBox<>();
         comboEdo = new javax.swing.JComboBox<>();
         comboLevel = new javax.swing.JComboBox<>();
         buttonRegister = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
+        labelUser = new javax.swing.JLabel();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableUsers = new javax.swing.JTable();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,7 +81,7 @@ public class UserRegister extends javax.swing.JFrame {
         txtUserName.setForeground(new java.awt.Color(255, 255, 255));
         txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUserName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 210, 30));
+        panel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 210, 30));
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,71 +89,71 @@ public class UserRegister extends javax.swing.JFrame {
         jLabel1.setText("Registro de usuarios");
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Contraseña provisional");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, -1, -1));
+        labelPass.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelPass.setForeground(new java.awt.Color(255, 255, 255));
+        labelPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPass.setText("Contraseña provisional");
+        panel1.add(labelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
 
         txtEmail.setBackground(new java.awt.Color(102, 153, 255));
         txtEmail.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 210, 30));
+        panel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 30));
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Email");
-        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        labelEmail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
+        labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEmail.setText("Email");
+        panel1.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         txtEdad.setBackground(new java.awt.Color(102, 153, 255));
         txtEdad.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtEdad.setForeground(new java.awt.Color(255, 255, 255));
         txtEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEdad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 210, 30));
+        panel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 210, 30));
 
-        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Edad");
-        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
+        labelEdad.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelEdad.setForeground(new java.awt.Color(255, 255, 255));
+        labelEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEdad.setText("Edad");
+        panel1.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Nombre");
-        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        labelName.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelName.setForeground(new java.awt.Color(255, 255, 255));
+        labelName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelName.setText("Nombre");
+        panel1.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         txtName.setBackground(new java.awt.Color(102, 153, 255));
         txtName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 210, 30));
+        panel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 210, 30));
 
         comboSex.setBackground(new java.awt.Color(102, 153, 255));
         comboSex.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboSex.setForeground(new java.awt.Color(255, 255, 255));
         comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     Sexo", "      M", "      F" }));
         comboSex.setToolTipText("Nivel de permisos");
-        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 150, -1));
+        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 180, -1));
 
         comboEdo.setBackground(new java.awt.Color(102, 153, 255));
         comboEdo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboEdo.setForeground(new java.awt.Color(255, 255, 255));
         comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "      Estado", "      Activo", "     Inactivo" }));
         comboEdo.setToolTipText("Nivel de permisos");
-        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 180, -1));
+        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 180, -1));
 
         comboLevel.setBackground(new java.awt.Color(102, 153, 255));
         comboLevel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboLevel.setForeground(new java.awt.Color(255, 255, 255));
         comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Nivel", "     1", "     2", "     3" }));
         comboLevel.setToolTipText("Nivel de permisos");
-        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 120, -1));
+        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 180, -1));
 
         buttonRegister.setBackground(new java.awt.Color(102, 153, 255));
         buttonRegister.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -153,20 +165,20 @@ public class UserRegister extends javax.swing.JFrame {
                 buttonRegisterActionPerformed(evt);
             }
         });
-        panel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 210, 35));
+        panel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 210, 35));
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         txtPass.setForeground(new java.awt.Color(255, 255, 255));
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 210, -1));
+        panel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 210, -1));
 
-        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Usuario");
-        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        labelUser.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelUser.setForeground(new java.awt.Color(255, 255, 255));
+        labelUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelUser.setText("Usuario");
+        panel1.add(labelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         buttonExit.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         buttonExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +221,26 @@ public class UserRegister extends javax.swing.JFrame {
             }
         });
         panel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
-        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 470));
+
+        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Usuario", "Nombre", "Email", "Status", "Nivel"
+            }
+        ));
+        jScrollPane1.setViewportView(tableUsers);
+        if (tableUsers.getColumnModel().getColumnCount() > 0) {
+            tableUsers.getColumnModel().getColumn(2).setResizable(false);
+            tableUsers.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 700, 240));
+        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,7 +335,7 @@ public class UserRegister extends javax.swing.JFrame {
                     Integer.parseInt(level), true, name,
                     Integer.parseInt(edad), sexo.charAt(0));
 
-            if (data.createUser(u)) {
+            if (controller.create(u)) {
 
                 txtEdad.setBackground(Color.GREEN);
                 txtEmail.setBackground(Color.GREEN);
@@ -319,6 +350,8 @@ public class UserRegister extends javax.swing.JFrame {
                         "Usuario registrado con exito");
 
                 this.dispose();
+                new MainMenu().setVisible(true);
+                
             } else {
                 JOptionPane.showMessageDialog(null, 
                         "El usuario no se pudo registrar");
@@ -329,6 +362,28 @@ public class UserRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
+    public void fillTable() {
+        this.modelTable.setRowCount(0);
+        
+        String row[];
+        
+        for (User user : users) {
+            row = new String[5];
+            
+            System.out.println("user = " + user);
+            
+            row[0] = user.getUserName();
+            row[1] = user.getName();
+            row[2] = user.getEmail();
+            row[3] = String.valueOf(user.isStatus());
+            row[4] = String.valueOf(user.getLevel());
+            
+            this.modelTable.addRow(row);
+        }
+        
+        this.tableUsers.setModel(modelTable);
+    }
+    
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
@@ -373,12 +428,14 @@ public class UserRegister extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboLevel;
     private javax.swing.JComboBox<String> comboSex;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelEdad;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelPass;
+    private javax.swing.JLabel labelUser;
     private javax.swing.JPanel panel1;
+    private javax.swing.JTable tableUsers;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;

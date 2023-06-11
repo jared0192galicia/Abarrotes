@@ -56,7 +56,41 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public ArrayList<User> listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        ArrayList<User> users = new ArrayList<>();
+
+        Connection cn = ConexionImpl.getConnction();
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(
+                    "SELECT userName, email, sex, "
+                    + "CONVERT(AES_DECRYPT(pass, \"root\") USING UTF8) AS pass,"
+                    + "  nameU, statusU, age, levelU FROM users");
+
+            ResultSet rs = pst.executeQuery();
+
+            User user;
+
+            // Save data from object ResultSet
+            while (rs.next()) {
+
+                user = new User();
+                user.setEdad(rs.getInt("age"));
+                user.setEmail(rs.getString("email"));
+                user.setLevel(rs.getInt("levelU"));
+                user.setName(rs.getString("nameU"));
+                user.setPassword(rs.getString("pass"));
+                user.setSexo(rs.getString("sex").charAt(0));
+                user.setStatus(rs.getBoolean("statusU"));
+                user.setUserName(rs.getString("userName"));
+
+                users.add(user);
+            }
+        } catch (NumberFormatException | SQLException e) {
+            System.err.println("Error on query\n" + e.getMessage());
+        }
+
+        return users;
     }
 
     @Override

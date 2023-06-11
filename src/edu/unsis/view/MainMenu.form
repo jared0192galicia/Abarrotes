@@ -55,6 +55,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonUsers">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Gestiona usuarios"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -100,6 +101,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonRegisterProduct">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Registrar producto"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -145,6 +147,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonSale">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ventas"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -225,6 +228,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonInvent">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Iventario"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
