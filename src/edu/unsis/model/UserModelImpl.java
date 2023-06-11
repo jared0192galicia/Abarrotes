@@ -31,6 +31,16 @@ public class UserModelImpl implements IUserModel {
     public boolean create(User u) {
         return dao.create(u);
     }
+
+    @Override
+    public boolean delete(User user) {
+        return dao.delete(user);
+    }
+
+    @Override
+    public boolean update(User u) {
+        return dao.update(u);
+    }
     
     
 }

@@ -24,7 +24,8 @@ public class UserRegister extends javax.swing.JFrame {
     private final UsersController controller;
     private final DefaultTableModel modelTable;
     private final ArrayList<User> users;
-    
+    private User userSelected;
+
     public UserRegister() {
         initComponents();
 
@@ -36,13 +37,13 @@ public class UserRegister extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         this.wallpaper.setIcon(icon);
-        
+
         this.controller = new UsersController();
-        
+
         this.users = controller.listAllUsers();
-        
+
         modelTable = (DefaultTableModel) tableUsers.getModel();
-        
+
         fillTable();
     }
 
@@ -70,9 +71,12 @@ public class UserRegister extends javax.swing.JFrame {
         buttonMin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
+        buttonUpdate = new javax.swing.JButton();
+        buttonDelete = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,26 +104,26 @@ public class UserRegister extends javax.swing.JFrame {
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 30));
+        panel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 210, 30));
 
         labelEmail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelEmail.setForeground(new java.awt.Color(255, 255, 255));
         labelEmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelEmail.setText("Email");
-        panel1.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        panel1.add(labelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         txtEdad.setBackground(new java.awt.Color(102, 153, 255));
         txtEdad.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtEdad.setForeground(new java.awt.Color(255, 255, 255));
         txtEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEdad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        panel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 210, 30));
+        panel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 210, 30));
 
         labelEdad.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelEdad.setForeground(new java.awt.Color(255, 255, 255));
         labelEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelEdad.setText("Edad");
-        panel1.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+        panel1.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
         labelName.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelName.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,21 +143,21 @@ public class UserRegister extends javax.swing.JFrame {
         comboSex.setForeground(new java.awt.Color(255, 255, 255));
         comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     Sexo", "      M", "      F" }));
         comboSex.setToolTipText("Nivel de permisos");
-        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 180, -1));
+        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 180, -1));
 
         comboEdo.setBackground(new java.awt.Color(102, 153, 255));
         comboEdo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboEdo.setForeground(new java.awt.Color(255, 255, 255));
         comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "      Estado", "      Activo", "     Inactivo" }));
         comboEdo.setToolTipText("Nivel de permisos");
-        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 180, -1));
+        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 180, -1));
 
         comboLevel.setBackground(new java.awt.Color(102, 153, 255));
         comboLevel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboLevel.setForeground(new java.awt.Color(255, 255, 255));
         comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Nivel", "     1", "     2", "     3" }));
         comboLevel.setToolTipText("Nivel de permisos");
-        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 180, -1));
+        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 180, -1));
 
         buttonRegister.setBackground(new java.awt.Color(102, 153, 255));
         buttonRegister.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -165,7 +169,7 @@ public class UserRegister extends javax.swing.JFrame {
                 buttonRegisterActionPerformed(evt);
             }
         });
-        panel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 210, 35));
+        panel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 210, 35));
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -233,13 +237,42 @@ public class UserRegister extends javax.swing.JFrame {
                 "Usuario", "Nombre", "Email", "Status", "Nivel"
             }
         ));
+        tableUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableUsersMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableUsers);
         if (tableUsers.getColumnModel().getColumnCount() > 0) {
             tableUsers.getColumnModel().getColumn(2).setResizable(false);
             tableUsers.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 700, 240));
+        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 700, 190));
+
+        buttonUpdate.setBackground(new java.awt.Color(102, 153, 255));
+        buttonUpdate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        buttonUpdate.setText("Registrar");
+        buttonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonUpdateActionPerformed(evt);
+            }
+        });
+        panel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 210, 35));
+
+        buttonDelete.setBackground(new java.awt.Color(102, 153, 255));
+        buttonDelete.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        buttonDelete.setForeground(new java.awt.Color(255, 255, 255));
+        buttonDelete.setText("Eliminar");
+        buttonDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteActionPerformed(evt);
+            }
+        });
+        panel1.add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 210, 35));
         panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,7 +289,11 @@ public class UserRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Compiler data and send to data
+    /**
+     * Compiler data and send to controller for the register user in database
+     *
+     * @param evt
+     */
     private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
         String name = txtName.getText().trim();
         String user = txtUserName.getText().trim();
@@ -351,9 +388,9 @@ public class UserRegister extends javax.swing.JFrame {
 
                 this.dispose();
                 new MainMenu().setVisible(true);
-                
+
             } else {
-                JOptionPane.showMessageDialog(null, 
+                JOptionPane.showMessageDialog(null,
                         "El usuario no se pudo registrar");
             }
         } else {
@@ -362,55 +399,271 @@ public class UserRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
+    /**
+     * Fill table with data of the users
+     */
     public void fillTable() {
         this.modelTable.setRowCount(0);
-        
+
         String row[];
-        
+
         for (User user : users) {
             row = new String[5];
-            
+
             System.out.println("user = " + user);
-            
+
             row[0] = user.getUserName();
             row[1] = user.getName();
             row[2] = user.getEmail();
             row[3] = String.valueOf(user.isStatus());
             row[4] = String.valueOf(user.getLevel());
-            
+
             this.modelTable.addRow(row);
         }
-        
+
         this.tableUsers.setModel(modelTable);
     }
-    
+
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * dispose this frame and show main menu
+     *
+     * @param evt
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         new MainMenu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * Decorated button minimize in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Decorated button minimize in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize this frame
+     *
+     * @param evt
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
     }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Get user name of the teble and call searchuser method
+     *
+     * @param evt
      */
+    private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
+        int row = tableUsers.getSelectedRow();
+        String userName = tableUsers.getValueAt(row, 0).toString();
+
+        searchUser(userName);
+    }//GEN-LAST:event_tableUsersMouseClicked
+
+    /**
+     * Compare if exist modifi for call to controller or show warning
+     *
+     * @param evt
+     */
+    private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
+
+        String aux = userSelected.getEmail();
+
+        if (aux != null) {
+
+            String name = txtName.getText().trim();
+            String user = txtUserName.getText().trim();
+            String pass = txtPass.getText().trim();
+            String mail = txtEmail.getText().trim();
+            String edad = txtEdad.getText().trim();
+
+            String level = comboLevel.getSelectedItem().toString().trim();
+            String sexo = comboSex.getSelectedItem().toString().trim();
+            String status = comboEdo.getSelectedItem().toString().trim();
+
+            boolean band = true;
+
+            /**
+             * Valid camps nulls
+             */
+            if (name.equals("")) {
+                txtName.setBackground(Color.red);
+                band = false;
+            } else {
+                txtName.setBackground(new Color(102, 153, 255));
+            }
+
+            if (user.equals("")) {
+                txtUserName.setBackground(Color.red);
+                band = false;
+            } else {
+                txtUserName.setBackground(new Color(102, 153, 255));
+            }
+
+            if (pass.equals("")) {
+                txtPass.setBackground(Color.red);
+                band = false;
+            } else {
+                txtPass.setBackground(new Color(102, 153, 255));
+            }
+
+            if (mail.equals("")) {
+                txtEmail.setBackground(Color.red);
+                band = false;
+            } else {
+                txtEmail.setBackground(new Color(102, 153, 255));
+            }
+
+            if (edad.equals("")) {
+                txtEdad.setBackground(Color.red);
+                band = false;
+            } else {
+                txtEdad.setBackground(new Color(102, 153, 255));
+            }
+
+            if (level.equals("Nivel")) {
+                comboLevel.setBackground(Color.red);
+                band = false;
+            } else {
+                comboLevel.setBackground(new Color(102, 153, 255));
+            }
+
+            if (sexo.equalsIgnoreCase("Sexo")) {
+                comboSex.setBackground(Color.red);
+                System.out.println("No mod");
+                band = false;
+            } else {
+                comboSex.setBackground(new Color(102, 153, 255));
+            }
+
+            if (status.equals("Estado")) {
+                comboEdo.setBackground(Color.red);
+                band = false;
+            } else {
+                comboEdo.setBackground(new Color(102, 153, 255));
+            }
+
+            // Continue if all data is correct
+            if (band) {
+                User u = new User(user, pass, mail,
+                        Integer.parseInt(level), true, name,
+                        Integer.parseInt(edad), sexo.charAt(0));
+
+                if (userSelected.compareTo(u)) {
+                    JOptionPane.showMessageDialog(null,
+                            "No se modifico ningun campo", "Aviso",
+                            JOptionPane.WARNING_MESSAGE);
+                } else {
+                    if (controller.update(u)) {
+                        JOptionPane.showMessageDialog(null,
+                                "Usuario actualizado", "Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_buttonUpdateActionPerformed
+
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
+        String valid = txtName.getText().trim();
+
+        if (valid.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Primero debe seleccionar o buscar un producto");
+        } else {
+
+            int band = JOptionPane.showConfirmDialog(null,
+                    "¿Seguro que decea eliminar este producto?", "Advertencia",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+            if (band == 0) {
+
+                if (controller.delete(userSelected)) {
+
+                    this.users.remove(userSelected);
+                    fillTable();
+
+                    JOptionPane.showMessageDialog(null,
+                            "Registro eliminado");
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No se pudo eliminar el registro");
+
+                }
+            }
+        }
+    }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    /**
+     * This method searches an object User for the user name and fill jtextfield
+     * with your data
+     *
+     * @param userName code of the search
+     */
+    private void searchUser(String userName) {
+
+        for (User user : users) {
+            if (user.getUserName().equals(userName)) {
+                // Fill jTextField's
+                this.txtEdad.setText(String.valueOf(user.getEdad()));
+                this.txtEmail.setText(user.getEmail());
+                this.txtName.setText(user.getName());
+                this.txtPass.setText(user.getPassword());
+                this.txtUserName.setText(user.getUserName());
+
+                // update user selected
+                this.userSelected = user;
+
+                // Set status in combo box
+                if (user.isStatus()) {
+                    this.comboEdo.setSelectedIndex(1);
+                } else {
+                    this.comboEdo.setSelectedIndex(2);
+                }
+
+                comboLevel.setSelectedIndex(user.getLevel());
+
+                if (user.getSexo() == 'M') {
+                    this.comboSex.setSelectedIndex(1);
+                } else {
+                    this.comboSex.setSelectedIndex(2);
+                }
+            }
+        }
+
+    }
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -421,9 +674,11 @@ public class UserRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonRegister;
+    private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> comboEdo;
     private javax.swing.JComboBox<String> comboLevel;
     private javax.swing.JComboBox<String> comboSex;
@@ -443,4 +698,5 @@ public class UserRegister extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserName;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
+
 }

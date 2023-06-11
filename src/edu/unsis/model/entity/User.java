@@ -94,6 +94,10 @@ public class User extends People {
         this.status = status;
     }
 
+    public boolean compareTo(User u) {
+        return u.toString().equals(this.toString());
+    }
+    
     @Override
     public String toString() {
         return "User{" + "userName=" + userName + ", password=" + password + 

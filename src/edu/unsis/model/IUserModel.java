@@ -13,4 +13,7 @@ public interface IUserModel {
 
     public boolean create(User u);
 
+    public boolean delete(User user);
+
+    public boolean update(User u);
 }

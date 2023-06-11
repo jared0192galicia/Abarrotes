@@ -22,4 +22,12 @@ public class UsersController {
     public boolean create(User u) {
         return model.create(u);
     }
+
+    public boolean delete(User user) {
+        return model.delete(user);
+    }
+
+    public boolean update(User u) {
+        return model.update(u);
+    }
 }

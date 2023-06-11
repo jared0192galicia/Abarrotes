@@ -577,12 +577,10 @@ public class SearchProduct extends javax.swing.JFrame {
 
             }
         }
-
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     /**
      * Delete register in mysql and system
-     *
      * @param evt
      */
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed

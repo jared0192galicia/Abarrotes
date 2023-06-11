@@ -151,7 +151,31 @@ public class UserDAOImpl implements IUserDAO {
 
     @Override
     public boolean update(User obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement pst;
+        Connection cn = ConexionImpl.getConnction();
+
+        try {
+
+            pst = cn.prepareStatement(
+                    "UPDATE users SET pass = aes_encrypt(\"root\", \"1234\"),"
+                    + "	email = ?, nameU = ?, statusU = ?, age = ?, sex = ?,"
+                    + "levelU = ? where userName = 'root' or email = ");
+
+            pst.setString(1, p.getName());
+            pst.setString(2, p.getModelo());
+            pst.setString(3, p.getMarca());
+            pst.setDouble(4, p.getPrice());
+            pst.setInt(5, p.getExistencia());
+            pst.setString(6, p.getDescription());
+            pst.setString(7, p.getExpired());
+
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error en update \n" + e.getMessage());
+        }
+
+        return true;
     }
 
 }
