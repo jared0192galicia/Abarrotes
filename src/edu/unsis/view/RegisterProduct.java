@@ -460,6 +460,16 @@ public class RegisterProduct extends javax.swing.JFrame {
         } else {
             code = CodesProducts.generate(indexCode);
         }
+        
+        try {
+            Integer.valueOf(existence);
+            Double.valueOf(price);
+        } catch (NumberFormatException e) {
+            band = false;
+            JOptionPane.showMessageDialog(null, 
+                    "No puede ingresar caracteres en algunos campos");
+        }
+        
         // Register product of type Expired
         if (band && (indexType == 0)) {
 

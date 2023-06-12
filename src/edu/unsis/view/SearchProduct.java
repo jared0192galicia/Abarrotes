@@ -591,6 +591,15 @@ public class SearchProduct extends javax.swing.JFrame {
 
         }
 
+        try {
+            Integer.valueOf(existence);
+            Double.valueOf(price);
+        } catch (NumberFormatException e) {
+            band = false;
+            JOptionPane.showMessageDialog(null, 
+                    "No puede ingresar caracteres en algunos campos");
+        }
+        
         if (band) {
 
             if (!day.equals("")) {

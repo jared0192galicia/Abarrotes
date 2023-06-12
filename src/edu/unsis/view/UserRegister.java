@@ -334,6 +334,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Compiler data and send to controller for the register user in database
+     *
      * @param evt
      */
     private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
@@ -407,6 +408,15 @@ public final class UserRegister extends javax.swing.JFrame {
             comboEdo.setBackground(new Color(102, 153, 255));
         }
 
+        try {
+            Integer.valueOf(edad);
+            this.txtEdad.setBackground(Color.YELLOW);
+        } catch (NumberFormatException e) {
+            band = false;
+            JOptionPane.showMessageDialog(null,
+                    "No puede ingresar caracteres en algunos campos");
+        }
+
         // Continue with resgister if all fields are valids
         if (band) {
             User u = new User(user, pass, mail,
@@ -433,13 +443,13 @@ public final class UserRegister extends javax.swing.JFrame {
 
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "El usuario no se pudo registrar" , "Aviso"
-                                , JOptionPane.ERROR_MESSAGE);
+                        "El usuario no se pudo registrar", "Aviso",
+                         JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Verifique los campos resaltados", "Aviso"
-                                , JOptionPane.ERROR_MESSAGE);
+                    "Verifique los campos resaltados", "Aviso",
+                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
@@ -469,6 +479,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Decorated button exited in event hover
+     *
      * @param evt
      */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
@@ -477,6 +488,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Decorated button exited in event hover
+     *
      * @param evt
      */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
@@ -485,6 +497,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * dispose this frame and show main menu
+     *
      * @param evt
      */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
@@ -493,6 +506,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Decorated button minimize in event hover
+     *
      * @param evt
      */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
@@ -501,6 +515,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Decorated button minimize in event hover
+     *
      * @param evt
      */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
@@ -509,6 +524,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Minimize this frame
+     *
      * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
@@ -517,6 +533,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Get user name of the teble and call searchuser method
+     *
      * @param evt
      */
     private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
@@ -528,6 +545,7 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Compare if exist modifi for call to controller or show warning
+     *
      * @param evt
      */
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
@@ -608,6 +626,14 @@ public final class UserRegister extends javax.swing.JFrame {
                 comboEdo.setBackground(new Color(102, 153, 255));
             }
 
+            try {
+                Integer.valueOf(edad);
+                this.txtEdad.setBackground(Color.YELLOW);
+            } catch (NumberFormatException e) {
+                band = false;
+                JOptionPane.showMessageDialog(null,
+                        "No puede ingresar caracteres en algunos campos");
+            }
             // Continue if all data is correct
             if (band) {
                 User u = new User(user, pass, mail,
@@ -636,20 +662,21 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Compare if there is a user selected, call controller for delete
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         String valid = txtName.getText().trim();
 
         if (valid.equals("")) {
             JOptionPane.showMessageDialog(null,
-                    "Primero debe seleccionar o buscar un producto", 
+                    "Primero debe seleccionar o buscar un producto",
                     "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
             int band = JOptionPane.showConfirmDialog(null,
-                    "¿Seguro que decea eliminar este producto?", 
-                    "Advertencia", JOptionPane.YES_NO_OPTION, 
+                    "¿Seguro que decea eliminar este producto?",
+                    "Advertencia", JOptionPane.YES_NO_OPTION,
                     JOptionPane.WARNING_MESSAGE);
 
             if (band == 0) {
@@ -661,12 +688,12 @@ public final class UserRegister extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(null,
                             "Registro eliminado", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.INFORMATION_MESSAGE);
 
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "No se pudo eliminar el registro", "Aviso",
-                        JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -674,7 +701,8 @@ public final class UserRegister extends javax.swing.JFrame {
 
     /**
      * Returned to main menu
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         this.dispose();
