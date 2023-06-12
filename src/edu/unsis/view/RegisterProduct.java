@@ -91,7 +91,7 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtExist = new javax.swing.JTextField();
         labelTitle = new javax.swing.JLabel();
         labelPrice = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollTxtArea = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         buttonRegister = new javax.swing.JButton();
         txtCadDay = new javax.swing.JTextField();
@@ -214,9 +214,9 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtDescription.setRows(5);
         txtDescription.setAutoscrolls(false);
         txtDescription.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane1.setViewportView(txtDescription);
+        scrollTxtArea.setViewportView(txtDescription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
+        jPanel1.add(scrollTxtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
 
         buttonRegister.setBackground(new java.awt.Color(0, 102, 102));
         buttonRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -627,7 +627,6 @@ public class RegisterProduct extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkCode;
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDay;
     private javax.swing.JLabel labelDescription;
     private javax.swing.JLabel labelExistence;
@@ -638,6 +637,7 @@ public class RegisterProduct extends javax.swing.JFrame {
     private javax.swing.JLabel labelPrice;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelYear;
+    private javax.swing.JScrollPane scrollTxtArea;
     private javax.swing.JTextField txtCadDay;
     private javax.swing.JTextField txtCadMonth;
     private javax.swing.JTextField txtCadYear;

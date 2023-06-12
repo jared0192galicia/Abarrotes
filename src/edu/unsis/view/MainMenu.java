@@ -76,7 +76,7 @@ public final class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
         buttonUsers = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
         buttonRegisterProduct = new javax.swing.JButton();
@@ -93,10 +93,10 @@ public final class MainMenu extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("MENÚ PRINCIPAL");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 30, -1, -1));
+        labelTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setText("MENÚ PRINCIPAL");
+        jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 30, -1, -1));
 
         buttonUsers.setToolTipText("Gestiona usuarios");
         buttonUsers.setBorder(null);
@@ -110,7 +110,7 @@ public final class MainMenu extends javax.swing.JFrame {
                 buttonUsersActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 170, 160));
+        jPanel1.add(buttonUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 170, 160));
 
         button2.setBorder(null);
         button2.setBorderPainted(false);
@@ -141,7 +141,7 @@ public final class MainMenu extends javax.swing.JFrame {
         buttonPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonPrint.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, 170, 160));
+        jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 170, 160));
 
         buttonSale.setToolTipText("Ventas");
         buttonSale.setBorder(null);
@@ -326,8 +326,8 @@ public final class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton buttonRegisterProduct;
     private javax.swing.JButton buttonSale;
     private javax.swing.JButton buttonUsers;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 }

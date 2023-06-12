@@ -8,74 +8,79 @@ package edu.unsis.view;
 
 import edu.unsis.controller.LoginController;
 import edu.unsis.model.entity.Credentials;
+import edu.unsis.model.entity.User;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
-import edu.unsis.model.entity.User;
 
-public class Login extends javax.swing.JFrame {
-    
+public final class Login extends javax.swing.JFrame {
+
     private int posX;
     private int posY;
-    
+
     private final ImageIcon iconClose;
     private final ImageIcon iconCloseN;
     private final ImageIcon iconMin;
     private final ImageIcon iconMinN;
     private final LoginController controller;
-    
+private Clip clip;
     /**
      * Contructor for Frame Login. Set Wallpaper and more images
      */
     public Login() {
         initComponents();
-        
+
         this.buttonAcceder.requestFocus(true);
-        
         this.setSize(650, 430);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         controller = new LoginController();
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
-        
+
         wallpaper.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/mainLogo.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(logoStore.getWidth(),
                 logoStore.getHeight(), Image.SCALE_DEFAULT));
-        
+
         logoStore.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
                 buttonMin.getHeight(), Image.SCALE_DEFAULT));
-        
+
         iconMinN = icon;
         buttonMin.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
-        
+
         iconCloseN = icon;
         buttonClose.setIcon(icon);
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
         iconClose = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
-        
+
         image = new ImageIcon("./src/edu/unsis/view/images/minimizeDos.png");
         iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
+        this.playSountrack("soundLogin");
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -90,7 +95,7 @@ public class Login extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         buttonAcceder = new javax.swing.JButton();
         labelPassword = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -203,10 +208,10 @@ public class Login extends javax.swing.JFrame {
         });
         panelRigth.add(labelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 260, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Login");
-        panelRigth.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
+        labelTitle.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setText("Login");
+        panelRigth.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
 
         getContentPane().add(panelRigth, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, 325, 430));
 
@@ -215,15 +220,36 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Exit to program
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonCloseActionPerformed
+    /**
+     *
+     * Play music for the game
+     *
+     */
+
+    public void playSountrack(String sonido) {
+
+        try {
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                    new File("./src/edu/unsis/media/audio/" + sonido + ".wav"));
+            clip = AudioSystem.getClip();
+            clip.open(inputStream);
+            clip.start();
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    
 
     /**
      * change to cursor hand with hover event
-     * @param evt 
+     *
+     * @param evt
      */
     private void labelPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPasswordMouseEntered
         this.setCursor(HAND_CURSOR);
@@ -231,16 +257,18 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * change to cursor normal with hover exited event
-     * @param evt 
+     *
+     * @param evt
      */
     private void labelPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPasswordMouseExited
         this.setCursor(NORMAL);
     }//GEN-LAST:event_labelPasswordMouseExited
 
     /**
-     * check that all fields are filled with valid data. After call to 
+     * check that all fields are filled with valid data. After call to
      * controller for valid acces
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAccederActionPerformed
         String userTxt = txtUser.getText().trim();
@@ -252,27 +280,27 @@ public class Login extends javax.swing.JFrame {
         } else {
             txtUser.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (pass.equals("")) {
             band = false;
             txtPass.setBackground(Color.red);
         } else {
             txtPass.setBackground(new Color(102, 153, 255));
         }
-        
+
         if (band) {
             User user = new User();
-            
+
             if (controller.getMatch(new Credentials(pass, userTxt), user)) {
-                
+
                 if (user.isStatus()) {
                     new MainMenu().setVisible(true);
-                    this.dispose();                    
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "Usuario Inactivo");
                 }
-                
+
             } else {
                 JOptionPane.showMessageDialog(null,
                         "Nombre de usuario o contraseña incorrectos");
@@ -282,7 +310,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Get updated position of the frame, and save point
-     * @param evt 
+     *
+     * @param evt
      */
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         posX = evt.getX();
@@ -291,7 +320,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Update position in screen
-     * @param evt 
+     *
+     * @param evt
      */
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         this.setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
@@ -299,7 +329,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Minimize window
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
@@ -307,7 +338,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setIcon(iconMin);
@@ -315,7 +347,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseEntered
         this.buttonClose.setIcon(iconClose);
@@ -323,7 +356,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseExited
         this.buttonClose.setIcon(iconCloseN);
@@ -331,7 +365,8 @@ public class Login extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setIcon(iconMinN);
@@ -376,8 +411,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton buttonAcceder;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelPassword;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel logoStore;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelRigth;
@@ -386,4 +421,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
 
-    }
+}

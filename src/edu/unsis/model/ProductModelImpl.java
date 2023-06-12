@@ -20,7 +20,6 @@ public class ProductModelImpl implements IProductModel {
 
     /**
      * Proces load data of type T from data base (MySql)
-     *
      * @return ArrayList with data
      */
     @Override
@@ -65,18 +64,11 @@ public class ProductModelImpl implements IProductModel {
 
     /**
      * Fill model wirh data in products from MainMenu
-     *
      * @param model
      */
     @Override
     public void showAll(DefaultTableModel model) {
         model.setNumRows(0);
-        model.setColumnCount(0);
-        model.addColumn("Nombre");
-        model.addColumn("Codigo");
-        model.addColumn("Modelo");
-        model.addColumn("Existencia");
-        model.addColumn("Precio");
 
         String row[];
 

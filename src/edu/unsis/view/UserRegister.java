@@ -86,8 +86,8 @@ public final class UserRegister extends javax.swing.JFrame {
         tableUsers = new javax.swing.JTable();
         buttonUpdate = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
-        wallpaper = new javax.swing.JLabel();
         buttonHome = new javax.swing.JButton();
+        wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -155,23 +155,23 @@ public final class UserRegister extends javax.swing.JFrame {
         comboSex.setBackground(new java.awt.Color(102, 153, 255));
         comboSex.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboSex.setForeground(new java.awt.Color(255, 255, 255));
-        comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "     Sexo", "      M", "      F" }));
+        comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "         Sexo", "           M", "           F" }));
         comboSex.setToolTipText("Nivel de permisos");
-        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 180, -1));
+        panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 200, -1));
 
         comboEdo.setBackground(new java.awt.Color(102, 153, 255));
         comboEdo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboEdo.setForeground(new java.awt.Color(255, 255, 255));
-        comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "      Estado", "      Activo", "     Inactivo" }));
+        comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "        Estado", "        Activo", "       Inactivo" }));
         comboEdo.setToolTipText("Nivel de permisos");
-        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 180, -1));
+        panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 210, -1));
 
         comboLevel.setBackground(new java.awt.Color(102, 153, 255));
         comboLevel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboLevel.setForeground(new java.awt.Color(255, 255, 255));
-        comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   Nivel", "     1", "     2", "     3" }));
+        comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "        Nivel", "          1", "          2", "          3" }));
         comboLevel.setToolTipText("Nivel de permisos");
-        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 180, -1));
+        panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 210, -1));
 
         buttonRegister.setBackground(new java.awt.Color(102, 153, 255));
         buttonRegister.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -303,7 +303,6 @@ public final class UserRegister extends javax.swing.JFrame {
             }
         });
         panel1.add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 210, 35));
-        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
 
         buttonHome.setBorder(null);
         buttonHome.setBorderPainted(false);
@@ -317,6 +316,7 @@ public final class UserRegister extends javax.swing.JFrame {
             }
         });
         panel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
+        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,8 +488,7 @@ public final class UserRegister extends javax.swing.JFrame {
      * @param evt
      */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        new MainMenu().setVisible(true);
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
     /**

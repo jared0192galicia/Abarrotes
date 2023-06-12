@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.Product;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class Inventory extends javax.swing.JFrame {
 
@@ -34,9 +37,29 @@ public class Inventory extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
-        
-        model = new DefaultTableModel();
+
+        image = new ImageIcon("./src/edu/unsis/view/images/home.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
+                buttonHome.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonHome.setIcon(icon);
+
+        model = (DefaultTableModel) table.getModel();
         createDefaultModel();
+
+        table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table.getTableHeader().setBackground(new Color(0, 153, 153));
+        table.getTableHeader().setForeground(new Color(255, 255, 255));
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(1).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(3).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(4).setCellRenderer(tcr);
+
+
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +72,7 @@ public class Inventory extends javax.swing.JFrame {
         buttonExport = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         buttonCreate = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
@@ -61,6 +84,9 @@ public class Inventory extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 0));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -72,6 +98,10 @@ public class Inventory extends javax.swing.JFrame {
                 "Nombre", "Marca", "Modelo", "Código", "Existencia", "Precio", "Caducidad"
             }
         ));
+        table.setFocusable(false);
+        table.setSelectionBackground(new java.awt.Color(0, 102, 102));
+        table.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        table.setShowVerticalLines(false);
         jScrollPane1.setViewportView(table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 850, 300));
@@ -112,11 +142,11 @@ public class Inventory extends javax.swing.JFrame {
         });
         jPanel1.add(buttonCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 100, 30));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("INVENTARIO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 60));
+        labelTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitle.setText("INVENTARIO");
+        jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 60));
 
         jComboBox1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    Filtros", "    Todos", "  Abecedario", "  Existencia", "  Caducidad" }));
@@ -195,17 +225,12 @@ public class Inventory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Fill model of the table with data in List products 
+     * Fill model of the table with data in List products
      */
     private void createDefaultModel() {
-        model.addColumn("Nombre");
-        model.addColumn("Codigo");
-        model.addColumn("Marca");
-        model.addColumn("Modelo");
-        model.addColumn("Existencia");
-        model.addColumn("Precio");
-        model.addColumn("Caducidad");
-        
+
+        model.setRowCount(0);
+
         String row[];
 
         for (Product product : products) {
@@ -227,18 +252,20 @@ public class Inventory extends javax.swing.JFrame {
         }
         this.table.setModel(model);
     }
-    
+
     /**
      * Change Frame to export report
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
-        
+
     }//GEN-LAST:event_buttonExportActionPerformed
 
     /**
      * Change Frame to create products
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
         new RegisterProduct().setVisible(true);
@@ -247,7 +274,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Change Frame to edit products
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         new SearchProduct().setVisible(true);
@@ -256,7 +284,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
@@ -264,7 +293,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
@@ -272,7 +302,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Exit program with exit = 0
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
@@ -280,7 +311,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
@@ -288,7 +320,8 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
@@ -296,6 +329,7 @@ public class Inventory extends javax.swing.JFrame {
 
     /**
      * Minimize this frame
+     *
      * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
@@ -308,7 +342,7 @@ public class Inventory extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(() -> {
             new Inventory().setVisible(true);
         });
@@ -322,9 +356,9 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JTable table;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables

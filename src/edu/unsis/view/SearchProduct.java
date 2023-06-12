@@ -16,6 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
 import edu.unsis.model.entity.Product;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class SearchProduct extends javax.swing.JFrame {
 
@@ -47,8 +50,29 @@ public class SearchProduct extends javax.swing.JFrame {
 
         wallpaper.setIcon(icon);
 
+        image = new ImageIcon("./src/edu/unsis/view/images/home.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
+                buttonHome.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonHome.setIcon(icon);
+
         controller = new SearchProductController();
-        model = new DefaultTableModel();
+
+        table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table.getTableHeader().setBackground(new Color(0, 153, 153));
+        table.getTableHeader().setForeground(new Color(255, 255, 255));
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(1).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(3).setCellRenderer(tcr);
+        table.getColumnModel().getColumn(4).setCellRenderer(tcr);
+
+        model = (DefaultTableModel) table.getModel();
+
+//        model = new DefaultTableModel();
         createDefaultModel();
     }
 
@@ -56,7 +80,7 @@ public class SearchProduct extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
         labelName = new javax.swing.JLabel();
         labelExistence = new javax.swing.JLabel();
@@ -71,7 +95,7 @@ public class SearchProduct extends javax.swing.JFrame {
         txtExist = new javax.swing.JTextField();
         labelTitle = new javax.swing.JLabel();
         labelPrice = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollTxtArea = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         txtCadDay = new javax.swing.JTextField();
         labelDay = new javax.swing.JLabel();
@@ -84,7 +108,7 @@ public class SearchProduct extends javax.swing.JFrame {
         buttonSearch = new javax.swing.JButton();
         txtCode = new javax.swing.JTextField();
         labelCode = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollTable = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         buttonUpdate = new javax.swing.JButton();
         buttonEliminar = new javax.swing.JButton();
@@ -94,24 +118,24 @@ public class SearchProduct extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtName.setEditable(false);
         txtName.setBackground(new java.awt.Color(102, 153, 255));
         txtName.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 210, 30));
+        panel.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 210, 30));
 
         labelName.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelName.setForeground(new java.awt.Color(255, 255, 255));
         labelName.setText("Nombre");
-        jPanel1.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+        panel.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
 
         labelExistence.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelExistence.setForeground(new java.awt.Color(255, 255, 255));
         labelExistence.setText("Existencia");
-        jPanel1.add(labelExistence, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+        panel.add(labelExistence, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
         buttonHome.setBorder(null);
         buttonHome.setBorderPainted(false);
@@ -124,43 +148,43 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonHomeActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
+        panel.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
 
         txtMarca.setEditable(false);
         txtMarca.setBackground(new java.awt.Color(102, 153, 255));
         txtMarca.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtMarca.setForeground(new java.awt.Color(255, 255, 255));
         txtMarca.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 210, 30));
+        panel.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 210, 30));
 
         labelMarca.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelMarca.setForeground(new java.awt.Color(255, 255, 255));
         labelMarca.setText("Marca");
-        jPanel1.add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        panel.add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         txtModelo.setEditable(false);
         txtModelo.setBackground(new java.awt.Color(102, 153, 255));
         txtModelo.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtModelo.setForeground(new java.awt.Color(255, 255, 255));
         txtModelo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 210, 30));
+        panel.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 210, 30));
 
         Modelo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         Modelo.setForeground(new java.awt.Color(255, 255, 255));
         Modelo.setText("Modelo");
-        jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
+        panel.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, -1));
 
         txtPrice.setEditable(false);
         txtPrice.setBackground(new java.awt.Color(102, 153, 255));
         txtPrice.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtPrice.setForeground(new java.awt.Color(255, 255, 255));
         txtPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, 30));
+        panel.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, 30));
 
         labelDescription.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelDescription.setForeground(new java.awt.Color(255, 255, 255));
         labelDescription.setText("Descripcion");
-        jPanel1.add(labelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
+        panel.add(labelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              Caducable", "              No caducable" }));
         comboType.setEnabled(false);
@@ -174,24 +198,24 @@ public class SearchProduct extends javax.swing.JFrame {
                 comboTypeActionPerformed(evt);
             }
         });
-        jPanel1.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 210, -1));
+        panel.add(comboType, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 210, -1));
 
         txtExist.setEditable(false);
         txtExist.setBackground(new java.awt.Color(102, 153, 255));
         txtExist.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtExist.setForeground(new java.awt.Color(255, 255, 255));
         txtExist.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 210, 30));
+        panel.add(txtExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 210, 30));
 
         labelTitle.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(255, 255, 255));
         labelTitle.setText("Buscar y modificar");
-        jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+        panel.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         labelPrice.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelPrice.setForeground(new java.awt.Color(255, 255, 255));
         labelPrice.setText("Precio");
-        jPanel1.add(labelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        panel.add(labelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         txtDescription.setBackground(new java.awt.Color(102, 153, 255));
         txtDescription.setColumns(20);
@@ -199,45 +223,45 @@ public class SearchProduct extends javax.swing.JFrame {
         txtDescription.setForeground(new java.awt.Color(255, 255, 255));
         txtDescription.setLineWrap(true);
         txtDescription.setRows(5);
-        jScrollPane1.setViewportView(txtDescription);
+        scrollTxtArea.setViewportView(txtDescription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 270, 140));
+        panel.add(scrollTxtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 270, 140));
 
         txtCadDay.setEditable(false);
         txtCadDay.setBackground(new java.awt.Color(102, 153, 255));
         txtCadDay.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadDay.setForeground(new java.awt.Color(255, 255, 255));
         txtCadDay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtCadDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, 30));
+        panel.add(txtCadDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, 30));
 
         labelDay.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelDay.setForeground(new java.awt.Color(255, 255, 255));
         labelDay.setText("Día");
-        jPanel1.add(labelDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        panel.add(labelDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         labelMonth.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelMonth.setForeground(new java.awt.Color(255, 255, 255));
         labelMonth.setText("Mes");
-        jPanel1.add(labelMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        panel.add(labelMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
         txtCadMonth.setEditable(false);
         txtCadMonth.setBackground(new java.awt.Color(102, 153, 255));
         txtCadMonth.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadMonth.setForeground(new java.awt.Color(255, 255, 255));
         txtCadMonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtCadMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 210, 30));
+        panel.add(txtCadMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 210, 30));
 
         txtCadYear.setEditable(false);
         txtCadYear.setBackground(new java.awt.Color(102, 153, 255));
         txtCadYear.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCadYear.setForeground(new java.awt.Color(255, 255, 255));
         txtCadYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtCadYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 210, 30));
+        panel.add(txtCadYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 210, 30));
 
         labelYear.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelYear.setForeground(new java.awt.Color(255, 255, 255));
         labelYear.setText("Año");
-        jPanel1.add(labelYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, -1, -1));
+        panel.add(labelYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, -1, -1));
 
         buttonMin.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         buttonMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -258,7 +282,7 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonMinActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 40, 40));
+        panel.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 40, 40));
 
         buttonExit.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         buttonExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,7 +303,7 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonExitActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
+        panel.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
 
         buttonSearch.setBackground(new java.awt.Color(0, 102, 102));
         buttonSearch.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -291,19 +315,22 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonSearchActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 220, 40));
+        panel.add(buttonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 220, 40));
 
         txtCode.setBackground(new java.awt.Color(102, 153, 255));
         txtCode.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtCode.setForeground(new java.awt.Color(255, 255, 255));
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
+        panel.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
 
         labelCode.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelCode.setForeground(new java.awt.Color(255, 255, 255));
         labelCode.setText("Codigo");
-        jPanel1.add(labelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        panel.add(labelCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 0));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -312,17 +339,21 @@ public class SearchProduct extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Còdigo", "Modelo", "Existencia", "Precio"
+                "Nombre", "Código", "Modelo", "Existencia", "Precio"
             }
         ));
+        table.setSelectionBackground(new java.awt.Color(0, 102, 102));
+        table.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        table.setShowVerticalLines(false);
+        table.getTableHeader().setReorderingAllowed(false);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(table);
+        scrollTable.setViewportView(table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 250));
+        panel.add(scrollTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 250));
 
         buttonUpdate.setBackground(new java.awt.Color(0, 102, 102));
         buttonUpdate.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -334,7 +365,7 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, 220, 40));
+        panel.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, 220, 40));
 
         buttonEliminar.setBackground(new java.awt.Color(0, 102, 102));
         buttonEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -346,10 +377,10 @@ public class SearchProduct extends javax.swing.JFrame {
                 buttonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 220, 40));
-        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
+        panel.add(buttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 580, 220, 40));
+        panel.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 650));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 878, -1));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 878, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -581,17 +612,17 @@ public class SearchProduct extends javax.swing.JFrame {
                         MainMenu.products.add(pEx);
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null,
                                 "El producto no pudo ser modificado", "Aviso",
-                        JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "No se ah modificado ningún campo", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.INFORMATION_MESSAGE);
                 }
 
             } else {
@@ -608,7 +639,7 @@ public class SearchProduct extends javax.swing.JFrame {
                 if (productSelected.compareTo(p)) {
                     JOptionPane.showMessageDialog(null,
                             "No se ah modificado ningún campo", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.INFORMATION_MESSAGE);
                 } else {
 
                     if (controller.update(p)) {
@@ -617,7 +648,7 @@ public class SearchProduct extends javax.swing.JFrame {
                         MainMenu.products.add(p);
                         JOptionPane.showMessageDialog(null,
                                 "Producto modificado", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -658,7 +689,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "No se pudo eliminar el registro", "Aviso", 
+                            "No se pudo eliminar el registro", "Aviso",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -786,9 +817,6 @@ public class SearchProduct extends javax.swing.JFrame {
     private javax.swing.JButton buttonSearch;
     private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> comboType;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCode;
     private javax.swing.JLabel labelDay;
     private javax.swing.JLabel labelDescription;
@@ -799,6 +827,9 @@ public class SearchProduct extends javax.swing.JFrame {
     private javax.swing.JLabel labelPrice;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelYear;
+    private javax.swing.JPanel panel;
+    private javax.swing.JScrollPane scrollTable;
+    private javax.swing.JScrollPane scrollTxtArea;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCadDay;
     private javax.swing.JTextField txtCadMonth;
