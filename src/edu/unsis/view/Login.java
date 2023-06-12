@@ -14,9 +14,12 @@ import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.io.File;
+import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 public final class Login extends javax.swing.JFrame {
@@ -228,8 +231,8 @@ private Clip clip;
     }//GEN-LAST:event_buttonCloseActionPerformed
     /**
      *
-     * Play music for the game
-     *
+     * Play music of init
+     * @param sonido
      */
 
     public void playSountrack(String sonido) {
@@ -240,8 +243,7 @@ private Clip clip;
             clip = AudioSystem.getClip();
             clip.open(inputStream);
             clip.start();
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
         }
     }
     
