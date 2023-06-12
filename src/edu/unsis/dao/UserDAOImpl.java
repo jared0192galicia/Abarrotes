@@ -155,7 +155,7 @@ public class UserDAOImpl implements IUserDAO {
 
         try {
             pst = cn.prepareStatement(
-                    "DELETE FROM products WHERE codes='"
+                    "DELETE FROM users WHERE userName='"
                     + obj.getUserName() + "'");
 
             pst.executeUpdate();

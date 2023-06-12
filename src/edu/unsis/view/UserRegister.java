@@ -40,6 +40,12 @@ public final class UserRegister extends javax.swing.JFrame {
 
         this.wallpaper.setIcon(icon);
 
+        image = new ImageIcon("./src/edu/unsis/view/images/home.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
+                buttonHome.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonHome.setIcon(icon);
+
         this.controller = new UsersController();
         this.users = controller.listAllUsers();
 
@@ -410,7 +416,6 @@ public final class UserRegister extends javax.swing.JFrame {
 
         try {
             Integer.valueOf(edad);
-            this.txtEdad.setBackground(Color.YELLOW);
         } catch (NumberFormatException e) {
             band = false;
             JOptionPane.showMessageDialog(null,
@@ -628,7 +633,6 @@ public final class UserRegister extends javax.swing.JFrame {
 
             try {
                 Integer.valueOf(edad);
-                this.txtEdad.setBackground(Color.YELLOW);
             } catch (NumberFormatException e) {
                 band = false;
                 JOptionPane.showMessageDialog(null,
