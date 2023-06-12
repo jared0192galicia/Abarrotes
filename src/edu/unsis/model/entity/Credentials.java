@@ -16,6 +16,10 @@ public class Credentials {
 
     public Credentials() {}
 
+    /**
+     * @param password
+     * @param user 
+     */
     public Credentials(String password, String user) {
         this.password = password;
         this.user = user;

@@ -1,13 +1,23 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 10 / may / 2023
+ * modificado 11 / Jul / 2023
+ * Descripcion: Login principal
+ */
 package edu.unsis.utilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionImpl implements IConexion {
+public class Conexion {
 
     private static Connection cn = null;
-
+    
+    /**
+     * Method for generate code of product.
+     * @return String code for alement
+     */
     public static Connection getConnction() {
 
         if (cn == null) {
@@ -26,5 +36,15 @@ public class ConexionImpl implements IConexion {
         }
 
         return cn;
+    }
+    
+    /**
+     * Close conection with mysql
+     * @throws SQLException 
+     */
+    public static void closeConnection() throws SQLException {
+        if (cn != null) {
+            cn.close();
+        }
     }
 }

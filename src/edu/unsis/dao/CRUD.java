@@ -1,12 +1,10 @@
 /**
  * Autor: Galicia Cordova Elietzer Jared
- * Creado el: 27 / May / 2023
- * modificado: 2 / Jun / 2023
+ * Creado el: 25 / May / 2023
+ * modificado: 11 / Jun / 2023
  * Descipciòn: Interfaz del CRUD basico para una clase generica 
  */
 package edu.unsis.dao;
-
-
 
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public interface CRUD <T> {
     /**
      * Register the obj of type T in database
      * @param obj to resgister in the data base
-     * @return false in case of the error
+     * @return false in case of error or true otherwise
      */
     public boolean create(T obj);
     

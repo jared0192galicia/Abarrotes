@@ -12,8 +12,7 @@ public abstract class Product {
     private User registerFor;
     private User updateFor;
 
-    public Product() {
-    }
+    public Product() {}
 
     /**
      * @param name
@@ -51,6 +50,16 @@ public abstract class Product {
         this.registerFor = registerFor;
     }
 
+    
+    public abstract String getExpired();
+
+    /**
+     * Compare if this and p are the same
+     * @param p obj for compare
+     * @return true if are same and false in otherwise
+     */
+    public abstract boolean compareTo(Product p);
+    
     public String getName() {
         return name;
     }
@@ -131,10 +140,6 @@ public abstract class Product {
         this.updateFor = updateFor;
     }
 
-    public abstract String getExpired();
-
-    public abstract boolean compareTo(Product p);
-
     @Override
     public String toString() {
         return "Product{" + "name=" + name + ", code=" + code + ", Marca="
@@ -143,5 +148,4 @@ public abstract class Product {
                 + ", registerFor=" + registerFor + ", updateFor=" + updateFor 
                 + '}';
     }
-
 }

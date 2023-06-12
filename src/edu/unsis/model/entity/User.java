@@ -1,7 +1,7 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 19/may/2023
- * modificado 22/may/2023
+ * modificado 11 / Jul / 2023
  * Descripcion: Objeto usuario
  */
 package edu.unsis.model.entity;
@@ -32,7 +32,7 @@ public class User extends People {
     }
 
     /**
-     * Usa este
+     * Use this for all data nedeed
      * @param userName
      * @param password
      * @param email
@@ -52,8 +52,6 @@ public class User extends People {
         this.status = status;
     }
     
-    
-
     public String getUserName() {
         return userName;
     }
@@ -103,7 +101,4 @@ public class User extends People {
         return super.toString() + "User{" + "userName=" + userName + ", password=" + password + 
         ", email=" + email + ", level=" + level + ", status=" + status + '}';
     }
-
-    
-    
 }

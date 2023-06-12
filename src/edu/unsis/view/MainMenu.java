@@ -1,13 +1,12 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 19/may/2023
- * modificado 22/may/2023
+ * modificado 11/ Jun / 2023
  * Descripcion: Menu principal de opciones
  */
 package edu.unsis.view;
 
-import edu.unsis.controller.IMainMenuController;
-import edu.unsis.controller.MainMenuControllerImpl;
+import edu.unsis.controller.MainMenuController;
 import edu.unsis.utilities.Data;
 import java.awt.Color;
 import java.awt.Image;
@@ -19,15 +18,18 @@ public final class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
     public static Data data;
-    public static IMainMenuController controller;
+    public static MainMenuController controller;
 
+    /**
+     * Contructor for main window. Call funtions for loas data and setter images
+     */
     public MainMenu() {
         initComponents();
         this.setSize(850, 550);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
@@ -58,9 +60,15 @@ public final class MainMenu extends javax.swing.JFrame {
 
         buttonPrint.setIcon(icon);
 
+        image = new ImageIcon("./src/edu/unsis/view/images/productButton.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
+                buttonPrint.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonRegisterProduct.setIcon(icon);
+
         if (products == null) {
 
-            controller = new MainMenuControllerImpl();
+            controller = new MainMenuController();
             loadData();
         }
     }
@@ -89,7 +97,7 @@ public final class MainMenu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("MENU PRINCIPAL");
+        jLabel1.setText("MENÚ PRINCIPAL");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 30, -1, -1));
 
         buttonUsers.setToolTipText("Gestiona usuarios");
@@ -112,7 +120,7 @@ public final class MainMenu extends javax.swing.JFrame {
         button2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         button2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         button2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 170, 160));
+        jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 170, 160));
 
         buttonRegisterProduct.setToolTipText("Registrar producto");
         buttonRegisterProduct.setBorder(null);
@@ -128,6 +136,7 @@ public final class MainMenu extends javax.swing.JFrame {
         });
         jPanel1.add(buttonRegisterProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 170, 160));
 
+        buttonPrint.setToolTipText("Reportes");
         buttonPrint.setBorder(null);
         buttonPrint.setBorderPainted(false);
         buttonPrint.setContentAreaFilled(false);
@@ -219,44 +228,86 @@ public final class MainMenu extends javax.swing.JFrame {
         products = controller.getData();
     }
 
+    /**
+     * Change to frame for gestion of the users a product
+     * @param evt 
+     */
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
         new UserRegister().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonUsersActionPerformed
 
+    /**
+     * Change to frame for create a product
+     * @param evt 
+     */
     private void buttonRegisterProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterProductActionPerformed
         new RegisterProduct().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonRegisterProductActionPerformed
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize this frame
+     *
+     * @param evt
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
-        // TODO add your handling code here:
+        this.setExtendedState(ICONIFIED);
+
     }//GEN-LAST:event_buttonMinActionPerformed
 
+    /**
+     * Change to frame for Sales
+     * @param evt 
+     */
     private void buttonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSaleActionPerformed
 
+    /**
+     * Change to frame for invent
+     * @param evt 
+     */
     private void buttonInventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInventActionPerformed
         new Inventory().setVisible(true);
         this.dispose();

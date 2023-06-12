@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 25 / may / 2023
+ * modificado 11 / Jun / 2023
+ * Descripcion: Interfaz del modelo para la ventana Login
+ */
 package edu.unsis.model;
 
 import edu.unsis.model.entity.Credentials;

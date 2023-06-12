@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 25 / may / 2023
+ * modificado 11 / Jun / 2023
+ * Descripcion: Implememtacion del modelo para ventana Login
+ */
 package edu.unsis.controller;
 
 import edu.unsis.model.ILoginModel;
@@ -5,7 +11,7 @@ import edu.unsis.model.LoginModelImpl;
 import edu.unsis.model.entity.Credentials;
 import edu.unsis.model.entity.User;
 
-public class LoginControllerImpl implements ILoginController {
+public class LoginController {
 
     // Obj for connect the view with model
     private ILoginModel model = new LoginModelImpl();
@@ -16,7 +22,6 @@ public class LoginControllerImpl implements ILoginController {
      * @param user Obj for load data from data base. is null if not exist match
      * @return false in case of error
      */
-    @Override
     public boolean getMatch(Credentials credentials, User user) {
         return model.search(credentials, user);
     }

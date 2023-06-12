@@ -7,7 +7,6 @@
 package edu.unsis.utilities;
 
 import edu.unsis.model.entity.Credentials;
-import edu.unsis.utilities.ConexionImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +27,7 @@ public class Data {
     public static ArrayList<Product> load() {
         products = new ArrayList<>();
 
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
 
         try {
             PreparedStatement pst = cn.prepareStatement(
@@ -78,6 +77,7 @@ public class Data {
      *
      * @param p object row
      * @param type
+     * @return 
      *  @value true {NotExpired}
      *  @value False {Expired}
      * @return boolean for catch error in register
@@ -86,7 +86,7 @@ public class Data {
 
         System.out.println("1");
         // Get connection with mysql
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
         try {
             // true: type not expired
@@ -135,7 +135,7 @@ public class Data {
      * object user
      */
     public boolean createUser(User user) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
         System.out.println("in method");
 
@@ -176,7 +176,7 @@ public class Data {
      */
     public static boolean deleteProduct(Product product) {
 
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {
@@ -203,7 +203,7 @@ public class Data {
      * @return
      */
     public static boolean updateProduct(Product product, boolean type) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {
@@ -221,7 +221,7 @@ public class Data {
      * @return
      */
     public static boolean ifAcces(Credentials datas, User user) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {

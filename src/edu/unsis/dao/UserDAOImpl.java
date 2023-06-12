@@ -1,29 +1,32 @@
 /**
  * Autor: GaliciaCordova Elietzer Jared
- * Creado el: 27 / May / 2023
- * modificado: 2 / Jun / 2023
+ * Creado el: 25 / May / 2023
+ * modificado: 11 / Jun / 2023
  * Descipciòn: Clase que implementa a la interfaz IUserDAO
  */
 package edu.unsis.dao;
 
 import edu.unsis.model.entity.Credentials;
 import edu.unsis.model.entity.User;
-import edu.unsis.utilities.ConexionImpl;
+import edu.unsis.utilities.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author elietzer
- */
 public class UserDAOImpl implements IUserDAO {
 
+    /**
+     * Search match in data base of users with the data in credentials
+     *
+     * @param credentials data of the acces
+     * @param user Obj for load data of the user found
+     * @return false in case of the error or true otherwise
+     */
     @Override
     public boolean acces(Credentials credentials, User user) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {
@@ -54,12 +57,17 @@ public class UserDAOImpl implements IUserDAO {
         return true;
     }
 
+    /**
+     * List all users in Array List and returned
+     *
+     * @return ArrayList with all users
+     */
     @Override
     public ArrayList<User> listAll() {
 
         ArrayList<User> users = new ArrayList<>();
 
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
 
         try {
             PreparedStatement pst = cn.prepareStatement(
@@ -93,9 +101,15 @@ public class UserDAOImpl implements IUserDAO {
         return users;
     }
 
+    /**
+     * Create a new row in database with object obj en table Users
+     *
+     * @param obj User for the register in data base
+     * @return false in case of the error or true otherwise
+     */
     @Override
     public boolean create(User obj) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
         System.out.println("in method");
 
@@ -128,9 +142,15 @@ public class UserDAOImpl implements IUserDAO {
         }
     }
 
+    /**
+     * Delete user from data base
+     *
+     * @param obj User for the delete in data base
+     * @return false in case of the error or true otherwise
+     */
     @Override
     public boolean delete(User obj) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {
@@ -149,10 +169,16 @@ public class UserDAOImpl implements IUserDAO {
         }
     }
 
+    /**
+     * Update user obj in data base. Search for userName or Email, needed update
+     * a one field for call this funtion for to locate row.
+     * @param obj User for the update in data base
+     * @return false in case of the error or true otherwise
+     */
     @Override
     public boolean update(User obj) {
         PreparedStatement pst;
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
 
         try {
 

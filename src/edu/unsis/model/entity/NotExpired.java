@@ -2,8 +2,7 @@ package edu.unsis.model.entity;
 
 public class NotExpired extends Product {
 
-    public NotExpired() {
-    }
+    public NotExpired() {}
 
     /**
      * @param name
@@ -36,6 +35,11 @@ public class NotExpired extends Product {
         return "";
     }
 
+    /**
+     * Compare if this and p are the same
+     * @param p obj for compare
+     * @return true if are same and false in otherwise
+     */
     @Override
     public boolean compareTo(Product p) {
         return p.toString().equals(this.toString());

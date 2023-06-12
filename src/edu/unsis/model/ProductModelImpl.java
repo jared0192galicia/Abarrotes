@@ -1,6 +1,12 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 25 / may / 2023
+ * modificado 11 / Jun / 2023
+ * Descripcion: Implememtacion del modelo para productos
+ */
 package edu.unsis.model;
 
-import edu.unsis.dao.IProductDAO;
+import edu.unsis.dao.CRUD;
 import edu.unsis.dao.ProductDAOImpl;
 import edu.unsis.model.entity.Product;
 import edu.unsis.view.MainMenu;
@@ -13,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProductModelImpl implements IProductModel {
 
-    IProductDAO dao = new ProductDAOImpl();
+    CRUD dao = new ProductDAOImpl();
     private static ArrayList<Product> products;
 
     /**
@@ -29,7 +35,8 @@ public class ProductModelImpl implements IProductModel {
 
     /**
      * Call metohod register product in cape DAO
-     *
+     * @param obj
+     * @return false in case of error or true otherwise
      */
     @Override
     public boolean register(Product obj) {
@@ -59,6 +66,10 @@ public class ProductModelImpl implements IProductModel {
         return dao.update(obj);
     }
 
+    /**
+     * Fill model wirh data in products from MainMenu
+     * @param model
+     */
     @Override
     public void showAll(DefaultTableModel model) {
         model.setNumRows(0);

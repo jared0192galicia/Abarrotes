@@ -1,33 +1,34 @@
+/**
+ * Autor: Galicia Cordova Elietzer Jared
+ * Creado el: 25 / May / 2023
+ * modificado: 11 / Jun / 2023
+ * Descipciòn: Implementacion del CRUD basico en mysql para productos
+ */
 package edu.unsis.dao;
 
 import edu.unsis.model.entity.Expired;
 import edu.unsis.model.entity.NotExpired;
 import edu.unsis.model.entity.Product;
-import edu.unsis.utilities.ConexionImpl;
+import edu.unsis.utilities.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author elietzer
- */
-public class ProductDAOImpl implements IProductDAO {
+public class ProductDAOImpl implements CRUD <Product> {
 
     ArrayList<Product> products;
 
     /**
      * List all products from data base
-     *
      * @return ArrayList with all products
      */
     @Override
     public ArrayList<Product> listAll() {
         products = new ArrayList<>();
 
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
 
         try {
             PreparedStatement pst = cn.prepareStatement(
@@ -74,15 +75,14 @@ public class ProductDAOImpl implements IProductDAO {
 
     /**
      * Create register in data base with data in obj
-     *
      * @param obj Obj to be register in data base
-     * @return false in case of the error or true otherwise
+     * @return true in case of the succefful or true otherwise
      */
     @Override
     public boolean create(Product obj) {
         System.out.println("1");
         // Get connection with mysql
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
         try {
 
@@ -124,9 +124,14 @@ public class ProductDAOImpl implements IProductDAO {
         return true;
     }
 
+    /**
+     * Delete regiter obj from database if exist
+     * @param obj Product to delete
+     * @return true in case of the succefful or true otherwise
+     */
     @Override
     public boolean delete(Product obj) {
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
         PreparedStatement pst;
 
         try {
@@ -145,11 +150,16 @@ public class ProductDAOImpl implements IProductDAO {
         }
     }
 
+    /**
+     * Update prudct obj from database
+     * @param obj product to update
+     * @return true in case of the succefful or true otherwise
+     */
     @Override
     public boolean update(Product obj) {
 
         PreparedStatement pst;
-        Connection cn = ConexionImpl.getConnction();
+        Connection cn = Conexion.getConnction();
 
         Expired p = new Expired();
         try {

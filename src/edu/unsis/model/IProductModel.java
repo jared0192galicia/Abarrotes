@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 25 / may / 2023
+ * modificado 11 / Jun / 2023
+ * Descripcion: Interfaz del modelo para productos
+ */
 package edu.unsis.model;
 
 import edu.unsis.model.entity.Product;
@@ -9,8 +15,6 @@ import javax.swing.table.DefaultTableModel;
  * @author elietzer
  */
 public interface IProductModel {
-    
-    
     
     /**
      * Proces load data of type T from data base (MySql)

@@ -1,8 +1,8 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 19/may/2023
- * modificado 22/may/2023
- * Descripcion: Registra productos
+ * modificado 11 / Jun / 2023
+ * Descripcion: Registra productos con interfaz grafica
  */
 package edu.unsis.view;
 
@@ -25,7 +25,7 @@ public class RegisterProduct extends javax.swing.JFrame {
     private ProductController controller;
 
     /**
-     *
+     * Constructor for frame. Setter images and create components
      */
     public RegisterProduct() {
         initComponents();
@@ -40,6 +40,13 @@ public class RegisterProduct extends javax.swing.JFrame {
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
+
+        image = new ImageIcon("./src/edu/unsis/view/images/home.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
+                buttonHome.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonHome.setIcon(icon);
+        
         controller = new ProductController();
     }
 
@@ -54,8 +61,8 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.setResizable(false);
 
         this.labelTitle.setText(title);
-        this.buttonAcept.setVisible(false);
-        this.buttonAcept.setEnabled(false);
+        this.buttonRegister.setVisible(false);
+        this.buttonRegister.setEnabled(false);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -70,31 +77,32 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtName = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        labelName = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        labelExistence = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelMarca = new javax.swing.JLabel();
         txtModelo = new javax.swing.JTextField();
-        Modelo = new javax.swing.JLabel();
+        labelModel = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        labelDescription = new javax.swing.JLabel();
         comboType = new javax.swing.JComboBox<>();
         checkCode = new javax.swing.JCheckBox();
         txtExist = new javax.swing.JTextField();
         labelTitle = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelPrice = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        buttonAcept = new javax.swing.JButton();
+        buttonRegister = new javax.swing.JButton();
         txtCadDay = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        labelDay = new javax.swing.JLabel();
+        labelMonth = new javax.swing.JLabel();
         txtCadMonth = new javax.swing.JTextField();
         txtCadYear = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        labelYear = new javax.swing.JLabel();
         buttonMin = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
+        buttonHome = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,10 +117,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 30));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        labelName.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelName.setForeground(new java.awt.Color(255, 255, 255));
+        labelName.setText("Nombre");
+        jPanel1.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         txtCode.setEditable(false);
         txtCode.setBackground(new java.awt.Color(102, 153, 255));
@@ -122,10 +130,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCode.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 210, 30));
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Existencia");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
+        labelExistence.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelExistence.setForeground(new java.awt.Color(255, 255, 255));
+        labelExistence.setText("Existencia");
+        jPanel1.add(labelExistence, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
         txtMarca.setBackground(new java.awt.Color(102, 153, 255));
         txtMarca.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -134,10 +142,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 210, 30));
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Marca");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        labelMarca.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelMarca.setForeground(new java.awt.Color(255, 255, 255));
+        labelMarca.setText("Marca");
+        jPanel1.add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         txtModelo.setBackground(new java.awt.Color(102, 153, 255));
         txtModelo.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -146,10 +154,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtModelo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 210, 30));
 
-        Modelo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        Modelo.setForeground(new java.awt.Color(255, 255, 255));
-        Modelo.setText("Modelo");
-        jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        labelModel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelModel.setForeground(new java.awt.Color(255, 255, 255));
+        labelModel.setText("Modelo");
+        jPanel1.add(labelModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
 
         txtPrice.setBackground(new java.awt.Color(102, 153, 255));
         txtPrice.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -158,10 +166,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtPrice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, 30));
 
-        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Descripción");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        labelDescription.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelDescription.setForeground(new java.awt.Color(255, 255, 255));
+        labelDescription.setText("Descripción");
+        jPanel1.add(labelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
 
         comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "              Caducable", "              No caducable" }));
         comboType.addItemListener(new java.awt.event.ItemListener() {
@@ -194,10 +202,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         labelTitle.setText("REGISTRAR PRODUCTO");
         jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Precio");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        labelPrice.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelPrice.setForeground(new java.awt.Color(255, 255, 255));
+        labelPrice.setText("Precio");
+        jPanel1.add(labelPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         txtDescription.setBackground(new java.awt.Color(102, 153, 255));
         txtDescription.setColumns(20);
@@ -210,15 +218,15 @@ public class RegisterProduct extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 460, 140));
 
-        buttonAcept.setBackground(new java.awt.Color(0, 102, 102));
-        buttonAcept.setForeground(new java.awt.Color(255, 255, 255));
-        buttonAcept.setText("Registrar");
-        buttonAcept.addActionListener(new java.awt.event.ActionListener() {
+        buttonRegister.setBackground(new java.awt.Color(0, 102, 102));
+        buttonRegister.setForeground(new java.awt.Color(255, 255, 255));
+        buttonRegister.setText("Registrar");
+        buttonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAceptActionPerformed(evt);
+                buttonRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonAcept, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 220, 45));
+        jPanel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 220, 45));
 
         txtCadDay.setBackground(new java.awt.Color(102, 153, 255));
         txtCadDay.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -227,15 +235,15 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCadDay.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCadDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 210, 30));
 
-        jLabel8.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Día");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+        labelDay.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelDay.setForeground(new java.awt.Color(255, 255, 255));
+        labelDay.setText("Día");
+        jPanel1.add(labelDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Mes");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
+        labelMonth.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelMonth.setForeground(new java.awt.Color(255, 255, 255));
+        labelMonth.setText("Mes");
+        jPanel1.add(labelMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
         txtCadMonth.setBackground(new java.awt.Color(102, 153, 255));
         txtCadMonth.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
@@ -251,10 +259,10 @@ public class RegisterProduct extends javax.swing.JFrame {
         txtCadYear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(txtCadYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 210, 30));
 
-        jLabel10.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Año");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
+        labelYear.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelYear.setForeground(new java.awt.Color(255, 255, 255));
+        labelYear.setText("Año");
+        jPanel1.add(labelYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 340, -1, -1));
 
         buttonMin.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         buttonMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,6 +305,19 @@ public class RegisterProduct extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 40, 40));
+
+        buttonHome.setBorder(null);
+        buttonHome.setBorderPainted(false);
+        buttonHome.setContentAreaFilled(false);
+        buttonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonHome.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,11 +353,11 @@ public class RegisterProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_comboTypeItemStateChanged
 
     /**
-     * <h1>Compiler data and send to data for register</h1>
+     * <h1>Compiler data and send to controller for the register</h1>
      *
      * @param evt
      */
-    private void buttonAceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptActionPerformed
+    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
 
         int indexType = this.comboType.getSelectedIndex();
         boolean indexCode = this.checkCode.isSelected();
@@ -482,7 +503,7 @@ public class RegisterProduct extends javax.swing.JFrame {
                         "Error en base de datos\nConsulte al desarrollador");
             }
         }
-    }//GEN-LAST:event_buttonAceptActionPerformed
+    }//GEN-LAST:event_buttonRegisterActionPerformed
 
     /**
      * Set background green to jTextField
@@ -518,34 +539,71 @@ public class RegisterProduct extends javax.swing.JFrame {
         this.comboType.setForeground(Color.BLACK);
     }
 
+    /**
+     * Active o disable the editable propertie of the filed for the code
+     * @param evt 
+     */
     private void checkCodeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkCodeItemStateChanged
         txtCode.setEditable(!checkCode.isSelected());
     }//GEN-LAST:event_checkCodeItemStateChanged
 
+    /**
+     * Exited of the program
+     * @param evt with data of the event
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        this.dispose();
-        new MainMenu().setVisible(true);
+        System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * Change foreground of button. Event hover
+     * @param evt with data of the event
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize this frame
+     *
+     * @param evt
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
+
+    /**
+     * Returned to main menu
+     * @param evt 
+     */
+    private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
+        this.dispose();
+        new MainMenu().setVisible(true);
+    }//GEN-LAST:event_buttonHomeActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -554,23 +612,24 @@ public class RegisterProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Modelo;
-    private javax.swing.JButton buttonAcept;
     private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
+    private javax.swing.JButton buttonRegister;
     private javax.swing.JCheckBox checkCode;
     private javax.swing.JComboBox<String> comboType;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDay;
+    private javax.swing.JLabel labelDescription;
+    private javax.swing.JLabel labelExistence;
+    private javax.swing.JLabel labelMarca;
+    private javax.swing.JLabel labelModel;
+    private javax.swing.JLabel labelMonth;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelPrice;
     private javax.swing.JLabel labelTitle;
+    private javax.swing.JLabel labelYear;
     private javax.swing.JTextField txtCadDay;
     private javax.swing.JTextField txtCadMonth;
     private javax.swing.JTextField txtCadYear;

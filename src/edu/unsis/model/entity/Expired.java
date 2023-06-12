@@ -108,6 +108,11 @@ public final class Expired extends Product {
         return date;
     }
 
+    /**
+     * Compare if this and p are the same
+     * @param p obj for compare
+     * @return true if are same and false in otherwise
+     */
     @Override
     public boolean compareTo(Product p) {
         

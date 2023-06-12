@@ -12,7 +12,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.unsis.model.entity.User;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,8 +42,19 @@ public class UserRegister extends javax.swing.JFrame {
         this.wallpaper.setIcon(icon);
 
         this.controller = new UsersController();
-
         this.users = controller.listAllUsers();
+
+        tableUsers.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tableUsers.getTableHeader().setBackground(new Color(0, 153, 153));
+        tableUsers.getTableHeader().setForeground(new Color(255, 255, 255));
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(SwingConstants.CENTER);
+        tableUsers.getColumnModel().getColumn(0).setCellRenderer(tcr);
+        tableUsers.getColumnModel().getColumn(1).setCellRenderer(tcr);
+        tableUsers.getColumnModel().getColumn(2).setCellRenderer(tcr);
+        tableUsers.getColumnModel().getColumn(3).setCellRenderer(tcr);
+        tableUsers.getColumnModel().getColumn(4).setCellRenderer(tcr);
 
         modelTable = (DefaultTableModel) tableUsers.getModel();
 
@@ -69,11 +83,12 @@ public class UserRegister extends javax.swing.JFrame {
         labelUser = new javax.swing.JLabel();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPaneTable = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
         buttonUpdate = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
+        buttonHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -226,6 +241,9 @@ public class UserRegister extends javax.swing.JFrame {
         });
         panel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
 
+        tableUsers.setBackground(new java.awt.Color(255, 255, 255));
+        tableUsers.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        tableUsers.setForeground(new java.awt.Color(0, 0, 0));
         tableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -236,31 +254,44 @@ public class UserRegister extends javax.swing.JFrame {
             new String [] {
                 "Usuario", "Nombre", "Email", "Status", "Nivel"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableUsers.setAutoscrolls(false);
+        tableUsers.setFocusable(false);
+        tableUsers.setSelectionBackground(new java.awt.Color(0, 102, 102));
+        tableUsers.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableUsers.setShowVerticalLines(false);
+        tableUsers.getTableHeader().setReorderingAllowed(false);
         tableUsers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableUsersMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableUsers);
+        scrollPaneTable.setViewportView(tableUsers);
         if (tableUsers.getColumnModel().getColumnCount() > 0) {
-            tableUsers.getColumnModel().getColumn(2).setResizable(false);
-            tableUsers.getColumnModel().getColumn(3).setResizable(false);
+            tableUsers.getColumnModel().getColumn(4).setMaxWidth(60);
         }
 
-        panel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 700, 190));
+        panel1.add(scrollPaneTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 700, 190));
 
         buttonUpdate.setBackground(new java.awt.Color(102, 153, 255));
         buttonUpdate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         buttonUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        buttonUpdate.setText("Registrar");
+        buttonUpdate.setText("Actualizar");
         buttonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonUpdateActionPerformed(evt);
             }
         });
-        panel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 210, 35));
+        panel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, 210, 35));
 
         buttonDelete.setBackground(new java.awt.Color(102, 153, 255));
         buttonDelete.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -272,8 +303,21 @@ public class UserRegister extends javax.swing.JFrame {
                 buttonDeleteActionPerformed(evt);
             }
         });
-        panel1.add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 210, 35));
+        panel1.add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 210, 35));
         panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
+
+        buttonHome.setBorder(null);
+        buttonHome.setBorderPainted(false);
+        buttonHome.setContentAreaFilled(false);
+        buttonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonHome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonHome.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHomeActionPerformed(evt);
+            }
+        });
+        panel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,6 +520,7 @@ public class UserRegister extends javax.swing.JFrame {
      * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
+        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
@@ -584,6 +629,7 @@ public class UserRegister extends javax.swing.JFrame {
                             "No se modifico ningun campo", "Aviso",
                             JOptionPane.WARNING_MESSAGE);
                 } else {
+                    // Update user, and show message of status
                     if (controller.update(u)) {
                         JOptionPane.showMessageDialog(null,
                                 "Usuario actualizado", "Info",
@@ -598,6 +644,10 @@ public class UserRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
+    /**
+     * Compare if there is a user selected, call controller for delete
+     * @param evt 
+     */
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         String valid = txtName.getText().trim();
 
@@ -628,6 +678,15 @@ public class UserRegister extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    /**
+     * Returned to main menu
+     * @param evt 
+     */
+    private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
+        this.dispose();
+        new MainMenu().setVisible(true);
+    }//GEN-LAST:event_buttonHomeActionPerformed
 
     /**
      * This method searches an object User for the user name and fill jtextfield
@@ -680,6 +739,7 @@ public class UserRegister extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonRegister;
     private javax.swing.JButton buttonUpdate;
@@ -687,13 +747,13 @@ public class UserRegister extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboLevel;
     private javax.swing.JComboBox<String> comboSex;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelEdad;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPass;
     private javax.swing.JLabel labelUser;
     private javax.swing.JPanel panel1;
+    private javax.swing.JScrollPane scrollPaneTable;
     private javax.swing.JTable tableUsers;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEmail;

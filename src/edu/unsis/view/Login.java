@@ -1,13 +1,12 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 19/may/2023
- * modificado 22/may/2023
+ * modificado 11 / Jul / 2023
  * Descripcion: Login principal
  */
 package edu.unsis.view;
 
-import edu.unsis.controller.ILoginController;
-import edu.unsis.controller.LoginControllerImpl;
+import edu.unsis.controller.LoginController;
 import edu.unsis.model.entity.Credentials;
 import java.awt.Color;
 import java.awt.Frame;
@@ -26,8 +25,11 @@ public class Login extends javax.swing.JFrame {
     private final ImageIcon iconCloseN;
     private final ImageIcon iconMin;
     private final ImageIcon iconMinN;
-    private final ILoginController controller;
+    private final LoginController controller;
     
+    /**
+     * Contructor for Frame Login. Set Wallpaper and more images
+     */
     public Login() {
         initComponents();
         
@@ -38,7 +40,7 @@ public class Login extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        controller = new LoginControllerImpl();
+        controller = new LoginController();
         
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
@@ -74,22 +76,21 @@ public class Login extends javax.swing.JFrame {
         iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelLeft = new javax.swing.JPanel();
         logoStore = new javax.swing.JLabel();
         wallpaper = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelRigth = new javax.swing.JPanel();
         buttonMin = new javax.swing.JButton();
         buttonClose = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         txtUser = new javax.swing.JTextField();
         buttonAcceder = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        labelPassword = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,14 +107,14 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(logoStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 230, 220));
-        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 430));
+        panelLeft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelLeft.add(logoStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 230, 220));
+        panelLeft.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 430));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
+        getContentPane().add(panelLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 325, 430));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRigth.setBackground(new java.awt.Color(153, 153, 255));
+        panelRigth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonMin.setBackground(new java.awt.Color(153, 153, 255));
         buttonMin.setForeground(new java.awt.Color(204, 0, 0));
@@ -135,7 +136,7 @@ public class Login extends javax.swing.JFrame {
                 buttonMinActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 40, 40));
+        panelRigth.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, 40, 40));
 
         buttonClose.setBackground(new java.awt.Color(153, 153, 255));
         buttonClose.setForeground(new java.awt.Color(204, 0, 0));
@@ -157,21 +158,22 @@ public class Login extends javax.swing.JFrame {
                 buttonCloseActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 0, 40, 40));
+        panelRigth.add(buttonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 0, 40, 40));
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         txtPass.setForeground(new java.awt.Color(255, 255, 255));
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel2.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 30));
+        txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelRigth.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 210, 30));
         txtPass.getAccessibleContext().setAccessibleName("");
 
         txtUser.setBackground(new java.awt.Color(102, 153, 255));
         txtUser.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         txtUser.setForeground(new java.awt.Color(255, 255, 255));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUser.setText("root");
-        jPanel2.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 30));
+        txtUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelRigth.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 210, 30));
         txtUser.getAccessibleContext().setAccessibleName("");
 
         buttonAcceder.setBackground(new java.awt.Color(102, 153, 255));
@@ -186,44 +188,61 @@ public class Login extends javax.swing.JFrame {
                 buttonAccederActionPerformed(evt);
             }
         });
-        jPanel2.add(buttonAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 110, 30));
+        panelRigth.add(buttonAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 110, 30));
 
-        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¿Olvido su contraseña?");
-        jLabel1.setToolTipText("Recupera tu contraseña de acceso");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelPassword.setForeground(new java.awt.Color(153, 0, 0));
+        labelPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPassword.setText("¿Olvidó su contraseña?");
+        labelPassword.setToolTipText("Recupera tu contraseña de acceso");
+        labelPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                labelPasswordMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
+                labelPasswordMouseExited(evt);
             }
         });
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 260, -1, -1));
+        panelRigth.add(labelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 260, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Login");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
+        panelRigth.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 70, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, 325, 430));
+        getContentPane().add(panelRigth, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, 325, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Exit to program
+     * @param evt 
+     */
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonCloseActionPerformed
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+    /**
+     * change to cursor hand with hover event
+     * @param evt 
+     */
+    private void labelPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPasswordMouseEntered
         this.setCursor(HAND_CURSOR);
-    }//GEN-LAST:event_jLabel1MouseEntered
+    }//GEN-LAST:event_labelPasswordMouseEntered
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+    /**
+     * change to cursor normal with hover exited event
+     * @param evt 
+     */
+    private void labelPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPasswordMouseExited
         this.setCursor(NORMAL);
-    }//GEN-LAST:event_jLabel1MouseExited
+    }//GEN-LAST:event_labelPasswordMouseExited
 
+    /**
+     * check that all fields are filled with valid data. After call to 
+     * controller for valid acces
+     * @param evt 
+     */
     private void buttonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAccederActionPerformed
         String userTxt = txtUser.getText().trim();
         String pass = txtPass.getText().trim();
@@ -264,31 +283,59 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonAccederActionPerformed
 
+    /**
+     * Get updated position of the frame, and save point
+     * @param evt 
+     */
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         posX = evt.getX();
         posY = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
+    /**
+     * Update position in screen
+     * @param evt 
+     */
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         this.setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
     }//GEN-LAST:event_formMouseDragged
 
+    /**
+     * Minimize window
+     * @param evt 
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
+    /**
+     * Change foreground of buttonMin. Event hover
+     * @param evt 
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setIcon(iconMin);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Change foreground of buttonExit. Event hover
+     * @param evt 
+     */
     private void buttonCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseEntered
         this.buttonClose.setIcon(iconClose);
     }//GEN-LAST:event_buttonCloseMouseEntered
 
+    /**
+     * Change foreground of buttonExit. Event hover
+     * @param evt 
+     */
     private void buttonCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCloseMouseExited
         this.buttonClose.setIcon(iconCloseN);
     }//GEN-LAST:event_buttonCloseMouseExited
 
+    /**
+     * Change foreground of buttonMin. Event hover
+     * @param evt 
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setIcon(iconMinN);
     }//GEN-LAST:event_buttonMinMouseExited
@@ -332,11 +379,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton buttonAcceder;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel logoStore;
+    private javax.swing.JPanel panelLeft;
+    private javax.swing.JPanel panelRigth;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     private javax.swing.JLabel wallpaper;

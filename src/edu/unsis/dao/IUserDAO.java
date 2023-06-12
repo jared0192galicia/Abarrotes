@@ -1,16 +1,18 @@
+/**
+ * Autor: Galicia Cordova Elietzer Jared
+ * Creado el: 25 / May / 2023
+ * modificado: 11 / Jun / 2023
+ * Descipciòn: Interfaz del CRUD basico para Usuarios 
+ */
 package edu.unsis.dao;
 
 import edu.unsis.model.entity.Credentials;
 import edu.unsis.model.entity.User;
 
-/**
- *
- * @author elietzer
- */
 public interface IUserDAO extends CRUD<User> {
 
     /**
-     * Search math in data base of users with the data in credentials
+     * Search match in data base of users with the data in credentials
      *
      * @param credentials data of the acces
      * @param user Obj for load data of the user found
