@@ -121,8 +121,8 @@ public class UserDAOImpl implements IUserDAO {
 
         try {
             pst = cn.prepareStatement(
-                    "INSERT INTO users VALUES"
-                    + "(?, ?, ?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO users VALUES "
+                    + "(?, aes_encrypt(?, \"root\"), ?, ?, ?, ?, ?, ?)");
 
             // Set data to query
             pst.setString(1, obj.getUserName());
