@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 19/may/2023
+ * modificado 11 / Jul/ 2023
+ * Descripcion: Clase de productos no expirables
+ */
 package edu.unsis.model.entity;
 
 public class NotExpired extends Product {

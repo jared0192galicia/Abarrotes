@@ -9,10 +9,6 @@ package edu.unsis.model;
 import edu.unsis.model.entity.Credentials;
 import edu.unsis.model.entity.User;
 
-/**
- *
- * @author elietzer
- */
 public interface ILoginModel {
     
     /**

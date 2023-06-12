@@ -15,13 +15,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-public class ProductDAOImpl implements CRUD <Product> {
+public class ProductDAOImpl implements CRUD<Product> {
 
     ArrayList<Product> products;
 
     /**
      * List all products from data base
+     *
      * @return ArrayList with all products
      */
     @Override
@@ -66,21 +68,21 @@ public class ProductDAOImpl implements CRUD <Product> {
                 products.add(p);
             }
         } catch (NumberFormatException | SQLException e) {
-            System.err.println("Error in register\n\n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "MySql", JOptionPane.ERROR_MESSAGE);
         }
 
-        System.out.println("End load data");
         return products;
     }
 
     /**
      * Create register in data base with data in obj
+     *
      * @param obj Obj to be register in data base
      * @return true in case of the succefful or true otherwise
      */
     @Override
     public boolean create(Product obj) {
-        System.out.println("1");
         // Get connection with mysql
         Connection cn = Conexion.getConnction();
         PreparedStatement pst;
@@ -91,7 +93,6 @@ public class ProductDAOImpl implements CRUD <Product> {
                 pr = (Expired) obj;
 
             } catch (Exception e) {
-                System.out.println("pr = " + pr.toString());
             }
 
             pst = cn.prepareStatement(
@@ -102,7 +103,6 @@ public class ProductDAOImpl implements CRUD <Product> {
             pst.setString(8, pr.getDate());
             pst.setString(9, obj.getNameRegisterFor());
 
-            System.out.println("2");
             pst.setString(1, obj.getCode());
             pst.setString(2, obj.getName());
             pst.setString(3, obj.getModelo());
@@ -110,15 +110,11 @@ public class ProductDAOImpl implements CRUD <Product> {
             pst.setString(5, String.valueOf(obj.getPrice()));
             pst.setString(6, String.valueOf(obj.getExistencia()));
             pst.setDouble(6, obj.getExistencia());
-            System.out.println("DAO: Existencia: " + obj.getExistencia());
             pst.setString(7, obj.getDescription());
 
-            System.out.println("3");
             pst.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Error in register\n\n" + e.getMessage());
             return false;
-
         }
 
         return true;
@@ -126,6 +122,7 @@ public class ProductDAOImpl implements CRUD <Product> {
 
     /**
      * Delete regiter obj from database if exist
+     *
      * @param obj Product to delete
      * @return true in case of the succefful or true otherwise
      */
@@ -143,9 +140,6 @@ public class ProductDAOImpl implements CRUD <Product> {
             return true;
 
         } catch (SQLException e) {
-
-            System.err.println("Error to delete\n" + e.getMessage());
-
             return false;
         }
     }
@@ -176,7 +170,6 @@ public class ProductDAOImpl implements CRUD <Product> {
             p.setPrice(obj.getPrice());
             p.setRegisterFor(obj.getRegisterFor());
             p.setUpdateFor(obj.getRegisterFor());
-            System.out.println("p = " + p.toString());
 
         }
         try {
@@ -198,10 +191,9 @@ public class ProductDAOImpl implements CRUD <Product> {
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Error en update \n" + e.getMessage());
+            return  false;
         }
 
         return true;
     }
-
 }

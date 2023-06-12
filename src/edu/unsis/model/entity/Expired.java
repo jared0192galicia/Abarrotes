@@ -1,3 +1,9 @@
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 5/may/2023
+ * modificado 11 / Jul / 2023
+ * Descripcion: Clase para productos expirables
+ */
 package edu.unsis.model.entity;
 
 public final class Expired extends Product {
@@ -10,7 +16,7 @@ public final class Expired extends Product {
     public Expired() {}
     
     /**
-     * 
+     *  Constructor with date
      * @param date 
      */
     public Expired(String date) {
@@ -33,9 +39,6 @@ public final class Expired extends Product {
             User registerFor) {
         
         super(name, code, Marca, Modelo, price, description, existencia, registerFor);
-        this.day = day;
-        this.year = year;
-        this.month = month;
         this.date = date;
     }
 
@@ -49,9 +52,6 @@ public final class Expired extends Product {
     public Expired(String date, String name, String code, double price, 
             String description) {
         super(name, code, price, description);
-        this.day = day;
-        this.year = year;
-        this.month = month;
         this.date = date;
     }
     
@@ -138,11 +138,7 @@ public final class Expired extends Product {
             return false;
         }
         
-        if (p.getPrice() != this.getPrice()) {
-            return false;
-        }
-        
-        return true;
+        return p.getPrice() == this.getPrice();
     }
 
     

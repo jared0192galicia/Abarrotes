@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class UserDAOImpl implements IUserDAO {
 
@@ -50,8 +51,8 @@ public class UserDAOImpl implements IUserDAO {
             }
 
         } catch (SQLException e) {
-
-            System.err.println("Error in \n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Mysql", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -95,7 +96,8 @@ public class UserDAOImpl implements IUserDAO {
                 users.add(user);
             }
         } catch (NumberFormatException | SQLException e) {
-            System.err.println("Error on query\n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Mysql", JOptionPane.ERROR_MESSAGE);
         }
 
         return users;
@@ -111,7 +113,6 @@ public class UserDAOImpl implements IUserDAO {
     public boolean create(User obj) {
         Connection cn = Conexion.getConnction();
         PreparedStatement pst;
-        System.out.println("in method");
 
         String aux = "0";
         if (obj.isStatus()) {
@@ -137,7 +138,6 @@ public class UserDAOImpl implements IUserDAO {
             return true;
 
         } catch (SQLException e) {
-            System.err.println("Error in register user" + e.getMessage());
             return false;
         }
     }
@@ -162,8 +162,6 @@ public class UserDAOImpl implements IUserDAO {
             return true;
 
         } catch (SQLException e) {
-
-            System.err.println("Error to delete\n" + e.getMessage());
 
             return false;
         }
@@ -200,7 +198,6 @@ public class UserDAOImpl implements IUserDAO {
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Error en update \n" + e.getMessage());
             return false;
         }
 

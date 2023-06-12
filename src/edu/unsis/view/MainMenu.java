@@ -7,7 +7,6 @@
 package edu.unsis.view;
 
 import edu.unsis.controller.MainMenuController;
-import edu.unsis.utilities.Data;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import edu.unsis.model.entity.Product;
 public final class MainMenu extends javax.swing.JFrame {
 
     public static ArrayList<Product> products;
-    public static Data data;
     public static MainMenuController controller;
 
     /**

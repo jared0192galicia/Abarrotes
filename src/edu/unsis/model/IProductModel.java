@@ -10,10 +10,6 @@ import edu.unsis.model.entity.Product;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author elietzer
- */
 public interface IProductModel {
     
     /**

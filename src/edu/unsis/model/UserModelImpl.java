@@ -11,10 +11,6 @@ import edu.unsis.dao.UserDAOImpl;
 import edu.unsis.model.entity.User;
 import java.util.ArrayList;
 
-/**
- *
- * @author elietzer
- */
 public class UserModelImpl implements IUserModel {
     
     private static User loggedUser;

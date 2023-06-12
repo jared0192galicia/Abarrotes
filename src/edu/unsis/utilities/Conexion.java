@@ -9,6 +9,7 @@ package edu.unsis.utilities;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class Conexion {
 
@@ -31,7 +32,9 @@ public class Conexion {
                         "jdbc:mysql://" + root + "/abarrotes_db", user, pass);
 
             } catch (SQLException e) {
-                System.err.println("Error in get connection\n\n" + e.getMessage());
+                JOptionPane.showConfirmDialog(null, 
+                        e.getMessage(), "MySql", 
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
 

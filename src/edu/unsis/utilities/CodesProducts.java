@@ -1,7 +1,7 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 22/may/2023
- * modificado 23/may/2023
+ * modificado 11 / Jul / 2023
  * Descripcion: Genera caracteristicas para los productos
  */
 package edu.unsis.utilities;
@@ -11,7 +11,7 @@ import edu.unsis.model.entity.Product;
 
 public class CodesProducts {
 
-    private static String letters[]
+    private static final String letters[]
             = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
                 "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "Z"};
 
@@ -51,8 +51,6 @@ public class CodesProducts {
 
         } while (band);
         
-        System.out.println(code);
-
         return code;
     }
 }

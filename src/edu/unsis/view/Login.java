@@ -15,7 +15,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import edu.unsis.model.entity.User;
 
-
 public class Login extends javax.swing.JFrame {
     
     private int posX;
@@ -265,8 +264,6 @@ public class Login extends javax.swing.JFrame {
             User user = new User();
             
             if (controller.getMatch(new Credentials(pass, userTxt), user)) {
-                
-                System.out.println(user.toString());
                 
                 if (user.isStatus()) {
                     new MainMenu().setVisible(true);

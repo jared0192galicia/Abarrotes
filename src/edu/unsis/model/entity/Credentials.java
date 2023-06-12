@@ -6,10 +6,6 @@
  */
 package edu.unsis.model.entity;
 
-/**
- *
- * @author elietzer
- */
 public class Credentials {
     private String password;
     private String user;
@@ -45,6 +41,4 @@ public class Credentials {
     public String toString() {
         return "Credentials{" + "password=" + password + ", user=" + user + '}';
     }
-    
-    
 }

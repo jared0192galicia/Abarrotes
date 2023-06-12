@@ -13,10 +13,6 @@ import edu.unsis.view.MainMenu;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author elietzer
- */
 public class ProductModelImpl implements IProductModel {
 
     CRUD dao = new ProductDAOImpl();
@@ -35,6 +31,7 @@ public class ProductModelImpl implements IProductModel {
 
     /**
      * Call metohod register product in cape DAO
+     *
      * @param obj
      * @return false in case of error or true otherwise
      */
@@ -68,6 +65,7 @@ public class ProductModelImpl implements IProductModel {
 
     /**
      * Fill model wirh data in products from MainMenu
+     *
      * @param model
      */
     @Override
@@ -93,7 +91,5 @@ public class ProductModelImpl implements IProductModel {
 
             model.addRow(row);
         }
-
     }
-
 }

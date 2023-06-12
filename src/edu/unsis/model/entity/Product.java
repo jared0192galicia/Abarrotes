@@ -16,7 +16,6 @@ public abstract class Product {
 
     /**
      * @param name
-     * @param type
      * @param code
      * @param price
      * @param description

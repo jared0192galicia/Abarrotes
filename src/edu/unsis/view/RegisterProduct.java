@@ -21,7 +21,7 @@ import edu.unsis.model.entity.Product;
 
 public class RegisterProduct extends javax.swing.JFrame {
 
-    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products;
     private ProductController controller;
 
     /**
@@ -46,7 +46,7 @@ public class RegisterProduct extends javax.swing.JFrame {
                 buttonHome.getHeight(), Image.SCALE_DEFAULT));
 
         buttonHome.setIcon(icon);
-        
+        products = MainMenu.products;
         controller = new ProductController();
     }
 
@@ -475,12 +475,15 @@ public class RegisterProduct extends javax.swing.JFrame {
                 setBackgroundToTxt(true);
                 products.add(p);
                 MainMenu.products.add(p);
-                JOptionPane.showMessageDialog(null, "Registrado");
+                JOptionPane.showMessageDialog(null, 
+                        "Registrado", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
 
             } else {
 
                 JOptionPane.showMessageDialog(null,
-                        "Error en base de datos\nConsulte al desarrollador");
+                        "Error en base de datos\nConsulte al desarrollador", "Aviso",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             // Register product of type NotExpired
@@ -493,24 +496,29 @@ public class RegisterProduct extends javax.swing.JFrame {
                     band, name, WIDTH, 'M'));
 
             if (controller.registerProduct(p)) {
+                
                 setBackgroundToTxt(false);
                 products.add(p);
                 MainMenu.products.add(p);
-                JOptionPane.showMessageDialog(null, "Registrado");
+                JOptionPane.showMessageDialog(null, 
+                        "Registrado", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
 
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "Error en base de datos\nConsulte al desarrollador");
+                        "Error en base de datos\nConsulte al desarrollador", "Aviso",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_buttonRegisterActionPerformed
 
     /**
      * Set background green to jTextField
-     *
      * @param type
      */
     private void setBackgroundToTxt(boolean type) {
+       
+        // Compare if change fileds for date expired
         if (type) {
             this.txtCadDay.setBackground(Color.GREEN);
             this.txtCadMonth.setBackground(Color.GREEN);
@@ -520,6 +528,7 @@ public class RegisterProduct extends javax.swing.JFrame {
             this.txtCadMonth.setForeground(Color.BLACK);
             this.txtCadYear.setForeground(Color.BLACK);
         }
+        
         this.txtCode.setBackground(Color.GREEN);
         this.txtDescription.setBackground(Color.GREEN);
         this.txtExist.setBackground(Color.GREEN);
@@ -589,7 +598,6 @@ public class RegisterProduct extends javax.swing.JFrame {
 
     /**
      * Minimize this frame
-     *
      * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed

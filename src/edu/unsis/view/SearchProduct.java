@@ -36,7 +36,7 @@ public class SearchProduct extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setSize(878, 640);
         this.setVisible(true);
-        
+
         this.txtDescription.setColumns(3);
 
         ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/"
@@ -394,14 +394,18 @@ public class SearchProduct extends javax.swing.JFrame {
 
         } else {
             // Set color default
-
+            this.txtCode.setBackground(new Color(102, 153, 255));
             searchCode(code);
         }
     }//GEN-LAST:event_buttonSearchActionPerformed
 
+    /**
+     * Exited of the program
+     *
+     * @param evt
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        new MainMenu().setVisible(true);
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
     /**
@@ -410,12 +414,13 @@ public class SearchProduct extends javax.swing.JFrame {
      * @param evt
      */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
-       this.setExtendedState(ICONIFIED);
+        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
@@ -423,7 +428,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonMin. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
@@ -431,7 +437,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
@@ -439,16 +446,18 @@ public class SearchProduct extends javax.swing.JFrame {
 
     /**
      * Change foreground of buttonExit. Event hover
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
     /**
-     * check that all fields are filled with valid data. After call to 
+     * check that all fields are filled with valid data. After call to
      * controller for update product
-     * @param evt 
+     *
+     * @param evt
      */
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
         String type = comboType.getSelectedItem().toString().trim();
@@ -463,6 +472,7 @@ public class SearchProduct extends javax.swing.JFrame {
         String modelProduct = this.txtModelo.getText().trim();
         boolean band = true;
 
+        // Create auxiliars
         String year = "";
         String day = "";
         String month = "";
@@ -570,15 +580,18 @@ public class SearchProduct extends javax.swing.JFrame {
                         MainMenu.products.remove(productSelected);
                         MainMenu.products.add(pEx);
                         JOptionPane.showMessageDialog(null,
-                                "Producto modificado");
+                                "Producto modificado", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null,
-                                "El producto no pudo ser modificado");
+                                "El producto no pudo ser modificado", "Aviso",
+                        JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "No se ah modificado ningun campo");
+                            "No se ah modificado ningún campo", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
                 }
 
             } else {
@@ -594,7 +607,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
                 if (productSelected.compareTo(p)) {
                     JOptionPane.showMessageDialog(null,
-                            "El producto no se modifico");
+                            "No se ah modificado ningún campo", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
                 } else {
 
                     if (controller.update(p)) {
@@ -602,30 +616,36 @@ public class SearchProduct extends javax.swing.JFrame {
                         MainMenu.products.remove(productSelected);
                         MainMenu.products.add(p);
                         JOptionPane.showMessageDialog(null,
-                                "Producto modificado");
+                                "Producto modificado", "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
                     }
-
                 }
-
             }
         }
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     /**
      * Delete register in mysql and system
+     *
      * @param evt
      */
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
         String valid = txtExist.getText().trim();
 
+        // Compare if there is selected product
         if (valid.equals("")) {
             JOptionPane.showMessageDialog(null,
-                    "Primero debe seleccionar o buscar un producto");
+                    "Primero debe seleccionar o buscar un producto",
+                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            int band = JOptionPane.showConfirmDialog(null,
-                    "¿Seguro que decea eliminar este producto?");
-            if (band == 0) {
 
+            // Ask if you are sure to proceed
+            int band = JOptionPane.showConfirmDialog(null,
+                    "¿Seguro que decea eliminar este producto?",
+                    "Advetencia", JOptionPane.YES_NO_OPTION + JOptionPane.WARNING_MESSAGE);
+
+            // proced with the delete
+            if (band == 0) {
                 if (controller.delete(productSelected)) {
 
                     MainMenu.products.remove(productSelected);
@@ -633,12 +653,13 @@ public class SearchProduct extends javax.swing.JFrame {
                     createDefaultModel();
 
                     JOptionPane.showMessageDialog(null,
-                            "Registro eliminado");
+                            "Registro eliminado", "Aviso",
+                            JOptionPane.INFORMATION_MESSAGE);
 
                 } else {
                     JOptionPane.showMessageDialog(null,
-                            "No se pudo eliminar el registro");
-
+                            "No se pudo eliminar el registro", "Aviso", 
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -646,6 +667,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
     /**
      * Get code of the product selected in table
+     *
      * @param evt
      */
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -656,12 +678,12 @@ public class SearchProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_tableMouseClicked
 
     private void comboTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTypeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_comboTypeActionPerformed
 
     /**
-     * Returned to main window 
-     * @param evt 
+     * Returned to main window
+     *
+     * @param evt
      */
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         this.dispose();
@@ -741,7 +763,8 @@ public class SearchProduct extends javax.swing.JFrame {
 
         if (count != 0) {
             JOptionPane.showMessageDialog(null, "El "
-                    + "codigo ingresado no existe");
+                    + "codigo ingresado no existe" + "Aviso"
+                    + JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
