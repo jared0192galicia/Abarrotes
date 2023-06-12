@@ -1,0 +1,232 @@
+@startuml
+abstract class edu.unsis.model.entity.People
+abstract class edu.unsis.model.entity.Product
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class edu.unsis.abarrotes.Abarrotes
+class edu.unsis.controller.LoginController
+class edu.unsis.controller.MainMenuController
+class edu.unsis.controller.ProductController
+class edu.unsis.controller.SearchProductController
+class edu.unsis.controller.UsersController
+class edu.unsis.dao.ProductDAOImpl
+class edu.unsis.dao.UserDAOImpl
+class edu.unsis.model.LoginModelImpl
+class edu.unsis.model.ProductModelImpl
+class edu.unsis.model.UserModelImpl
+class edu.unsis.model.entity.Credentials
+class edu.unsis.model.entity.Expired
+class edu.unsis.model.entity.NotExpired
+class edu.unsis.model.entity.User
+class edu.unsis.utilities.CodesProducts
+class edu.unsis.utilities.Conexion
+class edu.unsis.utilities.Data
+class edu.unsis.view.Inventory
+class edu.unsis.view.Login
+class edu.unsis.view.MainMenu
+class edu.unsis.view.RegisterProduct
+class edu.unsis.view.SearchProduct
+class edu.unsis.view.UserRegister
+class edu.unsis.view.panel.StateGraphs
+class java.awt.Color
+class java.awt.Font
+class java.awt.Frame
+class java.awt.Image
+class java.io.File
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.ArrayList
+class javax.sound.sampled.AudioInputStream
+class javax.sound.sampled.AudioSystem
+class javax.sound.sampled.Clip
+class javax.swing.ImageIcon
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.JPanel
+class javax.swing.SwingConstants
+class javax.swing.table.DefaultTableCellRenderer
+class javax.swing.table.DefaultTableModel
+interface edu.unsis.dao.CRUD
+interface edu.unsis.dao.IUserDAO
+interface edu.unsis.model.ILoginModel
+interface edu.unsis.model.IProductModel
+interface edu.unsis.model.IUserModel
+edu.unsis.model.entity.People ..> java.lang.Override
+edu.unsis.model.entity.Product ..> java.lang.Override
+edu.unsis.abarrotes.Abarrotes ..> edu.unsis.view.Login
+edu.unsis.controller.LoginController ..> edu.unsis.model.LoginModelImpl
+edu.unsis.controller.LoginController ..> edu.unsis.model.entity.Credentials
+edu.unsis.controller.LoginController ..> edu.unsis.model.entity.User
+edu.unsis.controller.LoginController ..> edu.unsis.model.ILoginModel
+edu.unsis.controller.MainMenuController ..> edu.unsis.model.entity.Product
+edu.unsis.controller.MainMenuController ..> edu.unsis.model.ProductModelImpl
+edu.unsis.controller.MainMenuController ..> java.util.ArrayList
+edu.unsis.controller.MainMenuController ..> edu.unsis.model.IProductModel
+edu.unsis.controller.ProductController ..> edu.unsis.model.entity.Product
+edu.unsis.controller.ProductController ..> edu.unsis.model.ProductModelImpl
+edu.unsis.controller.ProductController ..> edu.unsis.model.IProductModel
+edu.unsis.controller.SearchProductController ..> edu.unsis.model.entity.Product
+edu.unsis.controller.SearchProductController ..> edu.unsis.model.ProductModelImpl
+edu.unsis.controller.SearchProductController ..> javax.swing.table.DefaultTableModel
+edu.unsis.controller.SearchProductController ..> edu.unsis.model.IProductModel
+edu.unsis.controller.UsersController ..> edu.unsis.model.UserModelImpl
+edu.unsis.controller.UsersController ..> edu.unsis.model.entity.User
+edu.unsis.controller.UsersController ..> java.util.ArrayList
+edu.unsis.controller.UsersController ..> edu.unsis.model.IUserModel
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.Product
+edu.unsis.dao.ProductDAOImpl ..> java.lang.Override
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.Expired
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.NotExpired
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.utilities.Conexion
+edu.unsis.dao.ProductDAOImpl ..> java.sql.Connection
+edu.unsis.dao.ProductDAOImpl ..> java.sql.PreparedStatement
+edu.unsis.dao.ProductDAOImpl ..> java.sql.ResultSet
+edu.unsis.dao.ProductDAOImpl ..> java.sql.SQLException
+edu.unsis.dao.ProductDAOImpl ..> java.util.ArrayList
+edu.unsis.dao.ProductDAOImpl ..> javax.swing.JOptionPane
+edu.unsis.dao.ProductDAOImpl --|> edu.unsis.dao.CRUD
+edu.unsis.dao.UserDAOImpl ..> java.lang.Override
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.model.entity.Credentials
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.model.entity.User
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.utilities.Conexion
+edu.unsis.dao.UserDAOImpl ..> java.sql.Connection
+edu.unsis.dao.UserDAOImpl ..> java.sql.PreparedStatement
+edu.unsis.dao.UserDAOImpl ..> java.sql.ResultSet
+edu.unsis.dao.UserDAOImpl ..> java.sql.SQLException
+edu.unsis.dao.UserDAOImpl ..> java.util.ArrayList
+edu.unsis.dao.UserDAOImpl ..> javax.swing.JOptionPane
+edu.unsis.dao.UserDAOImpl --|> edu.unsis.dao.IUserDAO
+edu.unsis.model.LoginModelImpl ..> java.lang.Override
+edu.unsis.model.LoginModelImpl ..> edu.unsis.dao.UserDAOImpl
+edu.unsis.model.LoginModelImpl ..> edu.unsis.model.entity.Credentials
+edu.unsis.model.LoginModelImpl ..> edu.unsis.model.entity.User
+edu.unsis.model.LoginModelImpl ..> edu.unsis.dao.IUserDAO
+edu.unsis.model.LoginModelImpl --|> edu.unsis.model.ILoginModel
+edu.unsis.model.ProductModelImpl ..> edu.unsis.model.entity.Product
+edu.unsis.model.ProductModelImpl ..> java.lang.Override
+edu.unsis.model.ProductModelImpl ..> edu.unsis.dao.ProductDAOImpl
+edu.unsis.model.ProductModelImpl ..> edu.unsis.view.MainMenu
+edu.unsis.model.ProductModelImpl ..> java.util.ArrayList
+edu.unsis.model.ProductModelImpl ..> javax.swing.table.DefaultTableModel
+edu.unsis.model.ProductModelImpl ..> edu.unsis.dao.CRUD
+edu.unsis.model.ProductModelImpl --|> edu.unsis.model.IProductModel
+edu.unsis.model.UserModelImpl ..> java.lang.Override
+edu.unsis.model.UserModelImpl ..> edu.unsis.dao.UserDAOImpl
+edu.unsis.model.UserModelImpl ..> edu.unsis.model.entity.User
+edu.unsis.model.UserModelImpl ..> java.util.ArrayList
+edu.unsis.model.UserModelImpl ..> edu.unsis.dao.IUserDAO
+edu.unsis.model.UserModelImpl --|> edu.unsis.model.IUserModel
+edu.unsis.model.entity.Credentials ..> java.lang.Override
+edu.unsis.model.entity.Expired --|> edu.unsis.model.entity.Product
+edu.unsis.model.entity.Expired ..> java.lang.Override
+edu.unsis.model.entity.NotExpired --|> edu.unsis.model.entity.Product
+edu.unsis.model.entity.NotExpired ..> java.lang.Override
+edu.unsis.model.entity.User --|> edu.unsis.model.entity.People
+edu.unsis.model.entity.User ..> java.lang.Override
+edu.unsis.utilities.CodesProducts ..> edu.unsis.model.entity.Product
+edu.unsis.utilities.CodesProducts ..> edu.unsis.view.MainMenu
+edu.unsis.utilities.Conexion ..> java.sql.Connection
+edu.unsis.utilities.Conexion ..> java.sql.DriverManager
+edu.unsis.utilities.Conexion ..> java.sql.SQLException
+edu.unsis.utilities.Conexion ..> javax.swing.JOptionPane
+edu.unsis.utilities.Data ..> edu.unsis.model.entity.Product
+edu.unsis.utilities.Data ..> edu.unsis.model.entity.Credentials
+edu.unsis.utilities.Data ..> edu.unsis.model.entity.Expired
+edu.unsis.utilities.Data ..> edu.unsis.model.entity.NotExpired
+edu.unsis.utilities.Data ..> edu.unsis.model.entity.User
+edu.unsis.utilities.Data ..> java.sql.Connection
+edu.unsis.utilities.Data ..> java.sql.PreparedStatement
+edu.unsis.utilities.Data ..> java.sql.ResultSet
+edu.unsis.utilities.Data ..> java.sql.SQLException
+edu.unsis.utilities.Data ..> java.util.ArrayList
+edu.unsis.view.Inventory ..> edu.unsis.model.entity.Product
+edu.unsis.view.Inventory ..> java.lang.SuppressWarnings
+edu.unsis.view.Inventory ..> java.awt.Color
+edu.unsis.view.Inventory ..> java.awt.Font
+edu.unsis.view.Inventory ..> java.awt.Image
+edu.unsis.view.Inventory ..> java.util.ArrayList
+edu.unsis.view.Inventory ..> javax.swing.ImageIcon
+edu.unsis.view.Inventory --|> javax.swing.JFrame
+edu.unsis.view.Inventory ..> javax.swing.SwingConstants
+edu.unsis.view.Inventory ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.Inventory ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.Login ..> java.lang.SuppressWarnings
+edu.unsis.view.Login ..> edu.unsis.controller.LoginController
+edu.unsis.view.Login ..> edu.unsis.model.entity.Credentials
+edu.unsis.view.Login ..> edu.unsis.model.entity.User
+edu.unsis.view.Login ..> java.awt.Color
+edu.unsis.view.Login ..> java.awt.Frame
+edu.unsis.view.Login ..> java.awt.Image
+edu.unsis.view.Login ..> java.io.File
+edu.unsis.view.Login ..> javax.sound.sampled.AudioInputStream
+edu.unsis.view.Login ..> javax.sound.sampled.AudioSystem
+edu.unsis.view.Login ..> javax.sound.sampled.Clip
+edu.unsis.view.Login ..> javax.swing.ImageIcon
+edu.unsis.view.Login --|> javax.swing.JFrame
+edu.unsis.view.Login ..> javax.swing.JOptionPane
+edu.unsis.view.MainMenu ..> edu.unsis.model.entity.Product
+edu.unsis.view.MainMenu ..> java.lang.SuppressWarnings
+edu.unsis.view.MainMenu ..> edu.unsis.controller.MainMenuController
+edu.unsis.view.MainMenu ..> java.awt.Color
+edu.unsis.view.MainMenu ..> java.awt.Image
+edu.unsis.view.MainMenu ..> java.util.ArrayList
+edu.unsis.view.MainMenu ..> javax.swing.ImageIcon
+edu.unsis.view.MainMenu --|> javax.swing.JFrame
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.Product
+edu.unsis.view.RegisterProduct ..> java.lang.SuppressWarnings
+edu.unsis.view.RegisterProduct ..> edu.unsis.controller.ProductController
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.Expired
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.NotExpired
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.User
+edu.unsis.view.RegisterProduct ..> edu.unsis.utilities.CodesProducts
+edu.unsis.view.RegisterProduct ..> java.awt.Color
+edu.unsis.view.RegisterProduct ..> java.awt.Frame
+edu.unsis.view.RegisterProduct ..> java.awt.Image
+edu.unsis.view.RegisterProduct ..> java.util.ArrayList
+edu.unsis.view.RegisterProduct ..> javax.swing.ImageIcon
+edu.unsis.view.RegisterProduct --|> javax.swing.JFrame
+edu.unsis.view.RegisterProduct ..> javax.swing.JOptionPane
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.Product
+edu.unsis.view.SearchProduct ..> java.lang.SuppressWarnings
+edu.unsis.view.SearchProduct ..> edu.unsis.controller.SearchProductController
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.Expired
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.NotExpired
+edu.unsis.view.SearchProduct ..> java.awt.Color
+edu.unsis.view.SearchProduct ..> java.awt.Font
+edu.unsis.view.SearchProduct ..> java.awt.Image
+edu.unsis.view.SearchProduct ..> java.util.ArrayList
+edu.unsis.view.SearchProduct ..> javax.swing.ImageIcon
+edu.unsis.view.SearchProduct --|> javax.swing.JFrame
+edu.unsis.view.SearchProduct ..> javax.swing.JOptionPane
+edu.unsis.view.SearchProduct ..> javax.swing.SwingConstants
+edu.unsis.view.SearchProduct ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.SearchProduct ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.UserRegister ..> java.lang.SuppressWarnings
+edu.unsis.view.UserRegister ..> edu.unsis.controller.UsersController
+edu.unsis.view.UserRegister ..> edu.unsis.model.entity.User
+edu.unsis.view.UserRegister ..> java.awt.Color
+edu.unsis.view.UserRegister ..> java.awt.Font
+edu.unsis.view.UserRegister ..> java.awt.Image
+edu.unsis.view.UserRegister ..> java.util.ArrayList
+edu.unsis.view.UserRegister ..> javax.swing.ImageIcon
+edu.unsis.view.UserRegister --|> javax.swing.JFrame
+edu.unsis.view.UserRegister ..> javax.swing.JOptionPane
+edu.unsis.view.UserRegister ..> javax.swing.SwingConstants
+edu.unsis.view.UserRegister ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.UserRegister ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.panel.StateGraphs --|> javax.swing.JPanel
+edu.unsis.dao.CRUD ..> java.util.ArrayList
+edu.unsis.dao.IUserDAO ..> edu.unsis.model.entity.Credentials
+edu.unsis.dao.IUserDAO ..> edu.unsis.model.entity.User
+edu.unsis.dao.IUserDAO --|> edu.unsis.dao.CRUD
+edu.unsis.model.ILoginModel ..> edu.unsis.model.entity.Credentials
+edu.unsis.model.ILoginModel ..> edu.unsis.model.entity.User
+edu.unsis.model.IProductModel ..> edu.unsis.model.entity.Product
+edu.unsis.model.IProductModel ..> java.util.ArrayList
+edu.unsis.model.IProductModel ..> javax.swing.table.DefaultTableModel
+edu.unsis.model.IUserModel ..> edu.unsis.model.entity.User
+edu.unsis.model.IUserModel ..> java.util.ArrayList
+@enduml

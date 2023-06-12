@@ -1,0 +1,113 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class edu.unsis.controller.LoginController
+class edu.unsis.controller.MainMenuController
+class edu.unsis.controller.ProductController
+class edu.unsis.controller.SearchProductController
+class edu.unsis.controller.UsersController
+class edu.unsis.model.entity.Credentials
+class edu.unsis.model.entity.Expired
+class edu.unsis.model.entity.NotExpired
+class edu.unsis.model.entity.Product
+class edu.unsis.model.entity.User
+class edu.unsis.utilities.CodesProducts
+class edu.unsis.view.Inventory
+class edu.unsis.view.Login
+class edu.unsis.view.MainMenu
+class edu.unsis.view.RegisterProduct
+class edu.unsis.view.SearchProduct
+class edu.unsis.view.UserRegister
+class edu.unsis.view.panel.StateGraphs
+class java.awt.Color
+class java.awt.Font
+class java.awt.Frame
+class java.awt.Image
+class java.io.File
+class java.util.ArrayList
+class javax.sound.sampled.AudioInputStream
+class javax.sound.sampled.AudioSystem
+class javax.sound.sampled.Clip
+class javax.swing.ImageIcon
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.JPanel
+class javax.swing.SwingConstants
+class javax.swing.table.DefaultTableCellRenderer
+class javax.swing.table.DefaultTableModel
+edu.unsis.view.Inventory ..> java.lang.SuppressWarnings
+edu.unsis.view.Inventory ..> edu.unsis.model.entity.Product
+edu.unsis.view.Inventory ..> java.awt.Color
+edu.unsis.view.Inventory ..> java.awt.Font
+edu.unsis.view.Inventory ..> java.awt.Image
+edu.unsis.view.Inventory ..> java.util.ArrayList
+edu.unsis.view.Inventory ..> javax.swing.ImageIcon
+edu.unsis.view.Inventory --|> javax.swing.JFrame
+edu.unsis.view.Inventory ..> javax.swing.SwingConstants
+edu.unsis.view.Inventory ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.Inventory ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.Login ..> java.lang.SuppressWarnings
+edu.unsis.view.Login ..> edu.unsis.controller.LoginController
+edu.unsis.view.Login ..> edu.unsis.model.entity.Credentials
+edu.unsis.view.Login ..> edu.unsis.model.entity.User
+edu.unsis.view.Login ..> java.awt.Color
+edu.unsis.view.Login ..> java.awt.Frame
+edu.unsis.view.Login ..> java.awt.Image
+edu.unsis.view.Login ..> java.io.File
+edu.unsis.view.Login ..> javax.sound.sampled.AudioInputStream
+edu.unsis.view.Login ..> javax.sound.sampled.AudioSystem
+edu.unsis.view.Login ..> javax.sound.sampled.Clip
+edu.unsis.view.Login ..> javax.swing.ImageIcon
+edu.unsis.view.Login --|> javax.swing.JFrame
+edu.unsis.view.Login ..> javax.swing.JOptionPane
+edu.unsis.view.MainMenu ..> java.lang.SuppressWarnings
+edu.unsis.view.MainMenu ..> edu.unsis.controller.MainMenuController
+edu.unsis.view.MainMenu ..> edu.unsis.model.entity.Product
+edu.unsis.view.MainMenu ..> java.awt.Color
+edu.unsis.view.MainMenu ..> java.awt.Image
+edu.unsis.view.MainMenu ..> java.util.ArrayList
+edu.unsis.view.MainMenu ..> javax.swing.ImageIcon
+edu.unsis.view.MainMenu --|> javax.swing.JFrame
+edu.unsis.view.RegisterProduct ..> java.lang.SuppressWarnings
+edu.unsis.view.RegisterProduct ..> edu.unsis.controller.ProductController
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.Expired
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.NotExpired
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.Product
+edu.unsis.view.RegisterProduct ..> edu.unsis.model.entity.User
+edu.unsis.view.RegisterProduct ..> edu.unsis.utilities.CodesProducts
+edu.unsis.view.RegisterProduct ..> java.awt.Color
+edu.unsis.view.RegisterProduct ..> java.awt.Frame
+edu.unsis.view.RegisterProduct ..> java.awt.Image
+edu.unsis.view.RegisterProduct ..> java.util.ArrayList
+edu.unsis.view.RegisterProduct ..> javax.swing.ImageIcon
+edu.unsis.view.RegisterProduct --|> javax.swing.JFrame
+edu.unsis.view.RegisterProduct ..> javax.swing.JOptionPane
+edu.unsis.view.SearchProduct ..> java.lang.SuppressWarnings
+edu.unsis.view.SearchProduct ..> edu.unsis.controller.SearchProductController
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.Expired
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.NotExpired
+edu.unsis.view.SearchProduct ..> edu.unsis.model.entity.Product
+edu.unsis.view.SearchProduct ..> java.awt.Color
+edu.unsis.view.SearchProduct ..> java.awt.Font
+edu.unsis.view.SearchProduct ..> java.awt.Image
+edu.unsis.view.SearchProduct ..> java.util.ArrayList
+edu.unsis.view.SearchProduct ..> javax.swing.ImageIcon
+edu.unsis.view.SearchProduct --|> javax.swing.JFrame
+edu.unsis.view.SearchProduct ..> javax.swing.JOptionPane
+edu.unsis.view.SearchProduct ..> javax.swing.SwingConstants
+edu.unsis.view.SearchProduct ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.SearchProduct ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.UserRegister ..> java.lang.SuppressWarnings
+edu.unsis.view.UserRegister ..> edu.unsis.controller.UsersController
+edu.unsis.view.UserRegister ..> edu.unsis.model.entity.User
+edu.unsis.view.UserRegister ..> java.awt.Color
+edu.unsis.view.UserRegister ..> java.awt.Font
+edu.unsis.view.UserRegister ..> java.awt.Image
+edu.unsis.view.UserRegister ..> java.util.ArrayList
+edu.unsis.view.UserRegister ..> javax.swing.ImageIcon
+edu.unsis.view.UserRegister --|> javax.swing.JFrame
+edu.unsis.view.UserRegister ..> javax.swing.JOptionPane
+edu.unsis.view.UserRegister ..> javax.swing.SwingConstants
+edu.unsis.view.UserRegister ..> javax.swing.table.DefaultTableCellRenderer
+edu.unsis.view.UserRegister ..> javax.swing.table.DefaultTableModel
+edu.unsis.view.panel.StateGraphs --|> javax.swing.JPanel
+@enduml

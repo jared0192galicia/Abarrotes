@@ -1,0 +1,58 @@
+@startuml
+abstract class edu.unsis.model.entity.People
+abstract class edu.unsis.model.entity.Product
+annotation java.lang.Override
+class edu.unsis.dao.CRUD
+class edu.unsis.dao.IUserDAO
+class edu.unsis.dao.ProductDAOImpl
+class edu.unsis.dao.UserDAOImpl
+class edu.unsis.model.LoginModelImpl
+class edu.unsis.model.ProductModelImpl
+class edu.unsis.model.UserModelImpl
+class edu.unsis.model.entity.Credentials
+class edu.unsis.model.entity.Expired
+class edu.unsis.model.entity.NotExpired
+class edu.unsis.model.entity.User
+class edu.unsis.view.MainMenu
+class java.util.ArrayList
+class javax.swing.table.DefaultTableModel
+interface edu.unsis.model.ILoginModel
+interface edu.unsis.model.IProductModel
+interface edu.unsis.model.IUserModel
+edu.unsis.model.entity.People ..> java.lang.Override
+edu.unsis.model.entity.Product ..> java.lang.Override
+edu.unsis.model.LoginModelImpl ..> java.lang.Override
+edu.unsis.model.LoginModelImpl ..> edu.unsis.dao.IUserDAO
+edu.unsis.model.LoginModelImpl ..> edu.unsis.dao.UserDAOImpl
+edu.unsis.model.LoginModelImpl ..> edu.unsis.model.entity.Credentials
+edu.unsis.model.LoginModelImpl ..> edu.unsis.model.entity.User
+edu.unsis.model.LoginModelImpl --|> edu.unsis.model.ILoginModel
+edu.unsis.model.ProductModelImpl ..> edu.unsis.model.entity.Product
+edu.unsis.model.ProductModelImpl ..> java.lang.Override
+edu.unsis.model.ProductModelImpl ..> edu.unsis.dao.CRUD
+edu.unsis.model.ProductModelImpl ..> edu.unsis.dao.ProductDAOImpl
+edu.unsis.model.ProductModelImpl ..> edu.unsis.view.MainMenu
+edu.unsis.model.ProductModelImpl ..> java.util.ArrayList
+edu.unsis.model.ProductModelImpl ..> javax.swing.table.DefaultTableModel
+edu.unsis.model.ProductModelImpl --|> edu.unsis.model.IProductModel
+edu.unsis.model.UserModelImpl ..> java.lang.Override
+edu.unsis.model.UserModelImpl ..> edu.unsis.dao.IUserDAO
+edu.unsis.model.UserModelImpl ..> edu.unsis.dao.UserDAOImpl
+edu.unsis.model.UserModelImpl ..> edu.unsis.model.entity.User
+edu.unsis.model.UserModelImpl ..> java.util.ArrayList
+edu.unsis.model.UserModelImpl --|> edu.unsis.model.IUserModel
+edu.unsis.model.entity.Credentials ..> java.lang.Override
+edu.unsis.model.entity.Expired --|> edu.unsis.model.entity.Product
+edu.unsis.model.entity.Expired ..> java.lang.Override
+edu.unsis.model.entity.NotExpired --|> edu.unsis.model.entity.Product
+edu.unsis.model.entity.NotExpired ..> java.lang.Override
+edu.unsis.model.entity.User --|> edu.unsis.model.entity.People
+edu.unsis.model.entity.User ..> java.lang.Override
+edu.unsis.model.ILoginModel ..> edu.unsis.model.entity.Credentials
+edu.unsis.model.ILoginModel ..> edu.unsis.model.entity.User
+edu.unsis.model.IProductModel ..> edu.unsis.model.entity.Product
+edu.unsis.model.IProductModel ..> java.util.ArrayList
+edu.unsis.model.IProductModel ..> javax.swing.table.DefaultTableModel
+edu.unsis.model.IUserModel ..> edu.unsis.model.entity.User
+edu.unsis.model.IUserModel ..> java.util.ArrayList
+@enduml

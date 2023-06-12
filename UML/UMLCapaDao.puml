@@ -1,0 +1,46 @@
+@startuml
+annotation java.lang.Override
+class edu.unsis.dao.ProductDAOImpl
+class edu.unsis.dao.UserDAOImpl
+class edu.unsis.model.entity.Credentials
+class edu.unsis.model.entity.Expired
+class edu.unsis.model.entity.NotExpired
+class edu.unsis.model.entity.Product
+class edu.unsis.model.entity.User
+class edu.unsis.utilities.Conexion
+class java.sql.Connection
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.ArrayList
+class javax.swing.JOptionPane
+interface edu.unsis.dao.CRUD
+interface edu.unsis.dao.IUserDAO
+edu.unsis.dao.ProductDAOImpl ..> java.lang.Override
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.Expired
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.NotExpired
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.model.entity.Product
+edu.unsis.dao.ProductDAOImpl ..> edu.unsis.utilities.Conexion
+edu.unsis.dao.ProductDAOImpl ..> java.sql.Connection
+edu.unsis.dao.ProductDAOImpl ..> java.sql.PreparedStatement
+edu.unsis.dao.ProductDAOImpl ..> java.sql.ResultSet
+edu.unsis.dao.ProductDAOImpl ..> java.sql.SQLException
+edu.unsis.dao.ProductDAOImpl ..> java.util.ArrayList
+edu.unsis.dao.ProductDAOImpl ..> javax.swing.JOptionPane
+edu.unsis.dao.ProductDAOImpl --|> edu.unsis.dao.CRUD
+edu.unsis.dao.UserDAOImpl ..> java.lang.Override
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.model.entity.Credentials
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.model.entity.User
+edu.unsis.dao.UserDAOImpl ..> edu.unsis.utilities.Conexion
+edu.unsis.dao.UserDAOImpl ..> java.sql.Connection
+edu.unsis.dao.UserDAOImpl ..> java.sql.PreparedStatement
+edu.unsis.dao.UserDAOImpl ..> java.sql.ResultSet
+edu.unsis.dao.UserDAOImpl ..> java.sql.SQLException
+edu.unsis.dao.UserDAOImpl ..> java.util.ArrayList
+edu.unsis.dao.UserDAOImpl ..> javax.swing.JOptionPane
+edu.unsis.dao.UserDAOImpl --|> edu.unsis.dao.IUserDAO
+edu.unsis.dao.CRUD ..> java.util.ArrayList
+edu.unsis.dao.IUserDAO ..> edu.unsis.model.entity.Credentials
+edu.unsis.dao.IUserDAO ..> edu.unsis.model.entity.User
+edu.unsis.dao.IUserDAO --|> edu.unsis.dao.CRUD
+@enduml
