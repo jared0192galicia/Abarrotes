@@ -237,4 +237,26 @@ public class UserDAOImpl implements IUserDAO {
             return false;
         }
     }
+
+    @Override
+    public boolean update(String email, String pass) {
+        PreparedStatement pst;
+        Connection cn = Conexion.getConnction();
+
+        try {
+
+            pst = cn.prepareStatement(
+                    "UPDATE users SET pass = AES_ENCRYPT(?, \"root\")"
+                    + " WHERE email = '" + email + "'");
+
+            pst.setString(1, pass);
+
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -47,37 +47,37 @@ private Clip clip;
 
         controller = new LoginController();
 
-        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon image = new ImageIcon("./src/main/java/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/mainLogo.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/mainLogo.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(logoStore.getWidth(),
                 logoStore.getHeight(), Image.SCALE_DEFAULT));
 
         logoStore.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/minimizeUno.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/minimizeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonMin.getWidth(),
                 buttonMin.getHeight(), Image.SCALE_DEFAULT));
 
         iconMinN = icon;
         buttonMin.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/closeUno.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/closeUno.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
 
         iconCloseN = icon;
         buttonClose.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/closeDos.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/closeDos.png");
         iconClose = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
 
-        image = new ImageIcon("./src/edu/unsis/view/images/minimizeDos.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/minimizeDos.png");
         iconMin = new ImageIcon(image.getImage().getScaledInstance(buttonClose.getWidth(),
                 buttonClose.getHeight(), Image.SCALE_DEFAULT));
         this.playSountrack("soundLogin");

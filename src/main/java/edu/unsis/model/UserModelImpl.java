@@ -69,6 +69,17 @@ public class UserModelImpl implements IUserModel {
     public boolean search(String email) {
         return dao.search(email);
     }
+    
+    /**
+     * Update pasword of the user with emial
+     * @param email email for search user
+     * @param pass new pasword for user
+     * @return false in case of error or true otherwise
+     */
+    @Override
+    public boolean update(String email, String pass) {
+        return dao.update(email, pass);
+    }
 
     public static User getLoggedUser() {
         return loggedUser;

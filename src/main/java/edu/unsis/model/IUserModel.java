@@ -39,6 +39,14 @@ public interface IUserModel {
     public boolean update(User u);
     
     /**
+     * Update pasword of the user with emial
+     * @param email email for search user
+     * @param pass new pasword for user
+     * @return false in case of error or true otherwise
+     */
+    public boolean update(String email, String pass);
+            
+    /**
      * Search math in data base with data in credentials, and fill data for user 
      * @param email email for search 
      * @return false in case of error or true otherwise

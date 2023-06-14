@@ -46,11 +46,10 @@ INSERT INTO users VALUES ("root", aes_encrypt("root", "root"),
  "jared0192galici@gmail", "user root", 0, 50, 'M', 1);
 
 SELECT email, sex, CONVERT(AES_DECRYPT(pass, "root") USING UTF8),
- nameU, statusU, age, levelU FROM users WHERE userName = 'root';
+ nameU, statusU, age, levelU FROM users WHERE userName = 'user';
  
- UPDATE users SET pass = aes_encrypt("root", "root"), 
-	email = "", nameU = "", statusU = "1", age = 1, sex = 'F',
-    levelU = 2 where userName = 'root' or email = "";
+ UPDATE users SET email = "jared1029galicia@gmail.com" 
+	where userName = 'root' or email = "jared0192galici@gmail";
  
     SELECT user.alias , convert(aes_decrypt(pass, "root") 
     using UTF8) as passs from user;
@@ -65,14 +64,8 @@ CREATE TABLE sale(
 );
 
 
+select email from users;
 
-
-
-
-select  proveedor.nombre 
-from proveedor as p, proveedor 
-
-where p.nombre = "Smith" and p.ciudad=proveedor.ciudad;
 
 
 

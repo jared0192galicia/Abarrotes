@@ -26,4 +26,13 @@ public interface IUserDAO extends CRUD<User> {
      * @return false in case of error or true otherwise
      */
     public boolean search(String email);
+
+    
+    /**
+     * Update password for user from user with email 
+     * @param email for search user in database
+     * @param pass
+     * @return false in case of the error or true otherwise
+     */
+    public boolean update(String email, String pass);
 }
