@@ -21,6 +21,9 @@ public class RecoverAccesController {
 
     public void startTime(JLabel labelTime) {
         timer.setShowTimer(labelTime);
+        if (timer.isAlive()) {
+            this.stopTime();
+        }
         timer.start();
     }
     

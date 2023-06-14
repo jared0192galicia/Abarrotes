@@ -228,6 +228,7 @@
             <Property name="toolTipText" type="java.lang.String" value="Recupera tu contrase&#xf1;a de acceso"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelPasswordMouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelPasswordMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelPasswordMouseExited"/>
           </Events>

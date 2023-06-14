@@ -202,6 +202,9 @@ private Clip clip;
         labelPassword.setText("¿Olvidó su contraseña?");
         labelPassword.setToolTipText("Recupera tu contraseña de acceso");
         labelPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelPasswordMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labelPasswordMouseEntered(evt);
             }
@@ -373,6 +376,11 @@ private Clip clip;
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setIcon(iconMinN);
     }//GEN-LAST:event_buttonMinMouseExited
+
+    private void labelPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelPasswordMouseClicked
+        new RecoverAcces().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_labelPasswordMouseClicked
 
     /**
      * @param args the command line arguments

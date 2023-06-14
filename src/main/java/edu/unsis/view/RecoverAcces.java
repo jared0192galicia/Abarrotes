@@ -77,6 +77,7 @@ public class RecoverAcces extends javax.swing.JFrame {
         wallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -180,7 +181,7 @@ public class RecoverAcces extends javax.swing.JFrame {
                 buttonSendCodeActionPerformed(evt);
             }
         });
-        panelMain.add(buttonSendCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 160, 40));
+        panelMain.add(buttonSendCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 160, 40));
 
         buttonAcep.setBackground(new java.awt.Color(0, 102, 102));
         buttonAcep.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,6 +311,9 @@ public class RecoverAcces extends javax.swing.JFrame {
             this.buttonAcep.setVisible(true);
             controller.startTime(labelTime);
             labelTime.setVisible(true);
+            
+            this.buttonSendCode.setLocation(270, 370);
+            this.buttonSendCode.setText("Reenviar");
 
         } else {
             JOptionPane.showMessageDialog(null,
@@ -378,6 +382,8 @@ public class RecoverAcces extends javax.swing.JFrame {
         
         if (pass.equals(confirmPass)) {
             controller.updatePassword(this.txtEmail.getText().trim(), pass);
+            new Login().setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_buttonChangePassActionPerformed
 
