@@ -170,6 +170,7 @@ public class UserDAOImpl implements IUserDAO {
     /**
      * Update user obj in data base. Search for userName or Email, needed update
      * a one field for call this funtion for to locate row.
+     *
      * @param obj User for the update in data base
      * @return false in case of the error or true otherwise
      */
@@ -204,4 +205,36 @@ public class UserDAOImpl implements IUserDAO {
         return true;
     }
 
+    /**
+     * Search math in data base with data in credentials, and fill data for user
+     *
+     * @param email email for search
+     * @return false in case of error or true otherwise
+     */
+    @Override
+    public boolean search(String email) {
+        Connection cn = Conexion.getConnction();
+        PreparedStatement pst;
+
+        try {
+            pst = (PreparedStatement) cn.prepareStatement(
+                    "SELECT nameU"
+                    + " FROM users WHERE email = '" + email
+                    + "'");
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(rs.getString("nameU"));
+                return rs.getString("nameU") != null;
+            }
+            return false;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Mysql", JOptionPane.ERROR_MESSAGE);
+            System.out.println("e = " + e);
+            return false;
+        }
+    }
 }

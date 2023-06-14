@@ -12,12 +12,13 @@ import edu.unsis.model.entity.User;
 import java.util.ArrayList;
 
 public class UserModelImpl implements IUserModel {
-    
+
     private static User loggedUser;
     private final IUserDAO dao = new UserDAOImpl();
 
     /**
-     * Call to cape DAO for returned list with all users in arrayList 
+     * Call to cape DAO for returned list with all users in arrayList
+     *
      * @return All users in ArrayList
      */
     @Override
@@ -27,6 +28,7 @@ public class UserModelImpl implements IUserModel {
 
     /**
      * Call to cape DAO for create new row in database.
+     *
      * @param u user to register
      * @return true if successful and false otherwise
      */
@@ -37,6 +39,7 @@ public class UserModelImpl implements IUserModel {
 
     /**
      * Call to cape DAO for delete row in database.
+     *
      * @param user user to delete
      * @return true if successful and false otherwise
      */
@@ -46,7 +49,8 @@ public class UserModelImpl implements IUserModel {
     }
 
     /**
-     * Call to cape DAO for update row in database. 
+     * Call to cape DAO for update row in database.
+     *
      * @param u user to update
      * @return true if successful and false otherwise
      */
@@ -54,7 +58,18 @@ public class UserModelImpl implements IUserModel {
     public boolean update(User u) {
         return dao.update(u);
     }
-    
+
+    /**
+     * Search math in data base with data in credentials, and fill data for user
+     *
+     * @param email email for search
+     * @return false in case of error or true otherwise
+     */
+    @Override
+    public boolean search(String email) {
+        return dao.search(email);
+    }
+
     public static User getLoggedUser() {
         return loggedUser;
     }
@@ -62,5 +77,5 @@ public class UserModelImpl implements IUserModel {
     public static void setLoggedUser(User loggedUser) {
         UserModelImpl.loggedUser = loggedUser;
     }
-    
+
 }

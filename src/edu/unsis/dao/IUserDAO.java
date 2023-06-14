@@ -20,4 +20,10 @@ public interface IUserDAO extends CRUD<User> {
      */
     public boolean acces(Credentials credentials, User user);
 
+    /**
+     * Search a match with email in data base
+     * @param email email for search 
+     * @return false in case of error or true otherwise
+     */
+    public boolean search(String email);
 }

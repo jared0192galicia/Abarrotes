@@ -37,4 +37,11 @@ public interface IUserModel {
      * @return true if successful and false otherwise
      */
     public boolean update(User u);
+    
+    /**
+     * Search math in data base with data in credentials, and fill data for user 
+     * @param email email for search 
+     * @return false in case of error or true otherwise
+     */
+    public boolean search(String email);
 }
