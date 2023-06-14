@@ -9,13 +9,11 @@ package edu.unsis.view;
 import edu.unsis.controller.RecoverAccesController;
 import java.awt.Color;
 import java.awt.Frame;
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
@@ -246,40 +244,15 @@ public class RecoverAcces extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSendCodeActionPerformed
 
     private void buttonAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcepActionPerformed
-        Properties propiedad = new Properties();
-        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
-        propiedad.setProperty("mail.smtp.starttls.enable", "true");
-        propiedad.setProperty("mail.smtp.port", "587");
-        propiedad.setProperty("mail.smp.auth", "true");
-        Session session = Session.getDefaultInstance(propiedad, null);
-        
-        try {
-            Message msg = new MimeMessage(session);
-            System.out.println("En try");
-            msg.setFrom(new InternetAddress("jared1029galicia@gmail.com", "Yo"));
-            System.out.println("En try");
-            msg.setRecipient(Message.RecipientType.TO, new InternetAddress(
-                    "jared1029galicia@gmail.com", "Tambien yo"));
-            
-            msg.setSubject("Test");
-            msg.setText("Cadena principal");
-            System.out.println("En try");
-            Transport.send(msg);
-        } catch (AddressException e) {
-            System.out.println("UnsupportedEncodingException\n" + e.getMessage());
-        }catch (MessagingException e) {
-            System.out.println("MessagingException\n" + e.getMessage());
-            
-        }catch (UnsupportedEncodingException e) {
-            System.out.println("UnsupportedEncodingException\n" + e.getMessage());
-        }
+        enviarConGMail("jared1029galicia@gmail.com", "test", 
+                "Esta es una prueba");
     }//GEN-LAST:event_buttonAcepActionPerformed
 
     private static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
     //La dirección de correo de envío
-    String remitente = "remitente@gmail.com";
+    String remitente = "jared1029galicia@gmail.com";
     //La clave de aplicación obtenida según se explica en este artículo:
-    String claveemail = "1234567890123456";
+    String claveemail = "xpxhduwujqsikjaf";
 
     Properties props = System.getProperties();
     props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
@@ -303,6 +276,7 @@ public class RecoverAcces extends javax.swing.JFrame {
         transport.close();
     }
     catch (MessagingException me) {
+        System.err.println("me = " + me);
         me.printStackTrace();   //Si se produce un error
     }
   }
