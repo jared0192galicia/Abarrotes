@@ -1,9 +1,16 @@
 build
 build/*
+builAnt
+buildAnt/*
 nbproject
 nbproject/*
+nbprojectAnt
+nbprojectAnt/*
 test
 test/*
 manifest.mf
+manifestAnt.mf
 build.xml
+buildAnt.xml
 /dist/
+/target/
