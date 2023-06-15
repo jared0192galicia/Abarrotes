@@ -1,5 +1,6 @@
 package edu.unsis.view;
 
+import edu.unsis.controller.SalesController;
 import edu.unsis.model.entity.Product;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +21,10 @@ public class Sales extends javax.swing.JFrame {
 
     private final DefaultTableModel model;
     private final ArrayList<Product> products = MainMenu.products;
-
+    
+    private final SalesController controller;
+    private double priceTotal;
+    
     /**
      * Creates new form Sales
      */
@@ -42,7 +46,7 @@ public class Sales extends javax.swing.JFrame {
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
                 buttonHome.getHeight(), Image.SCALE_DEFAULT));
 
-        buttonHome.setIcon(icon);
+//        buttonHome.setIcon(icon);
 
         table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         table.getTableHeader().setBackground(new Color(0, 153, 153));
@@ -56,6 +60,7 @@ public class Sales extends javax.swing.JFrame {
         table.getColumnModel().getColumn(3).setCellRenderer(tcr);
 
         model = (DefaultTableModel) table.getModel();
+        controller = new SalesController();
     }
 
     @SuppressWarnings("unchecked")
@@ -70,9 +75,10 @@ public class Sales extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        buttonContinue = new javax.swing.JButton();
         buttonHome = new javax.swing.JButton();
         labelTitle = new javax.swing.JLabel();
+        buttonFinal = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -165,17 +171,17 @@ public class Sales extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 290));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Continuar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonContinue.setBackground(new java.awt.Color(0, 102, 102));
+        buttonContinue.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        buttonContinue.setForeground(new java.awt.Color(255, 255, 255));
+        buttonContinue.setText("Continuar");
+        buttonContinue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonContinue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonContinueActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 210, 40));
+        jPanel1.add(buttonContinue, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 210, 40));
 
         buttonHome.setBorder(null);
         buttonHome.setBorderPainted(false);
@@ -188,12 +194,25 @@ public class Sales extends javax.swing.JFrame {
                 buttonHomeActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 60));
+        jPanel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
 
         labelTitle.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(255, 255, 255));
         labelTitle.setText("Ventas");
         jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        buttonFinal.setBackground(new java.awt.Color(0, 102, 102));
+        buttonFinal.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        buttonFinal.setForeground(new java.awt.Color(255, 255, 255));
+        buttonFinal.setText("Finalizar");
+        buttonFinal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonFinal.setEnabled(false);
+        buttonFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFinalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 210, 40));
         jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,13 +258,15 @@ public class Sales extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonContinueActionPerformed
         String code = txtCodes.getText().trim();
-
+        priceTotal = 0;
+        // Valid input data exist
         if (code.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar los productos",
                     "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } else {
+            // Get codes for products with 14 chars
             String aux = "";
             ArrayList<String> codes = new ArrayList<>();
             for (int i = 0; i < code.length(); i++) {
@@ -259,18 +280,33 @@ public class Sales extends javax.swing.JFrame {
                     }
                 }
             }
+            for (String code1 : codes) {
+                System.out.println("code1 = " + code1);
+            }
+            this.buttonFinal.setEnabled(true);
             createModel(codes);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonContinueActionPerformed
+
+    /**
+     * Call to controller for generate tiked
+     * @param evt Arg of the event
+     */
+    private void buttonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalActionPerformed
+        controller.generateReport(products, 
+                "/home/elietzer/NetBeansProjects/Abarrotes/", 
+                String.valueOf(priceTotal));
+        
+        
+    }//GEN-LAST:event_buttonFinalActionPerformed
     
     /**
-     *
+     * Mod model with products ingres in txtCodes for the table
      * @param codes
      */
     private void createModel(ArrayList<String> codes) {
         model.setRowCount(0);
         String row[] = new String[4];
-        double price = 0;
         for (String code : codes) {
             for (Product product : products) {
                 if (code.equals(product.getCode())) {
@@ -278,14 +314,14 @@ public class Sales extends javax.swing.JFrame {
                     row[1] = product.getMarca();
                     row[2] = product.getModelo();
                     row[3] = String.valueOf(product.getPrice());
-                    price += product.getPrice();
+                    priceTotal += product.getPrice();
 
                     model.addRow(row);
                 }
             }
         }
         table.setModel(model);
-        txtTotal.setText(String.valueOf(price));
+        txtTotal.setText(String.valueOf(priceTotal));
     }
 
     /**
@@ -324,10 +360,11 @@ public class Sales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonContinue;
     private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonFinal;
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
