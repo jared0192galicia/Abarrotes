@@ -28,37 +28,37 @@ public final class MainMenu extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/wallpaperPrincipal.jpg");
+        ImageIcon image = new ImageIcon("./src/main/java/edu/unsis/view/images/wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(wallpaper.getWidth(),
                 wallpaper.getHeight(), Image.SCALE_DEFAULT));
 
         wallpaper.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/user-button.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/user-button.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonUsers.getWidth(),
                 buttonUsers.getHeight(), Image.SCALE_DEFAULT));
 
         buttonUsers.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/inventario.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/inventario.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonUsers.getWidth(),
                 buttonUsers.getHeight(), Image.SCALE_DEFAULT));
 
         buttonInvent.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/invoice.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/invoice.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonSale.getWidth(),
                 buttonSale.getHeight(), Image.SCALE_DEFAULT));
 
         buttonSale.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/print.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/print.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
                 buttonPrint.getHeight(), Image.SCALE_DEFAULT));
 
         buttonPrint.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/productButton.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/productButton.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
                 buttonPrint.getHeight(), Image.SCALE_DEFAULT));
 
@@ -299,7 +299,8 @@ public final class MainMenu extends javax.swing.JFrame {
      * @param evt 
      */
     private void buttonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaleActionPerformed
-        // TODO add your handling code here:
+        new Sales().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_buttonSaleActionPerformed
 
     /**

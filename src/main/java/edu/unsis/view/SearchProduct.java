@@ -42,7 +42,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
         this.txtDescription.setColumns(3);
 
-        ImageIcon image = new ImageIcon("./src/edu/unsis/view/images/"
+        ImageIcon image = new ImageIcon("./src/main/java/edu/unsis/view/images/"
                 + "wallpaperPrincipal.jpg");
         ImageIcon icon = new ImageIcon(image.getImage().getScaledInstance(
                 wallpaper.getWidth(),
@@ -50,7 +50,7 @@ public class SearchProduct extends javax.swing.JFrame {
 
         wallpaper.setIcon(icon);
 
-        image = new ImageIcon("./src/edu/unsis/view/images/home.png");
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/home.png");
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
                 buttonHome.getHeight(), Image.SCALE_DEFAULT));
 
