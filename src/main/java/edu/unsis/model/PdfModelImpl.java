@@ -1,20 +1,20 @@
 package edu.unsis.model;
 
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import edu.unsis.model.entity.Product;
+import edu.unsis.model.entity.Sale;
 import edu.unsis.model.entity.User;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +23,18 @@ import javax.swing.JOptionPane;
  */
 public class PdfModelImpl implements IPdfModel {
 
+    
     @Override
-    public void createReport(ArrayList<Product> products, String root, String total) {
+    public void createRegister(ArrayList<Product> products, String root, double total) {
+        Sale sale = new Sale();
+        sale.setDate(Calendar.getInstance().getTime().toString());
+        System.out.println("sale = " + sale.getDate());
+        sale.setIncome(total);
+        sale.setSaleFor(UserModelImpl.getLoggedUser().getUserName());
+    }
+    
+    @Override
+    public void createReport(ArrayList<Product> products, Sale sale ,String root) {
         User user = UserModelImpl.getLoggedUser();
         Document documento = new Document();
 //        Document documento = new Document(new Rectangle(400, 800));
@@ -73,17 +83,17 @@ public class PdfModelImpl implements IPdfModel {
 
             Paragraph parrafo2 = new Paragraph();
             parrafo2.setAlignment(Paragraph.ALIGN_CENTER);
-            parrafo2.add("\n\n* * * Atendido Por " + user.getName() + " * * *");
+            parrafo2.add("\n\n* * * Atendido Por: " + user.getName() + " * * *");
             parrafo2.setFont(FontFactory.getFont("Tahoma", 12,
                     Font.NORMAL));
             parrafo2.getFont().setColor(BaseColor.RED);
             
             Paragraph paragraphTotal = new Paragraph();
             paragraphTotal.setAlignment(Paragraph.ALIGN_CENTER);
-            paragraphTotal.add("\n\n* * * Total: " + total + " * * *");
             paragraphTotal.setFont(FontFactory.getFont("Tahoma", 12,
                     Font.NORMAL));
             paragraphTotal.getFont().setColor( new BaseColor(25, 190, 55));
+            paragraphTotal.add("\n\n* * * Total: " + sale.getIncome() + " * * *");
 
             documento.add(paragraphTotal);
             documento.add(parrafo2);

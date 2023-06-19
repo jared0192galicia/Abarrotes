@@ -2,11 +2,14 @@ package edu.unsis.view;
 
 import edu.unsis.controller.SalesController;
 import edu.unsis.model.entity.Product;
+import edu.unsis.model.entity.Sale;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Image;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -293,11 +296,18 @@ public class Sales extends javax.swing.JFrame {
      * @param evt Arg of the event
      */
     private void buttonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalActionPerformed
-        controller.generateReport(products, 
-                "/home/elietzer/NetBeansProjects/Abarrotes/", 
-                String.valueOf(priceTotal));
         
+        Sale sale = new Sale();
+        sale.setCode("qwe");
+        sale.setCodesProducts(this.txtCodes.getText().trim());
+        sale.setDate(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").
+                format(Calendar.getInstance().getTime()));
+        sale.setIncome(priceTotal);
         
+        System.out.println("sale.getDate() = " + sale.getDate());
+        
+        controller.generateReport(products, sale,
+                "/home/elietzer/NetBeansProjects/Abarrotes/");        
     }//GEN-LAST:event_buttonFinalActionPerformed
     
     /**
