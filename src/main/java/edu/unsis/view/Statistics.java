@@ -1,20 +1,21 @@
 /**
  * Autor: Galicia Cordova Elietzer Jared
  * Creado el: 19 / Jun / 2023
- * modificado: 19 / Jun / 2023
+ * modificado: 20 / Jun / 2023
  * Descipciòn: Implementacion del CRUD basico en mysql para productos
  */
 package edu.unsis.view;
 
 import edu.unsis.controller.StatisticsController;
+import edu.unsis.model.entity.Product;
 import edu.unsis.model.entity.Sale;
-import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Statistics extends javax.swing.JFrame {
 
-    private StatisticsController controller;
-    private ArrayList<Sale> sales;
+    private final StatisticsController controller;
+    private final ArrayList<Sale> sales;
+    private ArrayList<Product> products;
     
     public Statistics() {
         initComponents();
@@ -25,6 +26,7 @@ public class Statistics extends javax.swing.JFrame {
         
         controller = new StatisticsController();
         sales = controller.load();
+        products = MainMenu.products;
     }
 
     @SuppressWarnings("unchecked")
@@ -33,7 +35,9 @@ public class Statistics extends javax.swing.JFrame {
 
         buttonHome = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableProducts = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableSales = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,20 +55,54 @@ public class Statistics extends javax.swing.JFrame {
         });
         getContentPane().add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Cantidad"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 270));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableProducts);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 300, 350));
+
+        tableSales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Vendedor", "Monto", "Fecha"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableSales);
+        if (tableSales.getColumnModel().getColumnCount() > 0) {
+            tableSales.getColumnModel().getColumn(2).setHeaderValue("Fecha");
+        }
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 330, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -84,11 +122,6 @@ public class Statistics extends javax.swing.JFrame {
         }
     }
     
-    @Override
-    public void paint(Graphics g) {
-        
-    }
-    
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(() -> {
@@ -99,6 +132,8 @@ public class Statistics extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonHome;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableProducts;
+    private javax.swing.JTable tableSales;
     // End of variables declaration//GEN-END:variables
 }
