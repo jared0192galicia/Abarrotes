@@ -49,7 +49,7 @@ public class Sales extends javax.swing.JFrame {
         icon = new ImageIcon(image.getImage().getScaledInstance(buttonHome.getWidth(),
                 buttonHome.getHeight(), Image.SCALE_DEFAULT));
 
-//        buttonHome.setIcon(icon);
+        buttonHome.setIcon(icon);
 
         table.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         table.getTableHeader().setBackground(new Color(0, 153, 153));
@@ -298,7 +298,7 @@ public class Sales extends javax.swing.JFrame {
     private void buttonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalActionPerformed
         
         Sale sale = new Sale();
-        sale.setCode("qwe");
+        sale.setCode(Sale.generateCode());
         sale.setCodesProducts(this.txtCodes.getText().trim());
         sale.setDate(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").
                 format(Calendar.getInstance().getTime()));

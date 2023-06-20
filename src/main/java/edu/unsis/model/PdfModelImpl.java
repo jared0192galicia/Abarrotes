@@ -11,6 +11,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import edu.unsis.model.entity.Product;
 import edu.unsis.model.entity.Sale;
 import edu.unsis.model.entity.User;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +25,6 @@ import javax.swing.JOptionPane;
  */
 public class PdfModelImpl implements IPdfModel {
 
-    
     @Override
     public void createRegister(ArrayList<Product> products, String root, double total) {
         Sale sale = new Sale();
@@ -32,9 +33,9 @@ public class PdfModelImpl implements IPdfModel {
         sale.setIncome(total);
         sale.setSaleFor(UserModelImpl.getLoggedUser().getUserName());
     }
-    
+
     @Override
-    public void createReport(ArrayList<Product> products, Sale sale ,String root) {
+    public void createReport(ArrayList<Product> products, Sale sale, String root) {
         User user = UserModelImpl.getLoggedUser();
         Document documento = new Document();
 //        Document documento = new Document(new Rectangle(400, 800));
@@ -75,9 +76,6 @@ public class PdfModelImpl implements IPdfModel {
                 tablaCliente.addCell(column);
                 tablaCliente.addCell(String.valueOf(product.getPrice()));
 
-                /**
-                 * ALIM20231B1B8IALIM20232C5F6GALIM20233D2C7HALIM20234E0A6GALIM20236G0A1B
-                 */
             }
             documento.add(tablaCliente);
 
@@ -87,20 +85,32 @@ public class PdfModelImpl implements IPdfModel {
             parrafo2.setFont(FontFactory.getFont("Tahoma", 12,
                     Font.NORMAL));
             parrafo2.getFont().setColor(BaseColor.RED);
-            
+
             Paragraph paragraphTotal = new Paragraph();
             paragraphTotal.setAlignment(Paragraph.ALIGN_CENTER);
             paragraphTotal.setFont(FontFactory.getFont("Tahoma", 12,
                     Font.NORMAL));
-            paragraphTotal.getFont().setColor( new BaseColor(25, 190, 55));
+            paragraphTotal.getFont().setColor(new BaseColor(25, 190, 55));
             paragraphTotal.add("\n\n* * * Total: " + sale.getIncome() + " * * *");
 
             documento.add(paragraphTotal);
+            
+            parrafo.clear();
+            parrafo.setFont(FontFactory.getFont("Tahoma",
+                    12, Font.BOLD));
+            parrafo.getFont().setColor(BaseColor.BLUE);
+            parrafo.add("Fecha .............................. " + sale.getDate());
+            
+            documento.add(parrafo);
             documento.add(parrafo2);
 
             documento.close();
-            JOptionPane.showMessageDialog(null,
-                    "Reporte creado correctamente.");
+            try {
+                File path = new File(root + "Reporte.pdf");
+                Desktop.getDesktop().open(path);
+            } catch (IOException e) {
+                System.out.println("Error " + e);
+            }
 
         } catch (DocumentException | IOException e) {
             System.err.println("Error en PDF o ruta de imagen" + e);

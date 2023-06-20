@@ -18,6 +18,15 @@ public class Sale {
         this.saleFor = saleFor;
         this.codesProducts = codesProducts;
     }
+    
+    public static String generateCode() {
+        String code = "2023";
+        
+        for (int i = 0; i < 10; i++) {
+            code += (String.valueOf((int) (Math.random() * 9)));
+        }
+        return code;
+    }
 
     public String getCode() {
         return code;

@@ -78,7 +78,7 @@ public final class MainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelTitle = new javax.swing.JLabel();
         buttonUsers = new javax.swing.JButton();
-        button2 = new javax.swing.JButton();
+        buttonStatistics = new javax.swing.JButton();
         buttonRegisterProduct = new javax.swing.JButton();
         buttonPrint = new javax.swing.JButton();
         buttonSale = new javax.swing.JButton();
@@ -112,13 +112,18 @@ public final class MainMenu extends javax.swing.JFrame {
         });
         jPanel1.add(buttonUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 170, 160));
 
-        button2.setBorder(null);
-        button2.setBorderPainted(false);
-        button2.setContentAreaFilled(false);
-        button2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        button2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 170, 160));
+        buttonStatistics.setBorder(null);
+        buttonStatistics.setBorderPainted(false);
+        buttonStatistics.setContentAreaFilled(false);
+        buttonStatistics.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonStatistics.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        buttonStatistics.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonStatistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonStatisticsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 170, 160));
 
         buttonRegisterProduct.setToolTipText("Registrar producto");
         buttonRegisterProduct.setBorder(null);
@@ -312,6 +317,11 @@ public final class MainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonInventActionPerformed
 
+    private void buttonStatisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStatisticsActionPerformed
+        new Statistics().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonStatisticsActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new MainMenu().setVisible(true);
@@ -319,13 +329,13 @@ public final class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button2;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonInvent;
     private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonPrint;
     private javax.swing.JButton buttonRegisterProduct;
     private javax.swing.JButton buttonSale;
+    private javax.swing.JButton buttonStatistics;
     private javax.swing.JButton buttonUsers;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelTitle;
