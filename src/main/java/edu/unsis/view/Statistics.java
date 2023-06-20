@@ -6,16 +6,25 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.StatisticsController;
 import edu.unsis.model.entity.Sale;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Statistics extends javax.swing.JFrame {
 
+    private StatisticsController controller;
     private ArrayList<Sale> sales;
     
     public Statistics() {
         initComponents();
+        
+        this.setSize(637, 414);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        
+        controller = new StatisticsController();
+        sales = controller.load();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +32,8 @@ public class Statistics extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonHome = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,6 +51,21 @@ public class Statistics extends javax.swing.JFrame {
         });
         getContentPane().add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 270));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -48,6 +74,16 @@ public class Statistics extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
+    private void calculate() {
+        
+        int totalSales = sales.size();
+        double totalIncome = 0;
+        
+        for (Sale sale : sales) {
+            totalIncome += sale.getIncome();
+        }
+    }
+    
     @Override
     public void paint(Graphics g) {
         
@@ -62,5 +98,7 @@ public class Statistics extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonHome;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

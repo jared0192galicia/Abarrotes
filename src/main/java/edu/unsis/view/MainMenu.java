@@ -64,6 +64,12 @@ public final class MainMenu extends javax.swing.JFrame {
 
         buttonRegisterProduct.setIcon(icon);
 
+        image = new ImageIcon("./src/main/java/edu/unsis/view/images/grafica.png");
+        icon = new ImageIcon(image.getImage().getScaledInstance(buttonPrint.getWidth(),
+                buttonPrint.getHeight(), Image.SCALE_DEFAULT));
+
+        buttonStatistics.setIcon(icon);
+
         if (products == null) {
 
             controller = new MainMenuController();
