@@ -283,9 +283,7 @@ public class Sales extends javax.swing.JFrame {
                     }
                 }
             }
-            for (String code1 : codes) {
-                System.out.println("code1 = " + code1);
-            }
+            
             this.buttonFinal.setEnabled(true);
             createModel(codes);
         }
