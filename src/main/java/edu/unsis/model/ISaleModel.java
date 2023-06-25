@@ -6,6 +6,7 @@
  */
 package edu.unsis.model;
 
+import edu.unsis.model.entity.Product;
 import edu.unsis.model.entity.Sale;
 import java.util.ArrayList;
 
@@ -17,4 +18,12 @@ public interface ISaleModel {
     public boolean updateRegister(Sale sale, String code);
     
     public boolean deleteRegister(String code);
+    
+    /**
+     * Create an report with products and user sales
+     * @param products products in the sale
+     * @param sale for register
+     * @param root For save pdf
+     */
+    public void createReport(ArrayList<Product> products, Sale sale ,String root);
 }

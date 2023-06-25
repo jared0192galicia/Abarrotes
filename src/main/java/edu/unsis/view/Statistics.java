@@ -363,9 +363,10 @@ public class Statistics extends javax.swing.JFrame {
 //        g.fillRect(100, 150, 23, 40);
 //        g.drawString("No Reparado", 10, 168);
 //        g.drawString("Cantidad:" + 43, 10, 183);
-        g.fillRect(50, 400, 50, totalSales);
+        g.fillRect(50, 500 - totalSales, 50, totalSales * 10);
+        
         g.setColor(new Color(50, 100, 100));//rojo
-        g.fillRect(150, 400, 50, (int) totalIncome);
+        g.fillRect(150, (int) (500 - totalIncome), 50, (int) (totalIncome / 10));
     }
 
     public static void main(String args[]) {

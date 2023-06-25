@@ -304,6 +304,8 @@ public class Sales extends javax.swing.JFrame {
         
         System.out.println("sale.getDate() = " + sale.getDate());
         
+        controller.registerSale(sale);
+        
         controller.generateReport(products, sale,
                 "/home/elietzer/NetBeansProjects/Abarrotes/");        
     }//GEN-LAST:event_buttonFinalActionPerformed
