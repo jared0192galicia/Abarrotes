@@ -24,6 +24,7 @@ public class Sales extends javax.swing.JFrame {
 
     private final DefaultTableModel model;
     private final ArrayList<Product> products = MainMenu.products;
+    private ArrayList<Product> productsSelected;
     
     private final SalesController controller;
     private double priceTotal;
@@ -36,6 +37,8 @@ public class Sales extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        productsSelected = new ArrayList<>();
 
         ImageIcon image = new ImageIcon(
                 "./src/main/java/edu/unsis/view/images/wallpaperPrincipal.jpg");
@@ -257,13 +260,19 @@ public class Sales extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitActionPerformed
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
-        this.dispose();
-        new MainMenu().setVisible(true);
+        if (Login.levelUser == 1) {
+            new MainMenu().setVisible(true);
+            this.dispose();
+        } else {
+            new MainMenuSeller().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonContinueActionPerformed
         String code = txtCodes.getText().trim();
         priceTotal = 0;
+        
         // Valid input data exist
         if (code.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar los productos",
@@ -280,6 +289,16 @@ public class Sales extends javax.swing.JFrame {
                     if (aux.length() == 14) {
                         codes.add(aux);
                         aux = "";
+                    }
+                }
+            }
+            
+            productsSelected.clear();
+            
+            for (String cod : codes) {
+                for (Product product : products) {
+                    if (product.getCode().equals(cod)) {
+                        productsSelected.add(product);
                     }
                 }
             }
@@ -302,12 +321,12 @@ public class Sales extends javax.swing.JFrame {
                 format(Calendar.getInstance().getTime()));
         sale.setIncome(priceTotal);
         
-        System.out.println("sale.getDate() = " + sale.getDate());
         
-        controller.registerSale(sale);
+        controller.generateReport(productsSelected, sale,
+                "/home/elietzer/NetBeansProjects/Abarrotes/");   
         
-        controller.generateReport(products, sale,
-                "/home/elietzer/NetBeansProjects/Abarrotes/");        
+        controller.registerSale(productsSelected, sale);
+             
     }//GEN-LAST:event_buttonFinalActionPerformed
     
     /**
@@ -318,7 +337,7 @@ public class Sales extends javax.swing.JFrame {
         model.setRowCount(0);
         String row[] = new String[4];
         for (String code : codes) {
-            for (Product product : products) {
+            for (Product product : productsSelected) {
                 if (code.equals(product.getCode())) {
                     row[0] = product.getName();
                     row[1] = product.getMarca();

@@ -7,28 +7,26 @@
 package edu.unsis.view;
 
 import edu.unsis.controller.UsersController;
+import edu.unsis.model.UserModelImpl;
+import edu.unsis.model.entity.User;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import edu.unsis.model.entity.User;
-import java.awt.Font;
-import java.util.ArrayList;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
-public final class UserRegister extends javax.swing.JFrame {
+/**
+ *
+ * @author elietzer
+ */
+public class UpdateUserSeller extends javax.swing.JFrame {
 
-    private final UsersController controller;
-    private final DefaultTableModel modelTable;
-    private final ArrayList<User> users;
-    private User userSelected;
+    private User userLogger = UserModelImpl.getLoggedUser();
+    private UsersController controller;
 
     /**
-     * Contructor for frame. Setter images and instance components
+     * Creates new form UpdateUserSeller
      */
-    public UserRegister() {
+    public UpdateUserSeller() {
         initComponents();
 
         this.setLocationRelativeTo(null);
@@ -45,25 +43,6 @@ public final class UserRegister extends javax.swing.JFrame {
                 buttonHome.getHeight(), Image.SCALE_DEFAULT));
 
         buttonHome.setIcon(icon);
-
-        this.controller = new UsersController();
-        this.users = controller.listAllUsers();
-
-        tableUsers.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        tableUsers.getTableHeader().setBackground(new Color(0, 153, 153));
-        tableUsers.getTableHeader().setForeground(new Color(255, 255, 255));
-
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-        tcr.setHorizontalAlignment(SwingConstants.CENTER);
-        tableUsers.getColumnModel().getColumn(0).setCellRenderer(tcr);
-        tableUsers.getColumnModel().getColumn(1).setCellRenderer(tcr);
-        tableUsers.getColumnModel().getColumn(2).setCellRenderer(tcr);
-        tableUsers.getColumnModel().getColumn(3).setCellRenderer(tcr);
-        tableUsers.getColumnModel().getColumn(4).setCellRenderer(tcr);
-
-        modelTable = (DefaultTableModel) tableUsers.getModel();
-
-        fillTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -83,20 +62,15 @@ public final class UserRegister extends javax.swing.JFrame {
         comboSex = new javax.swing.JComboBox<>();
         comboEdo = new javax.swing.JComboBox<>();
         comboLevel = new javax.swing.JComboBox<>();
-        buttonRegister = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
         labelUser = new javax.swing.JLabel();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
-        scrollPaneTable = new javax.swing.JScrollPane();
-        tableUsers = new javax.swing.JTable();
         buttonUpdate = new javax.swing.JButton();
-        buttonDelete = new javax.swing.JButton();
         buttonHome = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -110,7 +84,7 @@ public final class UserRegister extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestion de usuarios");
+        jLabel1.setText("Registro de usuarios");
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         labelPass.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -163,6 +137,7 @@ public final class UserRegister extends javax.swing.JFrame {
         comboSex.setForeground(new java.awt.Color(255, 255, 255));
         comboSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "         Sexo", "           M", "           F" }));
         comboSex.setToolTipText("Nivel de permisos");
+        comboSex.setEnabled(false);
         panel1.add(comboSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 200, -1));
 
         comboEdo.setBackground(new java.awt.Color(102, 153, 255));
@@ -170,26 +145,16 @@ public final class UserRegister extends javax.swing.JFrame {
         comboEdo.setForeground(new java.awt.Color(255, 255, 255));
         comboEdo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "        Estado", "        Activo", "       Inactivo" }));
         comboEdo.setToolTipText("Nivel de permisos");
+        comboEdo.setEnabled(false);
         panel1.add(comboEdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 210, -1));
 
         comboLevel.setBackground(new java.awt.Color(102, 153, 255));
         comboLevel.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         comboLevel.setForeground(new java.awt.Color(255, 255, 255));
-        comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "        Nivel", "          1", "          2" }));
+        comboLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "        Nivel", "          1", "          2", "          3" }));
         comboLevel.setToolTipText("Nivel de permisos");
+        comboLevel.setEnabled(false);
         panel1.add(comboLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 210, -1));
-
-        buttonRegister.setBackground(new java.awt.Color(102, 153, 255));
-        buttonRegister.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        buttonRegister.setForeground(new java.awt.Color(255, 255, 255));
-        buttonRegister.setText("Registrar");
-        buttonRegister.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buttonRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRegisterActionPerformed(evt);
-            }
-        });
-        panel1.add(buttonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 210, 35));
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -246,46 +211,6 @@ public final class UserRegister extends javax.swing.JFrame {
         });
         panel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
 
-        tableUsers.setBackground(new java.awt.Color(255, 255, 255));
-        tableUsers.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        tableUsers.setForeground(new java.awt.Color(0, 0, 0));
-        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Usuario", "Nombre", "Email", "Status", "Nivel"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableUsers.setAutoscrolls(false);
-        tableUsers.setFocusable(false);
-        tableUsers.setSelectionBackground(new java.awt.Color(0, 102, 102));
-        tableUsers.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tableUsers.setShowVerticalLines(false);
-        tableUsers.getTableHeader().setReorderingAllowed(false);
-        tableUsers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableUsersMouseClicked(evt);
-            }
-        });
-        scrollPaneTable.setViewportView(tableUsers);
-        if (tableUsers.getColumnModel().getColumnCount() > 0) {
-            tableUsers.getColumnModel().getColumn(4).setMaxWidth(60);
-        }
-
-        panel1.add(scrollPaneTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 700, 190));
-
         buttonUpdate.setBackground(new java.awt.Color(102, 153, 255));
         buttonUpdate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         buttonUpdate.setForeground(new java.awt.Color(255, 255, 255));
@@ -296,19 +221,7 @@ public final class UserRegister extends javax.swing.JFrame {
                 buttonUpdateActionPerformed(evt);
             }
         });
-        panel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 540, 210, 35));
-
-        buttonDelete.setBackground(new java.awt.Color(102, 153, 255));
-        buttonDelete.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        buttonDelete.setForeground(new java.awt.Color(255, 255, 255));
-        buttonDelete.setText("Eliminar");
-        buttonDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDeleteActionPerformed(evt);
-            }
-        });
-        panel1.add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 210, 35));
+        panel1.add(buttonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 210, 35));
 
         buttonHome.setBorder(null);
         buttonHome.setBorderPainted(false);
@@ -322,7 +235,7 @@ public final class UserRegister extends javax.swing.JFrame {
             }
         });
         panel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
-        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 610));
+        panel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,224 +251,37 @@ public final class UserRegister extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Compiler data and send to controller for the register user in database
-     *
-     * @param evt
-     */
-    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
-        String name = txtName.getText().trim();
-        String user = txtUserName.getText().trim();
-        String pass = txtPass.getText().trim();
-        String mail = txtEmail.getText().trim();
-        String edad = txtEdad.getText().trim();
-
-        String level = comboLevel.getSelectedItem().toString().trim();
-        String sexo = comboSex.getSelectedItem().toString().trim();
-        String status = comboEdo.getSelectedItem().toString().trim();
-        boolean band = true;
-
-        /**
-         * Valid camps nulls
-         */
-        if (name.equals("")) {
-            txtName.setBackground(Color.red);
-            band = false;
-        } else {
-            txtName.setBackground(new Color(102, 153, 255));
-        }
-
-        if (user.equals("")) {
-            txtUserName.setBackground(Color.red);
-            band = false;
-        } else {
-            txtUserName.setBackground(new Color(102, 153, 255));
-        }
-
-        if (pass.equals("")) {
-            txtPass.setBackground(Color.red);
-            band = false;
-        } else {
-            txtPass.setBackground(new Color(102, 153, 255));
-        }
-
-        if (mail.equals("")) {
-            txtEmail.setBackground(Color.red);
-            band = false;
-        } else {
-            txtEmail.setBackground(new Color(102, 153, 255));
-        }
-
-        if (edad.equals("")) {
-            txtEdad.setBackground(Color.red);
-            band = false;
-        } else {
-            txtEdad.setBackground(new Color(102, 153, 255));
-        }
-
-        if (level.equals("Nivel")) {
-            comboLevel.setBackground(Color.red);
-            band = false;
-        } else {
-            comboLevel.setBackground(new Color(102, 153, 255));
-        }
-
-        if (sexo.equalsIgnoreCase("Sexo")) {
-            comboSex.setBackground(Color.red);
-            band = false;
-        } else {
-            comboSex.setBackground(new Color(102, 153, 255));
-        }
-
-        if (status.equals("Estado")) {
-            comboEdo.setBackground(Color.red);
-            band = false;
-        } else {
-            comboEdo.setBackground(new Color(102, 153, 255));
-        }
-
-        try {
-            Integer.valueOf(edad);
-        } catch (NumberFormatException e) {
-            band = false;
-            JOptionPane.showMessageDialog(null,
-                    "No puede ingresar caracteres en algunos campos");
-        }
-
-        // Continue with resgister if all fields are valids
-        if (band) {
-            User u = new User(user, pass, mail,
-                    Integer.parseInt(level), true, name,
-                    Integer.parseInt(edad), sexo.charAt(0));
-
-            if (controller.create(u)) {
-
-                txtEdad.setBackground(Color.GREEN);
-                txtEmail.setBackground(Color.GREEN);
-                txtName.setBackground(Color.GREEN);
-                txtPass.setBackground(Color.GREEN);
-                txtUserName.setBackground(Color.GREEN);
-                comboEdo.setBackground(Color.GREEN);
-                comboLevel.setBackground(Color.GREEN);
-                comboSex.setBackground(Color.GREEN);
-
-                JOptionPane.showMessageDialog(null,
-                        "Usuario registrado con exito", "Aviso",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                this.dispose();
-                new MainMenu().setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "El usuario no se pudo registrar", "Aviso",
-                         JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null,
-                    "Verifique los campos resaltados", "Aviso",
-                     JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_buttonRegisterActionPerformed
-
-    /**
-     * Fill table with data of the users
-     */
-    public void fillTable() {
-        this.modelTable.setRowCount(0);
-
-        String row[];
-
-        for (User user : users) {
-            row = new String[5];
-
-            // Set properties
-            row[0] = user.getUserName();
-            row[1] = user.getName();
-            row[2] = user.getEmail();
-            row[3] = String.valueOf(user.isStatus());
-            row[4] = String.valueOf(user.getLevel());
-
-            this.modelTable.addRow(row);
-        }
-
-        this.tableUsers.setModel(modelTable);
-    }
-
-    /**
-     * Decorated button exited in event hover
-     *
-     * @param evt
-     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
-    /**
-     * Decorated button exited in event hover
-     *
-     * @param evt
-     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
-    /**
-     * dispose this frame and show main menu
-     *
-     * @param evt
-     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
-    /**
-     * Decorated button minimize in event hover
-     *
-     * @param evt
-     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
-    /**
-     * Decorated button minimize in event hover
-     *
-     * @param evt
-     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
-    /**
-     * Minimize this frame
-     *
-     * @param evt
-     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
     /**
-     * Get user name of the teble and call searchuser method
-     *
-     * @param evt
-     */
-    private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
-        int row = tableUsers.getSelectedRow();
-        String userName = tableUsers.getValueAt(row, 0).toString();
-
-        searchUser(userName);
-    }//GEN-LAST:event_tableUsersMouseClicked
-
-    /**
-     * Compare if exist modifi for call to controller or show warning
-     *
-     * @param evt
+     * Acualiza el usuario
+     * @param evt 
      */
     private void buttonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUpdateActionPerformed
 
-        String aux = userSelected.getEmail();
+        String aux = userLogger.getEmail();
 
         if (aux != null) {
 
@@ -644,7 +370,7 @@ public final class UserRegister extends javax.swing.JFrame {
                         Integer.parseInt(level), true, name,
                         Integer.parseInt(edad), sexo.charAt(0));
 
-                if (userSelected.compareTo(u)) {
+                if (userLogger.compareTo(u)) {
                     JOptionPane.showMessageDialog(null,
                             "No se modifico ningun campo", "Aviso",
                             JOptionPane.WARNING_MESSAGE);
@@ -665,108 +391,58 @@ public final class UserRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonUpdateActionPerformed
 
     /**
-     * Compare if there is a user selected, call controller for delete
-     *
-     * @param evt
-     */
-    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
-        String valid = txtName.getText().trim();
-
-        if (valid.equals("")) {
-            JOptionPane.showMessageDialog(null,
-                    "Primero debe seleccionar o buscar un producto",
-                    "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-
-            int band = JOptionPane.showConfirmDialog(null,
-                    "¿Seguro que decea eliminar este producto?",
-                    "Advertencia", JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE);
-
-            if (band == 0) {
-
-                if (controller.delete(userSelected)) {
-
-                    this.users.remove(userSelected);
-                    fillTable();
-
-                    JOptionPane.showMessageDialog(null,
-                            "Registro eliminado", "Aviso",
-                            JOptionPane.INFORMATION_MESSAGE);
-
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "No se pudo eliminar el registro", "Aviso",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
-    }//GEN-LAST:event_buttonDeleteActionPerformed
-
-    /**
-     * Returned to main menu
-     *
-     * @param evt
+     * regresa al home
+     * @param evt 
      */
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
-        this.dispose();
-        new MainMenu().setVisible(true);
+        if (Login.levelUser == 1) {
+            new MainMenu().setVisible(true);
+            this.dispose();
+        } else {
+            new MainMenuSeller().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     /**
-     * This method searches an object User for the user name and fill jtextfield
-     * with your data
-     *
-     * @param userName code of the search
+     * @param args the command line arguments
      */
-    private void searchUser(String userName) {
-
-        for (User user : users) {
-            if (user.getUserName().equals(userName)) {
-                // Fill jTextField's
-                this.txtEdad.setText(String.valueOf(user.getEdad()));
-                this.txtEmail.setText(user.getEmail());
-                this.txtName.setText(user.getName());
-                this.txtPass.setText(user.getPassword());
-                this.txtUserName.setText(user.getUserName());
-
-                // update user selected
-                this.userSelected = user;
-
-                // Set status in combo box
-                if (user.isStatus()) {
-                    this.comboEdo.setSelectedIndex(1);
-                } else {
-                    this.comboEdo.setSelectedIndex(2);
-                }
-
-                comboLevel.setSelectedIndex(user.getLevel());
-
-                if (user.getSexo() == 'M') {
-                    this.comboSex.setSelectedIndex(1);
-                } else {
-                    this.comboSex.setSelectedIndex(2);
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(UpdateUserSeller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(UpdateUserSeller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(UpdateUserSeller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(UpdateUserSeller.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
 
-    }
-
-    public static void main(String args[]) {
-
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserRegister().setVisible(true);
+                new UpdateUserSeller().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonDelete;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JButton buttonRegister;
     private javax.swing.JButton buttonUpdate;
     private javax.swing.JComboBox<String> comboEdo;
     private javax.swing.JComboBox<String> comboLevel;
@@ -778,8 +454,6 @@ public final class UserRegister extends javax.swing.JFrame {
     private javax.swing.JLabel labelPass;
     private javax.swing.JLabel labelUser;
     private javax.swing.JPanel panel1;
-    private javax.swing.JScrollPane scrollPaneTable;
-    private javax.swing.JTable tableUsers;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
@@ -787,5 +461,4 @@ public final class UserRegister extends javax.swing.JFrame {
     private javax.swing.JTextField txtUserName;
     private javax.swing.JLabel wallpaper;
     // End of variables declaration//GEN-END:variables
-
 }

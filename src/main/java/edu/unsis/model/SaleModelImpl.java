@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class SaleModelImpl implements ISaleModel {
@@ -36,38 +35,53 @@ public class SaleModelImpl implements ISaleModel {
         return dao.listAll();
     }
 
+    /**
+     * Crea un registro en dao
+     * @param sale
+     * @return 
+     */
     @Override
     public boolean createRegister(Sale sale) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        sale.setSaleFor(UserModelImpl.getLoggedUser().getUserName());
+        return dao.create(sale);
     }
-
+/**
+ * 
+ * @param sale
+ * @param code
+ * @return 
+ */
     @Override
     public boolean updateRegister(Sale sale, String code) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    /**
+     * 
+     * @param code
+     * @return 
+     */
     @Override
     public boolean deleteRegister(String code) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
 
+    /**
+     * Crea un reporte en dao
+     * @param products
+     * @param sale
+     * @param root 
+     */
     @Override
     public void createReport(ArrayList<Product> products, Sale sale, String root) {
         User user = UserModelImpl.getLoggedUser();
         Document documento = new Document();
-//        Document documento = new Document(new Rectangle(400, 800));
 
         try {
 
-//            String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento,
                     new FileOutputStream(root + "Reporte.pdf"));
 
-//            com.itextpdf.text.Image header = 
-//                    com.itextpdf.text.Image.getInstance("src/images/BannerPDF.jpg");
-//            header.scaleToFit(650, 1000);
-//            header.setAlignment(Chunk.ALIGN_CENTER);
             Paragraph parrafo = new Paragraph();
             parrafo.setAlignment(Paragraph.ALIGN_CENTER);
             parrafo.setFont(FontFactory.getFont("Tahoma",
@@ -76,14 +90,12 @@ public class SaleModelImpl implements ISaleModel {
             parrafo.add("*** Abarrotes *** \n\n");
 
             documento.open();
-//            documento.add(header);
             documento.add(parrafo);
 
             PdfPTable tablaCliente = new PdfPTable(2);
             tablaCliente.addCell("Nombre");
             tablaCliente.addCell("Price");
 
-            // Add all prodcuts to list
             Paragraph column;
             for (Product product : products) {
                 column = new Paragraph(product.getName());
@@ -127,11 +139,9 @@ public class SaleModelImpl implements ISaleModel {
                 File path = new File(root + "Reporte.pdf");
                 Desktop.getDesktop().open(path);
             } catch (IOException e) {
-                System.out.println("Error " + e);
             }
 
         } catch (DocumentException | IOException e) {
-            System.err.println("Error en PDF o ruta de imagen" + e);
             JOptionPane.showMessageDialog(null,
                     "Error al generar PDF, contacte al administrador");
         }

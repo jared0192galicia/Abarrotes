@@ -20,7 +20,6 @@ public class TiempoController implements Runnable {
             this.tiempo.setMin(this.tiempo.getMin() + 1);
         }
         this.tiempo.setSeg(this.tiempo.getSeg() + 1);
-        System.out.println(this.tiempo.getHora() + " : " + this.tiempo.getMin() + " : " + this.tiempo.getSeg());
         
     }
     

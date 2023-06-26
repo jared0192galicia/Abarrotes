@@ -6,6 +6,7 @@
  */
 package edu.unsis.view;
 
+import edu.unsis.controller.InventoryController;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Inventory extends javax.swing.JFrame {
 
     private final ArrayList<Product> products = MainMenu.products;
     private final DefaultTableModel model;
+    private final InventoryController controller;
 
     /**
      * Constructor of the frame. Set wallpaper and call createDefaultModel for
@@ -59,7 +61,7 @@ public class Inventory extends javax.swing.JFrame {
         table.getColumnModel().getColumn(3).setCellRenderer(tcr);
         table.getColumnModel().getColumn(4).setCellRenderer(tcr);
 
-
+        controller = new InventoryController();
     }
 
     @SuppressWarnings("unchecked")
@@ -249,7 +251,7 @@ public class Inventory extends javax.swing.JFrame {
      * @param evt
      */
     private void buttonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportActionPerformed
-
+        controller.createReport(products);
     }//GEN-LAST:event_buttonExportActionPerformed
 
     /**

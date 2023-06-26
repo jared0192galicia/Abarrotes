@@ -32,7 +32,10 @@ public final class Login extends javax.swing.JFrame {
     private final ImageIcon iconMin;
     private final ImageIcon iconMinN;
     private final LoginController controller;
-private Clip clip;
+    private Clip clip;
+    
+    public static int levelUser;
+
     /**
      * Contructor for Frame Login. Set Wallpaper and more images
      */
@@ -235,6 +238,7 @@ private Clip clip;
     /**
      *
      * Play music of init
+     *
      * @param sonido
      */
 
@@ -249,7 +253,6 @@ private Clip clip;
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
         }
     }
-    
 
     /**
      * change to cursor hand with hover event
@@ -299,8 +302,20 @@ private Clip clip;
             if (controller.getMatch(new Credentials(pass, userTxt), user)) {
 
                 if (user.isStatus()) {
-                    new MainMenu().setVisible(true);
-                    this.dispose();
+
+                    int level = user.getLevel();
+                    levelUser = level;
+
+                    if (level == 1) {
+
+                        new MainMenu().setVisible(true);
+                        this.dispose();
+                    } else {
+
+                        new MainMenuSeller().setVisible(true);
+                        this.dispose();
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "Usuario Inactivo");

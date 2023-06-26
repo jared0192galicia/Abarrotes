@@ -225,7 +225,6 @@ public class UserDAOImpl implements IUserDAO {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                System.out.println(rs.getString("nameU"));
                 return rs.getString("nameU") != null;
             }
             return false;
@@ -233,11 +232,16 @@ public class UserDAOImpl implements IUserDAO {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
                     "Mysql", JOptionPane.ERROR_MESSAGE);
-            System.out.println("e = " + e);
             return false;
         }
     }
 
+    /** 
+     * Actualiza usuarios de la base de datos
+     * @param email llave primaria
+     * @param pass segunda opcion de llave primaria
+     * @return 
+     */
     @Override
     public boolean update(String email, String pass) {
         PreparedStatement pst;

@@ -187,7 +187,6 @@ public class RelojInter extends javax.swing.JFrame implements Runnable {
         int h = 0;
 
         while (true) {
-                        System.out.println(h + ":" + m + ":" + s);
 
             labHora.setText(String.valueOf(h));
             labMin.setText(String.valueOf(m));

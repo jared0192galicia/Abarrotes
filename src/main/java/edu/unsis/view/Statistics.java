@@ -268,7 +268,6 @@ public class Statistics extends javax.swing.JFrame {
             }
         }
 
-        System.out.println("codes = " + codes);
         for (int i = 0; i < codes.length(); i++) {
             row = new String[2];
 
@@ -276,7 +275,6 @@ public class Statistics extends javax.swing.JFrame {
                 aux += codes.charAt(i);
 
                 if (aux.length() == 14) {
-                    System.out.println("aux = " + aux);
                     for (Product product : products) {
                         if (product.getCode().equals(aux)) {
                             row[0] = product.getName();

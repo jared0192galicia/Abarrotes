@@ -14,7 +14,6 @@ public class Reloj {
         int h = 0;
 
         while (true) {
-            System.out.println(h + ":" + m + ":" + s);
 
             s++;
             if (s == 59) {
