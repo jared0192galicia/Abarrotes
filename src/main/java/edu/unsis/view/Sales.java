@@ -16,19 +16,15 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author elietzer
- */
 public class Sales extends javax.swing.JFrame {
 
     private final DefaultTableModel model;
     private final ArrayList<Product> products = MainMenu.products;
-    private ArrayList<Product> productsSelected;
-    
+    private final ArrayList<Product> productsSelected;
+
     private final SalesController controller;
     private double priceTotal;
-    
+
     /**
      * Creates new form Sales
      */
@@ -37,7 +33,7 @@ public class Sales extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         productsSelected = new ArrayList<>();
 
         ImageIcon image = new ImageIcon(
@@ -235,30 +231,65 @@ public class Sales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize this frame
+     *
+     * @param evt
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * Exited the program
+     *
+     * @param evt
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * Return to home
+     *
+     * @param evt
+     */
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         if (Login.levelUser == 1) {
             new MainMenu().setVisible(true);
@@ -269,10 +300,15 @@ public class Sales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonHomeActionPerformed
 
+    /**
+     * Fill table with codes input
+     *
+     * @param evt
+     */
     private void buttonContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonContinueActionPerformed
         String code = txtCodes.getText().trim();
         priceTotal = 0;
-        
+
         // Valid input data exist
         if (code.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe ingresar los productos",
@@ -292,9 +328,9 @@ public class Sales extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             productsSelected.clear();
-            
+
             for (String cod : codes) {
                 for (Product product : products) {
                     if (product.getCode().equals(cod)) {
@@ -302,7 +338,7 @@ public class Sales extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
             this.buttonFinal.setEnabled(true);
             createModel(codes);
         }
@@ -310,27 +346,28 @@ public class Sales extends javax.swing.JFrame {
 
     /**
      * Call to controller for generate tiked
+     *
      * @param evt Arg of the event
      */
     private void buttonFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalActionPerformed
-        
+
         Sale sale = new Sale();
         sale.setCode(Sale.generateCode());
         sale.setCodesProducts(this.txtCodes.getText().trim());
         sale.setDate(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").
                 format(Calendar.getInstance().getTime()));
         sale.setIncome(priceTotal);
-        
-        
+
         controller.generateReport(productsSelected, sale,
-                "/home/elietzer/NetBeansProjects/Abarrotes/");   
-        
+                "/home/elietzer/NetBeansProjects/Abarrotes/");
+
         controller.registerSale(productsSelected, sale);
-             
+
     }//GEN-LAST:event_buttonFinalActionPerformed
-    
+
     /**
      * Mod model with products ingres in txtCodes for the table
+     *
      * @param codes
      */
     private void createModel(ArrayList<String> codes) {
@@ -357,34 +394,8 @@ public class Sales extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Sales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Sales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Sales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Sales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Sales().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Sales().setVisible(true);
         });
     }
 

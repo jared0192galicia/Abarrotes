@@ -12,7 +12,6 @@ import edu.unsis.model.entity.Sale;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -29,11 +28,8 @@ public class Statistics extends javax.swing.JFrame {
     private final DefaultTableModel modelSale;
     private final DefaultTableModel modelProduct;
 
-    private int totalSales;
-    private double totalIncome;
-
     /**
-     *
+     * create a new frame for statistics
      */
     public Statistics() {
         initComponents();
@@ -84,8 +80,6 @@ public class Statistics extends javax.swing.JFrame {
 
         this.fillTbles();
 
-        calculate();
-        repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -248,7 +242,7 @@ public class Statistics extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 1
+     * Return to home frame
      *
      * @param evt
      */
@@ -257,6 +251,11 @@ public class Statistics extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
+    /**
+     * Fill other table wih products in sale
+     *
+     * @param evt
+     */
     private void tableSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSalesMouseClicked
         String row[];
         String aux = "";
@@ -289,10 +288,20 @@ public class Statistics extends javax.swing.JFrame {
         tableProducts.setModel(modelProduct);
     }//GEN-LAST:event_tableSalesMouseClicked
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
@@ -301,18 +310,36 @@ public class Statistics extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize frame 
+     *
+     * @param evt
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(Frame.ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
+    /**
+     * Fill table of the sales
+     */
     private void fillTbles() {
         String row[];
         modelSale.setRowCount(0);
@@ -331,6 +358,11 @@ public class Statistics extends javax.swing.JFrame {
         tableSales.setModel(modelSale);
     }
 
+    /**
+     * Count products repear
+     * @param code String with codes of the products
+     * @return 
+     */
     private int countRepeat(String code) {
         int count = 0;
 
@@ -341,30 +373,6 @@ public class Statistics extends javax.swing.JFrame {
         }
 
         return count;
-    }
-
-    private void calculate() {
-
-        totalSales = sales.size();
-        totalIncome = 0;
-
-        for (Sale sale : sales) {
-            totalIncome += sale.getIncome();
-        }
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-
-        g.setColor(new Color(255, 0, 0));//rojo
-//        g.fillRect(100, 150, 23, 40);
-//        g.drawString("No Reparado", 10, 168);
-//        g.drawString("Cantidad:" + 43, 10, 183);
-        g.fillRect(50, 500 - totalSales, 50, totalSales * 10);
-        
-        g.setColor(new Color(50, 100, 100));//rojo
-        g.fillRect(150, (int) (500 - totalIncome), 50, (int) (totalIncome / 10));
     }
 
     public static void main(String args[]) {

@@ -339,9 +339,8 @@ public final class UserRegister extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Compiler data and send to controller for the register user in database
-     *
-     * @param evt
+     * Create a new user event
+     * @param evt 
      */
     private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
         String name = txtName.getText().trim();
@@ -355,9 +354,6 @@ public final class UserRegister extends javax.swing.JFrame {
         String status = comboEdo.getSelectedItem().toString().trim();
         boolean band = true;
 
-        /**
-         * Valid camps nulls
-         */
         if (name.equals("")) {
             txtName.setBackground(Color.red);
             band = false;
