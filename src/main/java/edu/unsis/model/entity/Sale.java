@@ -1,4 +1,9 @@
-
+/**
+ * @autor Galicia Cordova Elietzer Jared
+ * Creado: 14 / jun / 2023
+ * modificado 29 / Jun / 2023
+ * Descripcion: Objeto usuario
+ */
 package edu.unsis.model.entity;
 
 public class Sale {
@@ -8,9 +13,16 @@ public class Sale {
     private String saleFor;
     private String codesProducts;
 
-    public Sale() {
-    }
+    public Sale() {}
 
+    /**
+     * Constructor with all properties
+     * @param code
+     * @param date
+     * @param income
+     * @param saleFor
+     * @param codesProducts 
+     */
     public Sale(String code, String date, double income, String saleFor, String codesProducts) {
         this.code = code;
         this.date = date;
@@ -19,6 +31,10 @@ public class Sale {
         this.codesProducts = codesProducts;
     }
     
+    /**
+     * Generate code of the sale
+     * @return 
+     */
     public static String generateCode() {
         String code = "2023";
         

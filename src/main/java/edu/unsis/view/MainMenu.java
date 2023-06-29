@@ -152,6 +152,11 @@ public final class MainMenu extends javax.swing.JFrame {
         buttonPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         buttonPrint.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrintActionPerformed(evt);
+            }
+        });
         jPanel1.add(buttonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 170, 160));
 
         buttonSale.setToolTipText("Ventas");
@@ -327,6 +332,10 @@ public final class MainMenu extends javax.swing.JFrame {
         new Statistics().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonStatisticsActionPerformed
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        controller.createReport(products);
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {

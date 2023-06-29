@@ -11,7 +11,7 @@ import edu.unsis.model.ProductModelImpl;
 import edu.unsis.model.entity.Product;
 
 public class ProductController {
-    IProductModel model = new ProductModelImpl();
+    private final IProductModel model = new ProductModelImpl();
     
     /**
      * Call method register from cape model

@@ -13,8 +13,12 @@ import java.util.ArrayList;
 
 public class StatisticsController {
 
-    ISaleModel model = new SaleModelImpl();
+    private final ISaleModel model = new SaleModelImpl();
     
+    /**
+     * List all sales
+     * @return all sales
+     */
     public ArrayList<Sale> load() {
         return model.listAll();
     }

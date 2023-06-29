@@ -69,13 +69,13 @@ public class Sales extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         buttonMin = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollText = new javax.swing.JScrollPane();
         txtCodes = new javax.swing.JTextArea();
         txtTotal = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollTable = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         buttonContinue = new javax.swing.JButton();
         buttonHome = new javax.swing.JButton();
@@ -86,7 +86,7 @@ public class Sales extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonMin.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         buttonMin.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +107,7 @@ public class Sales extends javax.swing.JFrame {
                 buttonMinActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
+        panel.add(buttonMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 40));
 
         buttonExit.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         buttonExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,7 +128,7 @@ public class Sales extends javax.swing.JFrame {
                 buttonExitActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 40));
+        panel.add(buttonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 40));
 
         txtCodes.setBackground(new java.awt.Color(102, 153, 255));
         txtCodes.setColumns(15);
@@ -141,9 +141,9 @@ public class Sales extends javax.swing.JFrame {
         txtCodes.setMargin(new java.awt.Insets(0, 10, 0, 10));
         txtCodes.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         txtCodes.setSelectionColor(new java.awt.Color(0, 102, 102));
-        jScrollPane1.setViewportView(txtCodes);
+        scrollText.setViewportView(txtCodes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 250, 120));
+        panel.add(scrollText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 250, 120));
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(102, 153, 255));
@@ -152,7 +152,7 @@ public class Sales extends javax.swing.JFrame {
         txtTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTotal.setText("Total");
         txtTotal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 210, 30));
+        panel.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 210, 30));
 
         table.setBackground(new java.awt.Color(255, 255, 255));
         table.setForeground(new java.awt.Color(0, 0, 0));
@@ -169,9 +169,9 @@ public class Sales extends javax.swing.JFrame {
         ));
         table.setShowVerticalLines(false);
         table.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(table);
+        scrollTable.setViewportView(table);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 290));
+        panel.add(scrollTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 290));
 
         buttonContinue.setBackground(new java.awt.Color(0, 102, 102));
         buttonContinue.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -183,7 +183,7 @@ public class Sales extends javax.swing.JFrame {
                 buttonContinueActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonContinue, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 210, 40));
+        panel.add(buttonContinue, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 210, 40));
 
         buttonHome.setBorder(null);
         buttonHome.setBorderPainted(false);
@@ -196,12 +196,12 @@ public class Sales extends javax.swing.JFrame {
                 buttonHomeActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
+        panel.add(buttonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 60));
 
         labelTitle.setFont(new java.awt.Font("Monospaced", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(255, 255, 255));
         labelTitle.setText("Ventas");
-        jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+        panel.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         buttonFinal.setBackground(new java.awt.Color(0, 102, 102));
         buttonFinal.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
@@ -214,18 +214,18 @@ public class Sales extends javax.swing.JFrame {
                 buttonFinalActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 210, 40));
-        jPanel1.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 450));
+        panel.add(buttonFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 210, 40));
+        panel.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -405,10 +405,10 @@ public class Sales extends javax.swing.JFrame {
     private javax.swing.JButton buttonFinal;
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelTitle;
+    private javax.swing.JPanel panel;
+    private javax.swing.JScrollPane scrollTable;
+    private javax.swing.JScrollPane scrollText;
     private javax.swing.JTable table;
     private javax.swing.JTextArea txtCodes;
     private javax.swing.JTextField txtTotal;

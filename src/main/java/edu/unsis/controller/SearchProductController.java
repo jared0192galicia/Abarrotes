@@ -1,7 +1,7 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 5/ jun /2023
- * modificado 11 / jun / 2023
+ * modificado 29 / jun / 2023
  * Descripcion: Controlador entre view y model
  */
 package edu.unsis.controller;
@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class SearchProductController {
     
-    IProductModel model = new ProductModelImpl();
+    private final IProductModel model = new ProductModelImpl();
     
     /**
      * Fill model with data from database

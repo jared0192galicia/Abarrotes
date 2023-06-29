@@ -1,7 +1,7 @@
 /**
  * @autor Galicia Cordova Elietzer Jared
  * Creado: 19/may/2023
- * modificado 22/may/2023
+ * modificado 29 / jun / 2023
  * Descripcion: Busca y modifica productos
  */
 package edu.unsis.view;
@@ -72,7 +72,6 @@ public class SearchProduct extends javax.swing.JFrame {
 
         model = (DefaultTableModel) table.getModel();
 
-//        model = new DefaultTableModel();
         createDefaultModel();
     }
 

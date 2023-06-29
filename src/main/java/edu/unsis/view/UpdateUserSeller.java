@@ -47,7 +47,7 @@ public class UpdateUserSeller extends javax.swing.JFrame {
 
         panel1 = new javax.swing.JPanel();
         txtUserName = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
         labelPass = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
@@ -77,11 +77,11 @@ public class UpdateUserSeller extends javax.swing.JFrame {
         txtUserName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 210, 30));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registro de usuarios");
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
+        labelTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTitle.setText("Registro de usuarios");
+        panel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
 
         labelPass.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         labelPass.setForeground(new java.awt.Color(255, 255, 255));
@@ -322,10 +322,9 @@ public class UpdateUserSeller extends javax.swing.JFrame {
             String status = comboEdo.getSelectedItem().toString().trim();
 
             boolean band = true;
-
-            /**
-             * Valid camps nulls
-             */
+            
+             // Valid camps nulls
+             
             if (name.equals("")) {
                 txtName.setBackground(Color.red);
                 band = false;
@@ -446,11 +445,11 @@ public class UpdateUserSeller extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboEdo;
     private javax.swing.JComboBox<String> comboLevel;
     private javax.swing.JComboBox<String> comboSex;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelEdad;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPass;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelUser;
     private javax.swing.JPanel panel1;
     private javax.swing.JTextField txtEdad;

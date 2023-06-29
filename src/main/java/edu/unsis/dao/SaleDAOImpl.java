@@ -13,6 +13,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SaleDAOImpl implements CRUD<Sale> {
+
+    /**
+     * List all sales from data base
+     *
+     * @return ArrayList with all sales
+     */
     @Override
     public ArrayList<Sale> listAll() {
         ArrayList<Sale> sales = new ArrayList<>();
@@ -42,9 +48,10 @@ public class SaleDAOImpl implements CRUD<Sale> {
     }
 
     /**
-     * Crea una nueva venta en la base de datos2
-     * @param obj
-     * @return 
+     * Create a new row with sale
+     *
+     * @param obj Sale for register
+     * @return
      */
     @Override
     public boolean create(Sale obj) {
@@ -59,10 +66,9 @@ public class SaleDAOImpl implements CRUD<Sale> {
             pst.setDouble(3, obj.getIncome());
             pst.setString(4, obj.getSaleFor());
             pst.setString(5, obj.getCodesProducts());
-            
+
             pst.executeUpdate();
-            
-            
+
         } catch (SQLException e) {
             return false;
         }
@@ -70,14 +76,38 @@ public class SaleDAOImpl implements CRUD<Sale> {
         return true;
     }
 
+    /**
+     * Delete regiter obj from database if exist
+     *
+     * @param obj Product to delete
+     * @return true in case of the succefful or true otherwise
+     */
     @Override
     public boolean delete(Sale obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Connection cn = Conexion.getConnction();
+        PreparedStatement pst;
+
+        try {
+            pst = cn.prepareStatement(
+                    "DELETE FROM sale WHERE codeS = '"
+                    + obj.getCode() + "'");
+
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
+    /***
+     * Sale is not updated
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean update(Sale obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Una venta no se puede modificar."); 
     }
 
 }

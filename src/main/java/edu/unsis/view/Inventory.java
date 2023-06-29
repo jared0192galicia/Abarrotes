@@ -75,7 +75,6 @@ public class Inventory extends javax.swing.JFrame {
         buttonEdit = new javax.swing.JButton();
         buttonCreate = new javax.swing.JButton();
         labelTitle = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
         buttonHome = new javax.swing.JButton();
@@ -119,7 +118,7 @@ public class Inventory extends javax.swing.JFrame {
                 buttonExportActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 100, 30));
+        jPanel1.add(buttonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 100, 30));
 
         buttonEdit.setBackground(new java.awt.Color(102, 153, 255));
         buttonEdit.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -131,7 +130,7 @@ public class Inventory extends javax.swing.JFrame {
                 buttonEditActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 100, 30));
+        jPanel1.add(buttonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 100, 30));
 
         buttonCreate.setBackground(new java.awt.Color(102, 153, 255));
         buttonCreate.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
@@ -150,10 +149,6 @@ public class Inventory extends javax.swing.JFrame {
         labelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitle.setText("INVENTARIO");
         jPanel1.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 60));
-
-        jComboBox1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    Filtros", "    Todos", "  Abecedario", "  Existencia", "  Caducidad" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
         buttonExit.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         buttonExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -347,7 +342,6 @@ public class Inventory extends javax.swing.JFrame {
     private javax.swing.JButton buttonExport;
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTitle;

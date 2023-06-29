@@ -11,13 +11,6 @@ import edu.unsis.utilities.MatchForMail;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Image;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -59,20 +52,20 @@ public class RecoverAcces extends javax.swing.JFrame {
         buttonMin = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitle = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         labelTime = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        labelInfo = new javax.swing.JLabel();
+        labelInfoMail = new javax.swing.JLabel();
         buttonSendCode = new javax.swing.JButton();
         buttonAcep = new javax.swing.JButton();
         wallpaper = new javax.swing.JLabel();
         panelForPassword = new javax.swing.JPanel();
         txtPass = new javax.swing.JTextField();
         txtConfirmPass = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelPassRepeat = new javax.swing.JLabel();
+        labelPass = new javax.swing.JLabel();
+        labelSubTitle = new javax.swing.JLabel();
         buttonChangePass = new javax.swing.JButton();
         wallpaper1 = new javax.swing.JLabel();
 
@@ -143,10 +136,10 @@ public class RecoverAcces extends javax.swing.JFrame {
         });
         panelMain.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 160, 210, 30));
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Recuperar contraseña");
-        panelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        labelTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitle.setText("Recuperar contraseña");
+        panelMain.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         txtCode.setEditable(false);
         txtCode.setBackground(new java.awt.Color(102, 153, 255));
@@ -163,15 +156,15 @@ public class RecoverAcces extends javax.swing.JFrame {
         labelTime.setText("Código valido durante 60 Seg");
         panelMain.add(labelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Código de recuperación");
-        panelMain.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
+        labelInfo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelInfo.setForeground(new java.awt.Color(255, 255, 255));
+        labelInfo.setText("Código de recuperación");
+        panelMain.add(labelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Correo electrónico");
-        panelMain.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
+        labelInfoMail.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelInfoMail.setForeground(new java.awt.Color(255, 255, 255));
+        labelInfoMail.setText("Correo electrónico");
+        panelMain.add(labelInfoMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         buttonSendCode.setBackground(new java.awt.Color(0, 102, 102));
         buttonSendCode.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,39 +185,37 @@ public class RecoverAcces extends javax.swing.JFrame {
                 buttonAcepActionPerformed(evt);
             }
         });
-        panelMain.add(buttonAcep, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 40));
+        panelMain.add(buttonAcep, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 160, 40));
         panelMain.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 450));
 
         panelForPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtPass.setBackground(new java.awt.Color(102, 153, 255));
         txtPass.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        txtPass.setForeground(null);
         txtPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelForPassword.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 210, 30));
 
         txtConfirmPass.setBackground(new java.awt.Color(102, 153, 255));
         txtConfirmPass.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        txtConfirmPass.setForeground(null);
         txtConfirmPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtConfirmPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelForPassword.add(txtConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 210, 30));
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Repita su contraseña");
-        panelForPassword.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+        labelPassRepeat.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelPassRepeat.setForeground(new java.awt.Color(255, 255, 255));
+        labelPassRepeat.setText("Repita su contraseña");
+        panelForPassword.add(labelPassRepeat, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nueva Contraseña");
-        panelForPassword.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        labelPass.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        labelPass.setForeground(new java.awt.Color(255, 255, 255));
+        labelPass.setText("Nueva Contraseña");
+        panelForPassword.add(labelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("CAMBIO DE CONTRASEÑA");
-        panelForPassword.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
+        labelSubTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelSubTitle.setForeground(new java.awt.Color(255, 255, 255));
+        labelSubTitle.setText("CAMBIO DE CONTRASEÑA");
+        panelForPassword.add(labelSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
 
         buttonChangePass.setBackground(new java.awt.Color(0, 102, 102));
         buttonChangePass.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,10 +308,20 @@ public class RecoverAcces extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * This method not funtion. ~ Netbeands no permite borrarlo
+     * @param evt 
+     */
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         
     }//GEN-LAST:event_txtEmailActionPerformed
 
+    /**
+     * Compare if exist mail in data base and send a code to mail else 
+     * show a message dialog
+     * 
+     * @param evt 
+     */
     private void buttonSendCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendCodeActionPerformed
         String mail = this.txtEmail.getText().trim();
 
@@ -331,7 +332,7 @@ public class RecoverAcces extends javax.swing.JFrame {
                     + "\n No comparta este código con nadie " + code
                     + "\n Valido durante 1 minuto";
 
-            enviarConGMail(mail, ast, msg);
+            controller.enviarConGMail(mail, ast, msg);
 
             this.txtEmail.setEditable(false);
             this.txtEmail.setBackground(Color.GREEN);
@@ -350,6 +351,10 @@ public class RecoverAcces extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSendCodeActionPerformed
 
+    /**
+     * Compare if the code joined with code generate
+     * @param evt 
+     */
     private void buttonAcepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAcepActionPerformed
         String code = txtCode.getText().trim();
 
@@ -363,37 +368,11 @@ public class RecoverAcces extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonAcepActionPerformed
 
-    private static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
-        //La dirección de correo de envío
-        String remitente = "jared0192galicia@gmail.com";
-        //La clave de aplicación obtenida según se explica en este artículo:
-        String claveemail = "xpxhduwujqsikjaf";
-
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
-        props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.clave", claveemail);    //La clave de la cuenta
-        props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
-        props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
-
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
-
-        try {
-            message.setFrom(new InternetAddress(remitente));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
-            message.setSubject(asunto);
-            message.setText(cuerpo);
-            try (Transport transport = session.getTransport("smtp")) {
-                transport.connect("smtp.gmail.com", remitente, claveemail);
-                transport.sendMessage(message, message.getAllRecipients());
-            }
-        } catch (MessagingException me) {
-            System.err.println("me = " + me);
-        }
-    }
-
+    
+    /**
+     * Delete text for default
+     * @param evt 
+     */
     private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
         if (txtEmail.getText().trim().equals("Ingrese su correo")) {
             this.txtEmail.setText("");
@@ -401,13 +380,13 @@ public class RecoverAcces extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailMouseClicked
 
+    /**
+     * Change password for the joined
+     * @param evt 
+     */
     private void buttonChangePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangePassActionPerformed
         String pass = txtPass.getText().trim();
         String confirmPass = txtConfirmPass.getText().trim();
-        
-        /**
-         * Validate data for this fields
-         */
         
         if (pass.equals(confirmPass)) {
             controller.updatePassword(this.txtEmail.getText().trim(), pass);
@@ -420,34 +399,8 @@ public class RecoverAcces extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecoverAcces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecoverAcces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecoverAcces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecoverAcces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RecoverAcces().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RecoverAcces().setVisible(true);
         });
     }
 
@@ -457,13 +410,13 @@ public class RecoverAcces extends javax.swing.JFrame {
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonMin;
     private javax.swing.JButton buttonSendCode;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel labelInfo;
+    private javax.swing.JLabel labelInfoMail;
+    private javax.swing.JLabel labelPass;
+    private javax.swing.JLabel labelPassRepeat;
+    private javax.swing.JLabel labelSubTitle;
     private javax.swing.JLabel labelTime;
+    private javax.swing.JLabel labelTitle;
     private javax.swing.JPanel panelForPassword;
     private javax.swing.JPanel panelMain;
     private javax.swing.JTextField txtCode;

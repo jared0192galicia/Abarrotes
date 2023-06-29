@@ -30,6 +30,10 @@ public class SaleModelImpl implements ISaleModel {
 
     private final CRUD dao = new SaleDAOImpl();
 
+    /**
+     * List all sales from data base
+     * @return All sales
+     */
     @Override
     public ArrayList<Sale> listAll() {
         return dao.listAll();
@@ -37,40 +41,43 @@ public class SaleModelImpl implements ISaleModel {
 
     /**
      * Crea un registro en dao
+     *
      * @param sale
-     * @return 
+     * @return
      */
     @Override
     public boolean createRegister(Sale sale) {
         sale.setSaleFor(UserModelImpl.getLoggedUser().getUserName());
         return dao.create(sale);
     }
-/**
- * 
- * @param sale
- * @param code
- * @return 
- */
+
+    /**
+     * Update Sale in data base
+     * @param sale sale for updated
+     * @param code key for search 
+     * @return
+     */
     @Override
     public boolean updateRegister(Sale sale, String code) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     /**
-     * 
+     * Delete sale from database
      * @param code
-     * @return 
+     * @return
      */
     @Override
     public boolean deleteRegister(String code) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-   
 
     /**
-     * Crea un reporte en dao
+     * Create a tiket in pdf 
+     *
      * @param products
      * @param sale
-     * @param root 
+     * @param root
      */
     @Override
     public void createReport(ArrayList<Product> products, Sale sale, String root) {
@@ -124,13 +131,13 @@ public class SaleModelImpl implements ISaleModel {
             paragraphTotal.add("\n\n* * * Total: " + sale.getIncome() + " * * *");
 
             documento.add(paragraphTotal);
-            
+
             parrafo.clear();
             parrafo.setFont(FontFactory.getFont("Tahoma",
                     12, Font.BOLD));
             parrafo.getFont().setColor(BaseColor.BLUE);
             parrafo.add("Fecha .............................. " + sale.getDate());
-            
+
             documento.add(parrafo);
             documento.add(parrafo2);
 

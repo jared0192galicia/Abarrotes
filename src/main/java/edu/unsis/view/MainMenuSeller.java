@@ -10,10 +10,6 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author elietzer
- */
 public class MainMenuSeller extends javax.swing.JFrame {
 
     /**
@@ -145,35 +141,71 @@ public class MainMenuSeller extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Change of the frame 
+     * @param evt 
+     */
     private void buttonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaleActionPerformed
         new Sales().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonSaleActionPerformed
 
+    /**
+     * change to cursor hand with hover event
+     *
+     * @param evt
+     */
     private void buttonExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseEntered
         this.buttonExit.setForeground(Color.red);
     }//GEN-LAST:event_buttonExitMouseEntered
 
+    /**
+     * change to cursor hand with hover event
+     *
+     * @param evt
+     */
     private void buttonExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitMouseExited
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * Exit of the program
+     * @param evt 
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
+    /**
+     * change to cursor hand with hover event
+     *
+     * @param evt
+     */
     private void buttonMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseEntered
         this.buttonMin.setForeground(Color.red);
     }//GEN-LAST:event_buttonMinMouseEntered
 
+    /**
+     * change to cursor hand with hover event
+     *
+     * @param evt
+     */
     private void buttonMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMinMouseExited
         this.buttonMin.setForeground(Color.white);
     }//GEN-LAST:event_buttonMinMouseExited
 
+    /**
+     * Minimize this frame
+     * @param evt 
+     */
     private void buttonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMinActionPerformed
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_buttonMinActionPerformed
 
+    /**
+     * Create a new frame for user
+     * @param evt 
+     */
     private void buttonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsersActionPerformed
         new UpdateUserSeller().setVisible(true);
         this.dispose();

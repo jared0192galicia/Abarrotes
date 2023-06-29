@@ -14,7 +14,7 @@ import edu.unsis.model.entity.User;
 public class LoginController {
 
     // Obj for connect the view with model
-    private ILoginModel model = new LoginModelImpl();
+    private final ILoginModel model = new LoginModelImpl();
     
     /**
      * Implementation of the interface ILoginController. Mehtod get Match

@@ -87,9 +87,9 @@ public class Statistics extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonHome = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollTablePr = new javax.swing.JScrollPane();
         tableProducts = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollTableSale = new javax.swing.JScrollPane();
         tableSales = new javax.swing.JTable();
         buttonExit = new javax.swing.JButton();
         buttonMin = new javax.swing.JButton();
@@ -143,9 +143,9 @@ public class Statistics extends javax.swing.JFrame {
         tableProducts.setShowVerticalLines(false);
         tableProducts.setSurrendersFocusOnKeystroke(true);
         tableProducts.getTableHeader().setResizingAllowed(false);
-        jScrollPane1.setViewportView(tableProducts);
+        scrollTablePr.setViewportView(tableProducts);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 300, 200));
+        getContentPane().add(scrollTablePr, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 300, 200));
 
         tableSales.setBackground(new java.awt.Color(255, 255, 255));
         tableSales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -181,9 +181,9 @@ public class Statistics extends javax.swing.JFrame {
                 tableSalesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tableSales);
+        scrollTableSale.setViewportView(tableSales);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 350, 200));
+        getContentPane().add(scrollTableSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 350, 200));
 
         buttonExit.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         buttonExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,6 +306,10 @@ public class Statistics extends javax.swing.JFrame {
         this.buttonExit.setForeground(Color.white);
     }//GEN-LAST:event_buttonExitMouseExited
 
+    /**
+     * Exit of the program
+     * @param evt 
+     */
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
@@ -386,10 +390,10 @@ public class Statistics extends javax.swing.JFrame {
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonHome;
     private javax.swing.JButton buttonMin;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelProducts;
     private javax.swing.JLabel labelSales;
+    private javax.swing.JScrollPane scrollTablePr;
+    private javax.swing.JScrollPane scrollTableSale;
     private javax.swing.JTable tableProducts;
     private javax.swing.JTable tableSales;
     private javax.swing.JLabel wallpaper;
