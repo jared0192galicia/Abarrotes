@@ -67,6 +67,8 @@ public class RecoverAcces extends javax.swing.JFrame {
         labelPass = new javax.swing.JLabel();
         labelSubTitle = new javax.swing.JLabel();
         buttonChangePass = new javax.swing.JButton();
+        buttonMin1 = new javax.swing.JButton();
+        buttonExit1 = new javax.swing.JButton();
         wallpaper1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -174,7 +176,7 @@ public class RecoverAcces extends javax.swing.JFrame {
                 buttonSendCodeActionPerformed(evt);
             }
         });
-        panelMain.add(buttonSendCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 160, 40));
+        panelMain.add(buttonSendCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 160, 40));
 
         buttonAcep.setBackground(new java.awt.Color(0, 102, 102));
         buttonAcep.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,7 +187,7 @@ public class RecoverAcces extends javax.swing.JFrame {
                 buttonAcepActionPerformed(evt);
             }
         });
-        panelMain.add(buttonAcep, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 160, 40));
+        panelMain.add(buttonAcep, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 160, 40));
         panelMain.add(wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 450));
 
         panelForPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -212,10 +214,10 @@ public class RecoverAcces extends javax.swing.JFrame {
         labelPass.setText("Nueva Contraseña");
         panelForPassword.add(labelPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
-        labelSubTitle.setFont(new java.awt.Font("Monospaced", 1, 36)); // NOI18N
+        labelSubTitle.setFont(new java.awt.Font("Monospaced", 1, 30)); // NOI18N
         labelSubTitle.setForeground(new java.awt.Color(255, 255, 255));
         labelSubTitle.setText("CAMBIO DE CONTRASEÑA");
-        panelForPassword.add(labelSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 30));
+        panelForPassword.add(labelSubTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, 50));
 
         buttonChangePass.setBackground(new java.awt.Color(0, 102, 102));
         buttonChangePass.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,7 +229,49 @@ public class RecoverAcces extends javax.swing.JFrame {
             }
         });
         panelForPassword.add(buttonChangePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 160, 40));
-        panelForPassword.add(wallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 450));
+
+        buttonMin1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        buttonMin1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonMin1.setText("-");
+        buttonMin1.setBorder(null);
+        buttonMin1.setContentAreaFilled(false);
+        buttonMin1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonMin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonMin1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonMin1MouseExited(evt);
+            }
+        });
+        buttonMin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMin1ActionPerformed(evt);
+            }
+        });
+        panelForPassword.add(buttonMin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 40, 40));
+
+        buttonExit1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        buttonExit1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonExit1.setText("x");
+        buttonExit1.setBorder(null);
+        buttonExit1.setContentAreaFilled(false);
+        buttonExit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonExit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonExit1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonExit1MouseExited(evt);
+            }
+        });
+        buttonExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExit1ActionPerformed(evt);
+            }
+        });
+        panelForPassword.add(buttonExit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 40, 40));
+        panelForPassword.add(wallpaper1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,6 +440,59 @@ public class RecoverAcces extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonChangePassActionPerformed
 
     /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
+    private void buttonMin1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMin1MouseEntered
+        this.buttonExit.setForeground(Color.red);
+    }//GEN-LAST:event_buttonMin1MouseEntered
+
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
+    private void buttonMin1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonMin1MouseExited
+        this.buttonExit.setForeground(Color.white);
+    }//GEN-LAST:event_buttonMin1MouseExited
+
+    /**
+     * Minimize this frame
+     * @param evt 
+     */
+    private void buttonMin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMin1ActionPerformed
+        this.setExtendedState(Frame.ICONIFIED);
+    }//GEN-LAST:event_buttonMin1ActionPerformed
+
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
+    private void buttonExit1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExit1MouseEntered
+        this.buttonExit.setForeground(Color.red);
+    }//GEN-LAST:event_buttonExit1MouseEntered
+
+    /**
+     * Decorated button exited in event hover
+     *
+     * @param evt
+     */
+    private void buttonExit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExit1MouseExited
+        this.buttonExit.setForeground(Color.white);
+    }//GEN-LAST:event_buttonExit1MouseExited
+
+    /**
+     * Exited of the program
+     *
+     * @param evt
+     */
+    private void buttonExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExit1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buttonExit1ActionPerformed
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -408,7 +505,9 @@ public class RecoverAcces extends javax.swing.JFrame {
     private javax.swing.JButton buttonAcep;
     private javax.swing.JButton buttonChangePass;
     private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonExit1;
     private javax.swing.JButton buttonMin;
+    private javax.swing.JButton buttonMin1;
     private javax.swing.JButton buttonSendCode;
     private javax.swing.JLabel labelInfo;
     private javax.swing.JLabel labelInfoMail;

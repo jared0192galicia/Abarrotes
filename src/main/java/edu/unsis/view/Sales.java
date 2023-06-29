@@ -164,7 +164,7 @@ public class Sales extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Marca", "Modelo", "Cantidad"
+                "Nombre", "Marca", "Modelo", "Precio"
             }
         ));
         table.setShowVerticalLines(false);

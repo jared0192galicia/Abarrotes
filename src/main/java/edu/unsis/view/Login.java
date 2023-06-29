@@ -33,7 +33,7 @@ public final class Login extends javax.swing.JFrame {
     private final ImageIcon iconMinN;
     private final LoginController controller;
     private Clip clip;
-    
+
     public static int levelUser;
 
     /**
@@ -235,18 +235,18 @@ public final class Login extends javax.swing.JFrame {
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
         System.exit(0);
     }//GEN-LAST:event_buttonCloseActionPerformed
+
     /**
      *
      * Play music of init
      *
      * @param sonido
      */
-
     public void playSountrack(String sonido) {
 
         try {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                    new File("./src/edu/unsis/media/audio/" + sonido + ".wav"));
+                    new File("./src/main/java/edu/unsis/media/audio/" + sonido + ".wav"));
             clip = AudioSystem.getClip();
             clip.open(inputStream);
             clip.start();
