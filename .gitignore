@@ -13,4 +13,3 @@ manifestAnt.mf
 build.xml
 buildAnt.xml
 /dist/
-/target/
